@@ -15,24 +15,34 @@ const EducationSection = () => {
 
   const educationData = [
     {
-      degree: "Secondary School Certificate (SSC)",
-      school: "Natore Textile Institute",
-      mascot: "📘",
-      year: "2019-2021",
-      achievements: ["GPA: 4.89", "Subject: Science"],
-      skills: ["Mathematics", "Physics", "Chemistry", "Biology"],
+      degree: "B.Tech in Information Technology",
+      school: "K.J. Somaiya Institute of Technology, Sion",
+      mascot: "🎓",
+      year: "2024 - 2028 (Expected May 2028)",
+      achievements: ["CGPA: 8.72", "Engineering IT"],
+      skills: ["Java", "Data Structures", "Spring Boot", "React.js", "DBMS"],
       description:
-        "Focused on core science subjects with emphasis on practical laboratory work and scientific research methodologies.",
+        "Pursuing Bachelor of Technology with focus on software engineering, distributed microservices, and algorithmic problem solving.",
     },
     {
-      degree: "Higher Secondary Certificate (HSC)",
-      school: "Dottopara Model Degree College",
-      mascot: "📗",
-      year: "2021-2023",
-      achievements: ["GPA: 4.25", "Subject: Arts"],
-      skills: ["Literature", "Social Studies", "Economics", "History"],
+      degree: "Class XII (HSC) – Science",
+      school: "R.K. Talreja College, Ulhasnagar",
+      mascot: "🏆",
+      year: "2022 - 2024",
+      achievements: ["Score: 89.33%", "College Topper", "Principal's Award"],
+      skills: ["Mathematics", "Physics", "Chemistry", "Computer Science"],
       description:
-        "Developed strong analytical and critical thinking skills through comprehensive study of humanities and social sciences.",
+        "Secured 1st Rank across the entire college in Maharashtra State Board examinations, honored with the Principal's Award.",
+    },
+    {
+      degree: "Class X (SSC)",
+      school: "Patil Bal Mandir School, Kalyan",
+      mascot: "📘",
+      year: "2020 - 2022",
+      achievements: ["Score: 88.40%", "Secured 3rd Rank"],
+      skills: ["Mathematics", "Science", "Social Studies", "English"],
+      description:
+        "Secured 3rd Rank in Class X board examinations with 88.40%, building a strong mathematical and scientific foundation.",
     },
   ];
 
@@ -87,7 +97,7 @@ const EducationSection = () => {
           variants={containerVariants}
           initial="hidden"
           animate="visible"
-          className="grid grid-cols-1 md:grid-cols-2 gap-8"
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
         >
           {educationData.map((edu, index) => (
             <motion.div

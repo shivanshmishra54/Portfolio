@@ -54,28 +54,28 @@ const ExperienceCard = ({
 const ExperienceSection = () => {
   const experiences = [
     {
-      icon: Network,
-      title: "WordPress Developer",
-      company: "Fiverr",
-      period: "2019 - 2020",
+      icon: Code2,
+      title: "Web Development Intern",
+      company: "SkillCraft Technology",
+      period: "Aug 2025 - Sept 2025",
       description:
-        "Worked on developing and customizing WordPress websites for clients globally.",
+        "Designed, developed, and tested 4 web-based projects using React.js, JavaScript, and CSS within a remote Agile/Scrum environment, ensuring clean browser-internal rendering pipelines.",
+    },
+    {
+      icon: Cpu,
+      title: "Semi-Finalist (Top Tier)",
+      company: "ET GenAI Hackathon 2026",
+      period: "2026",
+      description:
+        "Secured Semi-Finalist rank out of 55,000+ global applicants, architecting AI-integrated software solutions under strict scalability and latency constraints.",
     },
     {
       icon: Layers,
-      title: "Junior Frontend Developer",
-      company: "Sera Programmer",
-      period: "2021 - 2023",
+      title: "Engineering Lead & Architect",
+      company: "Collegiate Software Hackathons",
+      period: "2024 - 2025",
       description:
-        "Assisted in building and optimizing user interfaces with a focus on responsive and interactive designs.",
-    },
-    {
-      icon: Code2,
-      title: "JavaScript Developer",
-      company: "OlovJS (Sera Programmer)",
-      period: "2023 - Present",
-      description:
-        "Contributed to developing JavaScript libraries and enhancing framework functionalities.",
+        "Won Top 10 place out of 50+ competing teams; directed full-stack system architecture and backend workflows for a 4-member team across national competitions.",
     },
   ];
 

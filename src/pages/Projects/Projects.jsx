@@ -5,44 +5,44 @@ import PropTypes from "prop-types";
 
 const projects = [
   {
-    title: "Olova! A Lightweight JavaScript Library",
+    title: "ShortUrl – Distributed URL Shortening Platform",
     description:
-      "A lightweight JavaScript library for creating beautiful, responsive UI components.",
+      "Architected a distributed system with independent API Gateways & microservices. Implemented Base-62 encoding supporting 56.8B+ URLs, JWT auth, dynamic Netflix Eureka discovery, and sub-15ms p95 redirect latency.",
     src: "rock.jpg",
-    link: "https://i.postimg.cc/DwgWTfP0/Annotation-2025-03-19-113338.png",
+    link: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=1200&q=80",
     color: "#5196fd",
-    githubLink: "https://github.com/olovajs/olova",
-    liveLink: "https://olova.js.org/",
+    githubLink: "https://github.com/Shivansh54mishra",
+    liveLink: "https://github.com/Shivansh54mishra",
   },
   {
-    title: "A sleek portfolio built with React and Tailwind CSS ",
+    title: "Track2Act – AI-Powered Logistics & Fleet Management",
     description:
-      "A sleek portfolio built with React and Tailwind CSS to showcase your skills, projects, and experience in a modern design.",
+      "Full-stack logistics platform with Role-Based Access Control (RBAC) across 4 user roles. Features live route visualization via React Leaflet, optimized MySQL queries, and real-time shipment monitoring.",
     src: "tree.jpg",
-    link: "https://i.postimg.cc/J75CKyrs/Annotation-2025-04-01-203959.png",
-    color: "#8f89ff",
-    githubLink: "https://github.com/seraprogrammer/portfolio",
-    liveLink: "https://codervai.vercel.app",
+    link: "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=1200&q=80",
+    color: "#10B981",
+    githubLink: "https://github.com/Shivansh54mishra",
+    liveLink: "https://github.com/Shivansh54mishra",
   },
   {
-    title: "🚀 CodeWhisperer",
+    title: "Authentication & Authorization Engine",
     description:
-      "🚀 CodeWhisperer A powerful online code editor built with React and Tailwind CSS. Featuring real-time code execution, syntax highlighting, multi-language support, and a sleek UI. Start coding instantly! 💻✨",
+      "Standalone identity provider subsystem using JWT to secure 10+ role-based API endpoints. Configured BCrypt hashing, custom Spring Security filter chains, and asynchronous email OTP notifications.",
     src: "water.jpg",
-    link: "https://i.postimg.cc/J4jPVFY0/Annotation-2025-04-01-204723.png",
-    color: "#fff",
-    githubLink: "https://github.com/seraprogrammer/codewhisperer",
-    liveLink: "https://codewhisperer.vercel.app/",
+    link: "https://images.unsplash.com/photo-1563986768609-322da13575f3?auto=format&fit=crop&w=1200&q=80",
+    color: "#8f89ff",
+    githubLink: "https://github.com/Shivansh54mishra",
+    liveLink: "https://github.com/Shivansh54mishra",
   },
   {
-    title: "CodeKori 🔥",
+    title: "SkillCraft Interactive Web Apps Suite",
     description:
-      "CodeKori is a powerful online code editor built with React and Tailwind CSS. Featuring real-time code execution, syntax highlighting, multi-language support, and a sleek UI. Start coding instantly! 💻✨",
+      "Suite of 4 responsive web applications including a modern landing page, advanced calculator, interactive to-do app, and browser game built with React.js, Tailwind CSS, and clean rendering pipelines.",
     src: "house.jpg",
-    link: "https://i.postimg.cc/cHQr4fpR/Annotation-2025-04-01-205350.png",
+    link: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1200&q=80",
     color: "#ed649e",
-    githubLink: "https://github.com/seraprogrammer/CodeKori",
-    liveLink: "https://codekori.js.org",
+    githubLink: "https://github.com/Shivansh54mishra",
+    liveLink: "https://portfolio-or-shivansh-mishra--shivansh54iron.replit.app/",
   },
 ];
 

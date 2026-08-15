@@ -8,6 +8,7 @@ import {
   FaCode,
   FaEnvelope,
   FaBars,
+  FaAward,
 } from "react-icons/fa";
 import { Link, useLocation } from "react-router-dom";
 
@@ -42,6 +43,7 @@ export default function Header() {
       path: "/education",
     },
     { id: "projects", icon: FaLaptopCode, text: "Projects", path: "/projects" },
+    { id: "certificates", icon: FaAward, text: "Certificates", path: "/certificates" },
     { id: "contact", icon: FaEnvelope, text: "Contact", path: "/contact" },
   ];
 

@@ -89,8 +89,8 @@ export default function EnhancedPortfolioCard() {
               animate={{ rotate: 360 }}
               transition={{ duration: 20, repeat: Infinity, ease: "linear" }} />
             <img
-              src="/placeholder.svg?height=256&width=256"
-              alt="Profile"
+              src="/hero.jpg"
+              alt="Shivansh Mishra"
               className="rounded-full relative z-10 w-full h-full object-cover border-4 border-gray-700 group-hover:border-purple-500 transition-colors duration-300" />
           </motion.div>
           <motion.h1
@@ -98,25 +98,27 @@ export default function EnhancedPortfolioCard() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2, duration: 0.5 }}>
-            Elena Baharet Frank
+            Shivansh Mishra
           </motion.h1>
           <motion.a
-            href="mailto:elebaharet@gmail.com"
+            href="mailto:shivansh54mishra@gmail.com"
             className="text-lg text-blue-400 hover:text-blue-300 transition-colors"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.3, duration: 0.5 }}>
-            elebaharet@gmail.com
+            shivansh54mishra@gmail.com
           </motion.a>
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.4, duration: 0.5 }}>
-            <Button
-              className="mt-6 bg-gradient-to-r from-[#2DD4BF] to-[#38BDF8] hover:from-[#2DD4BF]/90 hover:to-[#38BDF8]/90 text-white px-6 py-3 rounded-full text-lg font-semibold shadow-lg transition-all duration-300 hover:scale-105">
-              <Download className="mr-2 h-5 w-5" />
-              Download CV
-            </Button>
+            <a href="/resume.pdf" download="Shivansh_Mishra_Resume.pdf" target="_blank" rel="noopener noreferrer">
+              <Button
+                className="mt-6 bg-gradient-to-r from-[#2DD4BF] to-[#38BDF8] hover:from-[#2DD4BF]/90 hover:to-[#38BDF8]/90 text-white px-6 py-3 rounded-full text-lg font-semibold shadow-lg transition-all duration-300 hover:scale-105">
+                <Download className="mr-2 h-5 w-5" />
+                Download CV
+              </Button>
+            </a>
           </motion.div>
         </Card>
 
@@ -143,14 +145,12 @@ export default function EnhancedPortfolioCard() {
                 </Badge>
               </div>
               <p className="text-gray-300 text-lg leading-relaxed">
-                Visual Designer with 7+ years of experience. I'm all about
-                crafting user-friendly interfaces that are functional and
-                visually compelling.
+                Full-Stack Developer & IT Undergraduate at K.J. Somaiya Institute of Technology (CGPA: 8.72).
+                Passionate about Java, Spring Boot, Microservices, and React.js.
               </p>
               <p className="text-gray-300 text-lg leading-relaxed">
-                Born and raised in the beautiful Costa Rica. When I'm not busy
-                designing, you'll likely find me playing some board games, deep
-                into my Animal Crossing or cooking some mouthwatering Arepas.
+                Solved 200+ Data Structures & Algorithms problems on LeetCode. Passionate about architecting
+                scalable backend systems and modern web applications.
               </p>
             </motion.div>
           </Card>
@@ -172,13 +172,13 @@ export default function EnhancedPortfolioCard() {
                   className="w-16 h-16 bg-gradient-to-br from-[#2DD4BF] to-[#38BDF8] rounded-2xl flex items-center justify-center shadow-lg"
                   whileHover={{ scale: 1.1 }}
                   transition={{ type: "spring", stiffness: 300 }}>
-                  <Briefcase className="w-8 h-8 text-gray-200" />
+                  <Code className="w-8 h-8 text-gray-200" />
                 </motion.div>
                 <div>
                   <h3 className="font-semibold text-xl text-gray-100">
-                    UI Designer
+                    Web Development Intern
                   </h3>
-                  <p className="text-lg text-gray-400">Specialized Bicycle</p>
+                  <p className="text-lg text-gray-400">SkillCraft Technology</p>
                 </div>
               </motion.div>
               <motion.div className="flex items-center gap-4" whileHover={{ x: 10 }}>
@@ -186,14 +186,14 @@ export default function EnhancedPortfolioCard() {
                   className="w-16 h-16 bg-gradient-to-br from-[#2DD4BF] to-[#38BDF8] rounded-2xl flex items-center justify-center shadow-lg"
                   whileHover={{ scale: 1.1 }}
                   transition={{ type: "spring", stiffness: 300 }}>
-                  <Code className="w-8 h-8 text-gray-200" />
+                  <Briefcase className="w-8 h-8 text-gray-200" />
                 </motion.div>
                 <div>
                   <h3 className="font-semibold text-xl text-gray-100">
-                    Interaction Designer
+                    B.Tech Information Technology
                   </h3>
                   <p className="text-lg text-gray-400">
-                    Critical Mass / On-Site Apple
+                    K.J. Somaiya Institute of Technology
                   </p>
                 </div>
               </motion.div>
@@ -205,7 +205,7 @@ export default function EnhancedPortfolioCard() {
             className="p-6 shadow-xl rounded-2xl backdrop-blur-lg bg-[#1E293B]/50 border border-[#2DD4BF]/20 overflow-hidden">
             <h2
               className="text-2xl font-bold mb-6 text-transparent bg-clip-text bg-gradient-to-r from-[#2DD4BF] to-[#38BDF8]">
-              Main Apps
+              Core Technologies
             </h2>
             <motion.div
               className="flex justify-between"
@@ -213,10 +213,10 @@ export default function EnhancedPortfolioCard() {
               animate={{ opacity: 1 }}
               transition={{ delay: 0.6, duration: 0.5 }}>
               {[
-                { name: "Figma", icon: <Palette className="w-8 h-8" /> },
-                { name: "Sketch", icon: <Palette className="w-8 h-8" /> },
-                { name: "Photoshop", icon: <Palette className="w-8 h-8" /> },
-                { name: "Framer", icon: <Code className="w-8 h-8" /> },
+                { name: "Java", icon: <Code className="w-8 h-8" /> },
+                { name: "Spring Boot", icon: <Code className="w-8 h-8" /> },
+                { name: "React.js", icon: <Code className="w-8 h-8" /> },
+                { name: "MySQL", icon: <Briefcase className="w-8 h-8" /> },
               ].map((app, index) => (
                 <TooltipProvider key={app.name}>
                   <Tooltip>

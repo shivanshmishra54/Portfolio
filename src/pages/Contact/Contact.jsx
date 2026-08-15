@@ -53,7 +53,7 @@ export default function Contact() {
 
     // Create a new FormData object to send to Web3Forms API
     const form = new FormData();
-    form.append("access_key", "90f4b8af-e590-42b0-beaf-10b18f66a703"); // Replace with your Web3Forms access key
+    form.append("access_key", "319cf23f-b091-4f65-8a31-920030bdde78");
     form.append("name", formData.name);
     form.append("email", formData.email);
     form.append("subject", formData.subject || "New Contact Form Submission");
@@ -112,7 +112,27 @@ export default function Contact() {
                   </div>
                   <div>
                     <h3 className="font-semibold">Email</h3>
-                    <p className="text-gray-400">olovajs@gmail.com</p>
+                    <a
+                      href="mailto:shivansh54mishra@gmail.com"
+                      className="text-gray-400 hover:text-blue-400 transition-colors"
+                    >
+                      shivansh54mishra@gmail.com
+                    </a>
+                  </div>
+                </div>
+
+                <div className="flex items-center space-x-4">
+                  <div className="bg-blue-500/10 p-3 rounded-lg">
+                    <Phone className="w-6 h-6 text-blue-400" />
+                  </div>
+                  <div>
+                    <h3 className="font-semibold">Phone</h3>
+                    <a
+                      href="tel:+919820689183"
+                      className="text-gray-400 hover:text-blue-400 transition-colors"
+                    >
+                      +91 9820689183
+                    </a>
                   </div>
                 </div>
 
@@ -122,7 +142,7 @@ export default function Contact() {
                   </div>
                   <div>
                     <h3 className="font-semibold">Location</h3>
-                    <p className="text-gray-400">Laxmipure, Natore 6400</p>
+                    <p className="text-gray-400">Mumbai, Maharashtra, India</p>
                   </div>
                 </div>
               </div>
