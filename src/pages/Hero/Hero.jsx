@@ -6,6 +6,9 @@ import Meteors from "@/components/ui/meteors";
 import PortfolioPage from "@/pages/About/About";
 import SparklesText from "@/components/ui/sparkles-text";
 import { FlipWords } from "@/components/ui/flip-words";
+import { Link } from "react-router-dom";
+import { FaGithub, FaLinkedinIn, FaEnvelope, FaDownload, FaArrowRight } from "react-icons/fa";
+import { FaXTwitter } from "react-icons/fa6";
 
 // Grid Background - Replacing the HexagonBackground
 const GridBackground = () => {
@@ -215,38 +218,88 @@ const profile = {
                 </p>
               </div>
 
-              {/* CTA Buttons */}
-              <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 animate__animated animate__fadeInUp animate__delay-2s">
-                {/* View Projects Button */}
-                <a
-                  href="https://www.linkedin.com/in/shivansh-mishra54"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="group relative inline-flex items-center justify-center gap-3 bg-gradient-to-r from-blue-500 to-teal-400 p-0.5 rounded-xl transition-all duration-300 hover:scale-105 hover:shadow-[0_0_2rem_-0.5rem_#60A5FA]"
-                >
-                  <span className="block w-full px-6 sm:px-8 py-3 sm:py-4 rounded-[11px] bg-gray-900 transition-all duration-300 group-hover:bg-gradient-to-r group-hover:from-blue-500 group-hover:to-teal-400">
-                    <span className="relative flex items-center justify-center gap-2 text-white font-medium">
-                      <span>LinkedIn Profile</span>
-                      <i className="fas fa-arrow-right transform transition-all duration-300 group-hover:translate-x-1"></i>
-                    </span>
-                  </span>
-                </a>
+              {/* CTA Buttons & Social Links */}
+              <div className="flex flex-col gap-6 animate__animated animate__fadeInUp animate__delay-2s">
+                {/* Main Action Buttons */}
+                <div className="flex flex-wrap items-center gap-3 sm:gap-4">
+                  {/* View Projects Button */}
+                  <Link
+                    to="/projects"
+                    className="inline-flex items-center justify-center gap-2 px-6 sm:px-7 py-3 rounded-xl bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 hover:from-blue-500 hover:via-indigo-500 hover:to-purple-500 text-white font-semibold text-sm sm:text-base shadow-[0_0_25px_-5px_rgba(99,102,241,0.5)] transition-all duration-300 hover:scale-105"
+                  >
+                    <span>View Projects</span>
+                    <FaArrowRight className="w-3.5 h-3.5" />
+                  </Link>
 
-                {/* Contact Button */}
-                <a
-                  href="/resume.pdf"
-                  download="Shivansh_Mishra_Resume.pdf"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="group relative inline-flex items-center justify-center gap-3 p-0.5 rounded-xl bg-gradient-to-r from-gray-800 to-gray-700 transition-all duration-300 hover:scale-105 hover:shadow-[0_0_2rem_-0.5rem_#60A5FA]"
-                >
-                  <span className="block w-full px-6 sm:px-8 py-3 sm:py-4 rounded-[11px] bg-gray-900 border border-gray-700/50 transition-all duration-300 group-hover:bg-gradient-to-r group-hover:from-gray-800 group-hover:to-gray-700">
-                    <span className="relative flex items-center justify-center gap-2 text-gray-300 font-medium group-hover:text-white">
-                      <span>Get Resume</span>
-                      <i className="fas fa-file-download transform transition-all duration-300 group-hover:rotate-12"></i>
-                    </span>
-                  </span>
-                </a>
+                  {/* Contact Me Button */}
+                  <Link
+                    to="/contact"
+                    className="inline-flex items-center justify-center px-6 sm:px-7 py-3 rounded-xl bg-slate-900/90 hover:bg-slate-800/90 border border-slate-700/80 text-gray-200 hover:text-white font-medium text-sm sm:text-base transition-all duration-300 hover:scale-105 hover:border-slate-500 shadow-md"
+                  >
+                    Contact Me
+                  </Link>
+
+                  {/* Resume Button */}
+                  <a
+                    href="/resume.pdf"
+                    download="Shivansh_Mishra_Resume.pdf"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center justify-center gap-2 px-6 sm:px-7 py-3 rounded-xl bg-slate-900/90 hover:bg-slate-800/90 border border-slate-700/80 text-gray-200 hover:text-white font-medium text-sm sm:text-base transition-all duration-300 hover:scale-105 hover:border-slate-500 shadow-md"
+                  >
+                    <FaDownload className="w-3.5 h-3.5 text-blue-400" />
+                    <span>Resume</span>
+                  </a>
+                </div>
+
+                {/* Social Icons Row */}
+                <div className="flex items-center gap-3 pt-1">
+                  {/* GitHub */}
+                  <a
+                    href="https://github.com/shivanshmishra54"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="w-11 h-11 rounded-xl bg-slate-900/90 hover:bg-slate-800 border border-slate-800 hover:border-slate-600 text-gray-400 hover:text-white flex items-center justify-center text-lg transition-all duration-300 hover:scale-110 shadow-md"
+                    title="GitHub"
+                    aria-label="GitHub"
+                  >
+                    <FaGithub />
+                  </a>
+
+                  {/* LinkedIn */}
+                  <a
+                    href="https://www.linkedin.com/in/shivansh-mishra54"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="w-11 h-11 rounded-xl bg-slate-900/90 hover:bg-slate-800 border border-slate-800 hover:border-slate-600 text-gray-400 hover:text-[#0A66C2] flex items-center justify-center text-lg transition-all duration-300 hover:scale-110 shadow-md"
+                    title="LinkedIn"
+                    aria-label="LinkedIn"
+                  >
+                    <FaLinkedinIn />
+                  </a>
+
+                  {/* X / Twitter */}
+                  <a
+                    href="https://x.com/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="w-11 h-11 rounded-xl bg-slate-900/90 hover:bg-slate-800 border border-slate-800 hover:border-slate-600 text-gray-400 hover:text-white flex items-center justify-center text-base transition-all duration-300 hover:scale-110 shadow-md"
+                    title="X (Twitter)"
+                    aria-label="X (Twitter)"
+                  >
+                    <FaXTwitter />
+                  </a>
+
+                  {/* Email */}
+                  <a
+                    href="mailto:shivansh54mishra@gmail.com"
+                    className="w-11 h-11 rounded-xl bg-slate-900/90 hover:bg-slate-800 border border-slate-800 hover:border-slate-600 text-gray-400 hover:text-purple-400 flex items-center justify-center text-base transition-all duration-300 hover:scale-110 shadow-md"
+                    title="Email Me"
+                    aria-label="Email"
+                  >
+                    <FaEnvelope />
+                  </a>
+                </div>
               </div>
 
               {/* Floating badges */}
