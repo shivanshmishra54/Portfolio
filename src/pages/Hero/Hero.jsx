@@ -9,6 +9,7 @@ import { FlipWords } from "@/components/ui/flip-words";
 import { Link } from "react-router-dom";
 import { FaGithub, FaLinkedinIn, FaEnvelope, FaDownload, FaArrowRight } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
+import { SiLeetcode } from "react-icons/si";
 
 // Grid Background - Replacing the HexagonBackground
 const GridBackground = () => {
@@ -278,16 +279,16 @@ const profile = {
                     <FaLinkedinIn />
                   </a>
 
-                  {/* X / Twitter */}
+                  {/* LeetCode */}
                   <a
-                    href="https://x.com/"
+                    href="https://leetcode.com/u/shivanshmishra54/"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="w-11 h-11 rounded-xl bg-slate-900/90 hover:bg-slate-800 border border-slate-800 hover:border-slate-600 text-gray-400 hover:text-white flex items-center justify-center text-base transition-all duration-300 hover:scale-110 shadow-md"
-                    title="X (Twitter)"
-                    aria-label="X (Twitter)"
+                    className="w-11 h-11 rounded-xl bg-slate-900/90 hover:bg-slate-800 border border-slate-800 hover:border-slate-600 text-gray-400 hover:text-[#FFA116] flex items-center justify-center text-lg transition-all duration-300 hover:scale-110 shadow-md"
+                    title="LeetCode"
+                    aria-label="LeetCode"
                   >
-                    <FaXTwitter />
+                    <SiLeetcode />
                   </a>
 
                   {/* Email */}
