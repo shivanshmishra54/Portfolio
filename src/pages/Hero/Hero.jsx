@@ -44,6 +44,9 @@ const GridBackground = () => {
   );
 };
 
+import { profile } from "@/data/profile";
+import { skills as skillsData } from "@/data/skills";
+
 export default function Hero() {
   const words = [
     "Full-Stack Developer & Problem Solver",
@@ -52,14 +55,15 @@ export default function Hero() {
     "Competitive Programmer | 200+ LeetCode",
   ];
 
+  // Extract flat list of skills for the code block
+  const flatSkills = skillsData.flatMap(category => category.items.map(item => item.name)).slice(0, 12);
+  
   const [code] = useState(`
 const profile = {
-    name: 'Shivansh Mishra',
-    title: 'Full-Stack Developer | Java & Spring Boot | Problem Solver',
+    name: '${profile.name}',
+    title: '${profile.tagline}',
     skills: [
-        'Java', 'Spring Boot', 'Spring Security', 'Hibernate',
-        'React.js', 'MySQL', 'REST APIs', 'Microservices',
-        'Tailwind CSS', 'Git', 'Maven', 'Postman'
+        ${flatSkills.map(s => `'${s}'`).join(', ')}
     ],
     hardWorker: true,
     quickLearner: true,
@@ -77,72 +81,12 @@ const profile = {
 
   useEffect(() => {
     Prism.highlightAll();
-
-    // Add CSS animation for grid and dots
-    const style = document.createElement("style");
-    style.textContent = `
-      @keyframes gridPulse {
-        0%, 100% { opacity: 0.1; }
-        50% { opacity: 0.3; }
-      }
-      
-      @keyframes dotPulse {
-        0%, 100% { opacity: 0.2; transform: scale(0.8); }
-        50% { opacity: 0.5; transform: scale(1.2); }
-      }
-      
-      /* Media query for 1366x768 resolution */
-      @media screen and (width: 1366px) and (height: 768px), 
-             screen and (width: 1367px) and (height: 768px),
-             screen and (width: 1368px) and (height: 769px) {
-        .hero {
-          padding-top: 12rem !important;
-        }
-        .hero .container {
-          padding-top: 10rem !important;
-          margin-top: 5rem !important;
-        }
-        .hero-section-padding {
-          padding-top: 12rem !important;
-        }
-      }
-    `;
-    document.head.appendChild(style);
-
-    // Apply extra padding for 1366x768 resolution
-    const checkResolution = () => {
-      const isTargetResolution =
-        window.innerWidth >= 1360 &&
-        window.innerWidth <= 1370 &&
-        window.innerHeight >= 760 &&
-        window.innerHeight <= 775;
-
-      if (isTargetResolution) {
-        document.documentElement.style.setProperty(
-          "--hero-padding-top",
-          "12rem"
-        );
-      } else {
-        document.documentElement.style.setProperty("--hero-padding-top", "0");
-      }
-    };
-
-    checkResolution();
-    window.addEventListener("resize", checkResolution);
-
-    return () => {
-      document.head.removeChild(style);
-      window.removeEventListener("resize", checkResolution);
-    };
   }, [code]);
 
   return (
     <>
       <main className="bg-[#020617] text-white min-h-screen">
-        <section
-          className="hero min-h-screen flex items-center justify-center relative px-4 sm:px-6 lg:px-8 py-10 md:py-16 lg:py-0 hero-section-padding"
-          style={{ paddingTop: "var(--hero-padding-top, 0)" }}
-        >
+        <section className="hero min-h-screen flex items-center justify-center relative px-4 sm:px-6 lg:px-8 py-10 md:py-16 lg:py-0">
           <div className="absolute inset-0"></div>
 
           {/* Choose one of these background options */}
@@ -159,18 +103,7 @@ const profile = {
           </div>
 
           {/* Main content container */}
-          <div
-            className="container mx-auto flex flex-col lg:flex-row items-center justify-between relative z-10 py-8 md:py-10 lg:py-12 md:pt-28 xl:pt-28"
-            style={{
-              paddingTop:
-                window.innerWidth >= 1360 &&
-                window.innerWidth <= 1370 &&
-                window.innerHeight >= 760 &&
-                window.innerHeight <= 775
-                  ? "12rem"
-                  : "",
-            }}
-          >
+          <div className="container mx-auto flex flex-col lg:flex-row items-center justify-between relative z-10 py-8 md:py-10 lg:py-12 md:pt-28 xl:pt-28">
             {/* Left column - Text content */}
             <div className="w-full lg:w-1/2 mb-12 lg:mb-0 animate__animated animate__fadeInLeft relative">
               {/* Decorative blurs */}

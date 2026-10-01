@@ -53,7 +53,7 @@ export default function Contact() {
 
     // Create a new FormData object to send to Web3Forms API
     const form = new FormData();
-    form.append("access_key", "319cf23f-b091-4f65-8a31-920030bdde78");
+    form.append("access_key", import.meta.env.VITE_WEB3FORMS_ACCESS_KEY);
     form.append("name", formData.name);
     form.append("email", formData.email);
     form.append("subject", formData.subject || "New Contact Form Submission");

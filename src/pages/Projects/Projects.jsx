@@ -3,48 +3,7 @@ import { useTransform, motion, useScroll } from "framer-motion";
 import { useRef, useEffect } from "react";
 import PropTypes from "prop-types";
 
-const projects = [
-  {
-    title: "ShortUrl – Distributed URL Shortening Platform",
-    description:
-      "Architected a distributed system with independent API Gateways & microservices. Implemented Base-62 encoding supporting 56.8B+ URLs, JWT auth, dynamic Netflix Eureka discovery, and sub-15ms p95 redirect latency.",
-    src: "rock.jpg",
-    link: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=1200&q=80",
-    color: "#5196fd",
-    githubLink: "https://github.com/Shivansh54mishra",
-    liveLink: "https://github.com/Shivansh54mishra",
-  },
-  {
-    title: "Track2Act – AI-Powered Logistics & Fleet Management",
-    description:
-      "Full-stack logistics platform with Role-Based Access Control (RBAC) across 4 user roles. Features live route visualization via React Leaflet, optimized MySQL queries, and real-time shipment monitoring.",
-    src: "tree.jpg",
-    link: "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=1200&q=80",
-    color: "#10B981",
-    githubLink: "https://github.com/Shivansh54mishra",
-    liveLink: "https://github.com/Shivansh54mishra",
-  },
-  {
-    title: "Authentication & Authorization Engine",
-    description:
-      "Standalone identity provider subsystem using JWT to secure 10+ role-based API endpoints. Configured BCrypt hashing, custom Spring Security filter chains, and asynchronous email OTP notifications.",
-    src: "water.jpg",
-    link: "https://images.unsplash.com/photo-1563986768609-322da13575f3?auto=format&fit=crop&w=1200&q=80",
-    color: "#8f89ff",
-    githubLink: "https://github.com/Shivansh54mishra",
-    liveLink: "https://github.com/Shivansh54mishra",
-  },
-  {
-    title: "SkillCraft Interactive Web Apps Suite",
-    description:
-      "Suite of 4 responsive web applications including a modern landing page, advanced calculator, interactive to-do app, and browser game built with React.js, Tailwind CSS, and clean rendering pipelines.",
-    src: "house.jpg",
-    link: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1200&q=80",
-    color: "#ed649e",
-    githubLink: "https://github.com/Shivansh54mishra",
-    liveLink: "https://portfolio-or-shivansh-mishra--shivansh54iron.replit.app/",
-  },
-];
+import { projects } from "@/data/projects";
 
 export default function Projects() {
   const container = useRef(null);
@@ -53,49 +12,7 @@ export default function Projects() {
     offset: ["start start", "end end"],
   });
 
-  useEffect(() => {
-    // Add specific styles for 1366x768 resolution
-    const style = document.createElement("style");
-    style.textContent = `
-      @media screen and (width: 1366px) and (height: 768px),
-             screen and (width: 1367px) and (height: 768px),
-             screen and (width: 1368px) and (height: 769px) {
-        .project-card {
-          scale: 0.85;
-          margin-top: -5vh;
-        }
-        .project-container {
-          height: 90vh;
-        }
-      }
-    `;
-    document.head.appendChild(style);
 
-    // Resolution check function
-    const checkResolution = () => {
-      const isTargetResolution =
-        window.innerWidth >= 1360 &&
-        window.innerWidth <= 1370 &&
-        window.innerHeight >= 760 &&
-        window.innerHeight <= 775;
-
-      if (isTargetResolution) {
-        document.documentElement.style.setProperty("--project-scale", "0.85");
-        document.documentElement.style.setProperty("--project-margin", "-5vh");
-      } else {
-        document.documentElement.style.setProperty("--project-scale", "1");
-        document.documentElement.style.setProperty("--project-margin", "0");
-      }
-    };
-
-    checkResolution();
-    window.addEventListener("resize", checkResolution);
-
-    return () => {
-      document.head.removeChild(style);
-      window.removeEventListener("resize", checkResolution);
-    };
-  }, []);
 
   return (
     <ReactLenis root>
@@ -107,15 +24,15 @@ export default function Projects() {
               <Card
                 key={`p_${i}`}
                 i={i}
-                url={project.link}
+                url={project.image || project.link}
                 title={project.title}
-                color={project.color}
+                color={project.color || '#5196fd'}
                 description={project.description}
                 progress={scrollYProgress}
                 range={[i * 0.25, 1]}
                 targetScale={targetScale}
-                githubLink={project.githubLink}
-                liveLink={project.liveLink}
+                githubLink={project.github}
+                liveLink={project.liveDemo}
               />
             );
           })}
@@ -149,8 +66,6 @@ function Card({
         style={{
           scale,
           top: `calc(-5vh + ${i * 25}px)`,
-          transform: `scale(var(--project-scale, 1))`,
-          marginTop: "var(--project-margin, 0)",
         }}
         className="relative -top-[25%] h-auto w-[90%] md:w-[85%] lg:w-[75%] xl:w-[65%] origin-top project-card"
         whileHover={{
