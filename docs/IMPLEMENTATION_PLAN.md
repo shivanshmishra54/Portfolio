@@ -75,22 +75,22 @@
 
 ### Tasks
 
-- [ ] **1.1** Install `@react-three/fiber`, `@react-three/drei`, `three`
-- [ ] **1.2** Create `src/hooks/useWebGLSupport.js`
-- [ ] **1.3** Create `src/hooks/useReducedMotion.js`
-- [ ] **1.4** Create `src/hooks/useDeviceCapability.js` (wraps `useDetectGPU`)
-- [ ] **1.5** Create `src/components/three/SceneWrapper.jsx` — Canvas + Suspense + Error Boundary
-- [ ] **1.6** Create `src/components/three/WebGLFallback.jsx` — static fallback design
-- [ ] **1.7** Create `src/components/three/PersonalAvatar.jsx` — isolated, prop-driven, placeholder mode
-- [ ] **1.8** Create `src/components/three/HeroScene.jsx` — procedural monochrome environment
-- [ ] **1.9** Implement idle animation in HeroScene
-- [ ] **1.10** Implement mouse parallax interaction
-- [ ] **1.11** Implement scroll-driven transition (hero → next section)
-- [ ] **1.12** Implement responsive quality levels (high/medium/low)
-- [ ] **1.13** Implement reduced-motion static rendering
-- [ ] **1.14** Test WebGL fallback by forcing failure
-- [ ] **1.15** Create `public/models/` directory for future GLB assets
-- [ ] **1.16** Verify: hero renders 3D scene, degrades gracefully, no performance regression
+- [x] **1.1** Install `@react-three/fiber`, `@react-three/drei`, `three`
+- [x] **1.2** Create `src/hooks/useWebGLSupport.js`
+- [x] **1.3** Create `src/hooks/useReducedMotion.js`
+- [x] **1.4** Create `src/hooks/useDeviceCapability.js` (wraps `useDetectGPU`)
+- [x] **1.5** Create `src/components/three/SceneWrapper.jsx` — Canvas + Suspense + Error Boundary
+- [x] **1.6** Create `src/components/three/WebGLFallback.jsx` — static fallback design
+- [x] **1.7** Create `src/components/three/PersonalAvatar.jsx` — isolated, prop-driven, placeholder mode
+- [x] **1.8** Create `src/components/three/HeroScene.jsx` — procedural monochrome environment
+- [x] **1.9** Implement idle animation in HeroScene
+- [x] **1.10** Implement mouse parallax interaction
+- [x] **1.11** Implement scroll-driven transition (hero → next section)
+- [x] **1.12** Implement responsive quality levels (high/medium/low)
+- [x] **1.13** Implement reduced-motion static rendering
+- [x] **1.14** Test WebGL fallback by forcing failure
+- [x] **1.15** Create `public/models/` directory for future GLB assets
+- [x] **1.16** Verify: hero renders 3D scene, degrades gracefully, no performance regression
 
 **Dependencies**: Phase 0 complete  
 **Files affected**: New files only + Hero page integration  

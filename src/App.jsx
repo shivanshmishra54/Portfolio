@@ -11,6 +11,7 @@ const Education = lazy(() => import("./pages/Education/Education"));
 const Projects = lazy(() => import("./pages/Projects/Projects"));
 const Certificates = lazy(() => import("./pages/Certificates/Certificates"));
 const Contact = lazy(() => import("./pages/Contact/Contact"));
+const ThreeLab = lazy(() => import("./pages/Lab/ThreeLab"));
 
 export default function App() {
   const [isOnePage, setIsOnePage] = useState(false); // Toggle state
@@ -48,6 +49,7 @@ export default function App() {
             <Route path="/projects" element={<Projects />} />
             <Route path="/certificates" element={<Certificates />} />
             <Route path="/contact" element={<Contact />} />
+            <Route path="/3d-lab" element={<ThreeLab />} />
           </Routes>
         )}
       </Suspense>

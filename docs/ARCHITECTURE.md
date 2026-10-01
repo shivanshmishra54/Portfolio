@@ -138,11 +138,19 @@ portfolio/
 │   │   │   ├── PathSelector.jsx
 │   │   │   └── SectionHeading.jsx
 │   │   └── three/                      # 3D components
-│   │       ├── SceneWrapper.jsx
+│   │       ├── hooks/                  # 3D specific hooks
+│   │       │   ├── use3DQuality.js
+│   │       │   ├── useReducedMotion.js
+│   │       │   └── usePointerInteraction.js
+│   │       ├── ThreeScene.jsx          # SceneWrapper equivalent
 │   │       ├── PersonalAvatar.jsx
-│   │       ├── HeroScene.jsx
-│   │       ├── AmbientScene.jsx
-│   │       └── WebGLFallback.jsx
+│   │       ├── AvatarPlaceholder.jsx
+│   │       ├── CameraRig.jsx
+│   │       ├── SceneLighting.jsx
+│   │       ├── SceneEnvironment.jsx
+│   │       ├── QualityManager.jsx
+│   │       ├── WebGLFallback.jsx
+│   │       └── index.js
 │   ├── pages/
 │   │   ├── HomePage/
 │   │   │   ├── index.jsx
