@@ -1,12 +1,9 @@
 export const navigation = {
   main: [
-    { label: "Home", href: "/", icon: "Home" },
-    { label: "Skills", href: "/skills", icon: "Code2" },
-    { label: "Experience", href: "/experience", icon: "Activity" },
-    { label: "Education", href: "/education", icon: "GraduationCap" },
-    { label: "Projects", href: "/projects", icon: "Layers" },
-    { label: "Certificates", href: "/certificates", icon: "Award" },
-    { label: "Contact", href: "/contact", icon: "Mail" }
+    { label: "About", path: "/#about" },
+    { label: "Work", path: "/#work" },
+    { label: "Journey", path: "/developer/journey" },
+    { label: "Contact", path: "/contact" }
   ],
   socials: [
     { platform: "github", url: "https://github.com/Shivansh54mishra" },

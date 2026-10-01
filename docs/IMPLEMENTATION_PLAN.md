@@ -112,31 +112,31 @@
 
 ### Tasks
 
-- [ ] **2.1** Create `src/components/layout/Navigation.jsx` — premium monochrome floating nav
-- [ ] **2.2** Create `src/components/layout/Footer.jsx` — premium footer
-- [ ] **2.3** Create `src/components/layout/PageTransition.jsx` — AnimatePresence wrapper
-- [ ] **2.4** Create `src/components/layout/SEOHead.jsx` — react-helmet-async wrapper
-- [ ] **2.5** Install `react-helmet-async`; wrap App in `<HelmetProvider>`
-- [ ] **2.6** Create `src/pages/HomePage/index.jsx` — page assembly
-- [ ] **2.7** Create `src/pages/HomePage/HeroSection.jsx` — 3D hero + name + tagline
-- [ ] **2.8** Create `src/pages/HomePage/AboutSection.jsx` — photo + short bio
-- [ ] **2.9** Create `src/pages/HomePage/CapabilitiesSection.jsx` — 4-6 capability cards
-- [ ] **2.10** Create `src/pages/HomePage/SelectedWorkSection.jsx` — 2-3 featured projects
-- [ ] **2.11** Create `src/pages/HomePage/ProofSection.jsx` — key achievements/certifications
-- [ ] **2.12** Create `src/pages/HomePage/JourneyPreviewSection.jsx` — 3-4 milestone preview
-- [ ] **2.13** Create `src/pages/HomePage/CurrentlyBuildingSection.jsx` — current focus
-- [ ] **2.14** Create `src/pages/HomePage/PathSelectorSection.jsx` — Freelancer / Developer choice
-- [ ] **2.15** Create `src/components/shared/SectionHeading.jsx` — consistent section titles
-- [ ] **2.16** Create `src/components/shared/ProjectCard.jsx` — reusable project preview
-- [ ] **2.17** Create `src/components/shared/PathSelector.jsx` — reusable path choice UI
-- [ ] **2.18** Implement scroll-triggered section reveals (Framer Motion)
-- [ ] **2.19** Implement page transitions between routes
-- [ ] **2.20** Update Tailwind config with design system tokens
-- [ ] **2.21** Update global CSS with design system colors, typography, spacing
-- [ ] **2.22** Set up routes for new architecture in App.jsx (preserve old routes temporarily)
-- [ ] **2.23** Implement Lenis smooth scroll on homepage
-- [ ] **2.24** Responsive testing: mobile, tablet, desktop
-- [ ] **2.25** Verify: complete homepage renders with all sections, navigation works
+- [x] **2.1** Create `src/components/layout/Navigation.jsx` — premium monochrome floating nav
+- [x] **2.2** Create `src/components/layout/Footer.jsx` — premium footer
+- [x] **2.3** Create `src/components/layout/PageTransition.jsx` — AnimatePresence wrapper
+- [x] **2.4** Create `src/components/layout/SEOHead.jsx` — react-helmet-async wrapper
+- [x] **2.5** Install `react-helmet-async`; wrap App in `<HelmetProvider>`
+- [x] **2.6** Create `src/pages/HomePage/index.jsx` — page assembly
+- [x] **2.7** Create `src/pages/HomePage/HeroSection.jsx` — 3D hero + name + tagline
+- [x] **2.8** Create `src/pages/HomePage/AboutSection.jsx` — photo + short bio
+- [x] **2.9** Create `src/pages/HomePage/CapabilitiesSection.jsx` — 4-6 capability cards
+- [x] **2.10** Create `src/pages/HomePage/SelectedWorkSection.jsx` — 2-3 featured projects
+- [x] **2.11** Create `src/pages/HomePage/ProofSection.jsx` — key achievements/certifications
+- [x] **2.12** Create `src/pages/HomePage/JourneyPreviewSection.jsx` — 3-4 milestone preview
+- [x] **2.13** Create `src/pages/HomePage/CurrentlyBuildingSection.jsx` — current focus
+- [x] **2.14** Create `src/pages/HomePage/PathSelectorSection.jsx` — Freelancer / Developer choice
+- [x] **2.15** Create `src/components/shared/SectionHeading.jsx` — consistent section titles
+- [x] **2.16** Create `src/components/shared/ProjectCard.jsx` — reusable project preview
+- [x] **2.17** Create `src/components/shared/PathSelector.jsx` — reusable path choice UI
+- [x] **2.18** Implement scroll-triggered section reveals (Framer Motion)
+- [x] **2.19** Implement page transitions between routes
+- [x] **2.20** Update Tailwind config with design system tokens
+- [x] **2.21** Update global CSS with design system colors, typography, spacing
+- [x] **2.22** Set up routes for new architecture in App.jsx (preserve old routes temporarily)
+- [x] **2.23** Implement Lenis smooth scroll on homepage
+- [x] **2.24** Responsive testing: mobile, tablet, desktop
+- [x] **2.25** Verify: complete homepage renders with all sections, navigation works
 
 **Dependencies**: Phase 1 complete  
 **Files affected**: New page/component files + App.jsx + CSS + Tailwind config  

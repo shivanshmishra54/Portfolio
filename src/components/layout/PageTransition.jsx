@@ -1,0 +1,27 @@
+import React from 'react';
+import { motion } from 'framer-motion';
+import { useLocation } from 'react-router-dom';
+import { useReducedMotion } from '../3d/hooks/useReducedMotion';
+
+export function PageTransition({ children }) {
+  const location = useLocation();
+  const prefersReducedMotion = useReducedMotion();
+
+  // If reduced motion is on, don't animate opacity/y, just render children immediately
+  if (prefersReducedMotion) {
+    return <div key={location.pathname}>{children}</div>;
+  }
+
+  return (
+    <motion.div
+      key={location.pathname}
+      initial={{ opacity: 0, y: 10 }}
+      animate={{ opacity: 1, y: 0 }}
+      exit={{ opacity: 0, y: -10 }}
+      transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
+      className="w-full h-full"
+    >
+      {children}
+    </motion.div>
+  );
+}
