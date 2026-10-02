@@ -1,193 +1,83 @@
-# Portfolio Website
+# Shivansh Mishra — Portfolio
+
 <div align="center">
-  <pre>
-    _____           _    __      _ _       
-   |  __ \         | |  / _|    | (_)      
-   | |__) |__  _ __| |_| |_ ___ | |_  ___  
-   |  ___/ _ \| '__| __|  _/ _ \| | |/ _ \ 
-   | |  | (_) | |  | |_| || (_) | | | (_) |
-   |_|   \___/|_|   \__|_| \___/|_|_|\___/ 
-  </pre>
+  <h3>Software Developer & Freelancer</h3>
+  <p>A premium, cinematic, 3D-enhanced portfolio built with React and Vite.</p>
 </div>
 
- 
-Welcome to my **portfolio website**! This site showcases my skills, experience, education, projects, and how to get in touch with me. It's built with **React** and **Vite** for a fast, modern web experience. You can explore my work, learn about my journey, and contact me directly.
-
 ---
 
-## Demo
+## 🚀 Live Preview
 
-![Portfolio Demo](https://i.postimg.cc/Dfr5jCQp/Screenshot-2025-01-02-120901.png)
+**[View Live Site](https://shivanshmishra.com)**
 
----
+## 📖 Overview
 
-## Live Preview
+This is the personal portfolio of **Shivansh Mishra**, designed to serve a dual audience:
+1. **Freelancer Path (`/freelancer`)** — A client-oriented experience outlining services, capabilities, process, and business inquiries.
+2. **Developer Path (`/developer`)** — A recruiter- and engineering-oriented experience outlining tech stack, projects, coding profiles (LeetCode/Codeforces), and technical history.
 
-Check out the live preview of the portfolio website here:  
-[**Live Demo**](https://codervai.vercel.app/)
----
-### 🎯 Project Structure
-```bash
-portfolio/
-├── node_modules/
-├── public/
-├── src/
-│   ├── assets/
-│   │   ├── css/
-│   │   │   ├── index.css
-│   │   │   └── tomorrow.css
-│   │   └── images/
-│   ├── components/
-│   │   ├── ui/
-│   │   │   ├── Reusable Components/
-│   │   │   │   ├── badge.jsx
-│   │   │   │   ├── button.jsx
-│   │   │   │   ├── card.jsx
-│   │   │   │   ├── EducationLoader.jsx
-│   │   │   │   ├── evervault-card.jsx
-│   │   │   │   ├── flip-words.jsx
-│   │   │   │   ├── icon-cloud.jsx
-│   │   │   │   ├── meteors.jsx
-│   │   │   │   ├── sparkles-text.jsx
-│   │   │   │   └── tooltip.jsx
-│   │   │   │
-│   │   │   ├── Main Components/
-│   │   │   │   ├── AnimatedGrid.jsx
-│   │   │   │   ├── Contact.jsx
-│   │   │   │   ├── Education.jsx
-│   │   │   │   ├── enhanced-portfolio-card.jsx
-│   │   │   │   ├── Experience.jsx
-│   │   │   │   ├── global.jsx
-│   │   │   │   ├── Header.jsx
-│   │   │   │   ├── Hero.jsx
-│   │   │   │   ├── Home.jsx
-│   │   │   │   ├── PortfolioPage.jsx
-│   │   │   │   ├── Projects.jsx
-│   │   │   │   └── Skills.jsx
-│   │   └── lib/
-│   │       └── utils.js
-│   ├── pages/
-│   │   ├── About/
-│   │   │   └── About.jsx
-│   │   ├── Contact/
-│   │   │   └── Contact.jsx
-│   │   ├── Experience/
-│   │   │   └── Experience.jsx
-│   │   ├── Header/
-│   │   │   └── Header.jsx
-│   │   ├── Hero/
-│   │   │   └── Hero.jsx
-│   │   ├── Projects/
-│   │   │   ├── Projects.jsx
-│   │   │   └── testProjects.jsx
-│   │   └── Skills/
-│   │       └── Skills.jsx
-│   ├── App.jsx
-│   └── main.jsx
-├── Configuration Files/
-│   ├── .eslintrc.js
-│   ├── .gitignore
-│   ├── components.json
-│   ├── index.html
-│   ├── jsconfig.json
-│   ├── package-lock.json
-│   ├── package.json
-│   ├── postcss.config.js
-│   ├── README.md
-│   ├── tailwind.config.js
-│   ├── vercel.json
-│   └── vite.config.js
+The architecture emphasizes progressive disclosure. The homepage (`/`) provides a universal overview, while the routed paths provide deep-dives into specific career aspects.
 
-```
----
+## ✨ Key Features
 
-## Sections of the Portfolio
+- **Dual-Path Architecture**: Distinct routing (`/freelancer` vs `/developer`) that presents the same underlying data through different contextual lenses.
+- **Context-Aware Contact System**: Global contact modal that adapts form fields (Project Inquiry vs Technical Discussion) depending on the active route, powered by **Web3Forms**.
+- **Cinematic 3D Integration**: Features a 3D avatar scene built with `react-three-fiber` and `@react-three/drei`, complete with dynamic lighting and camera interactions.
+- **Data-Driven Content**: All site content (projects, journey, platforms, services) is extracted into `src/data/` as the single source of truth.
+- **Premium Monochrome Aesthetics**: Minimalist, high-performance styling using Tailwind CSS with seamless Framer Motion transitions and Lenis smooth scrolling.
 
-The portfolio website consists of the following sections:
+## 💻 Tech Stack
 
-- **Home**: Introduction and a brief overview.
-- **Skills**: A detailed list of my technical skills.
-- **Experience**: My professional journey and work experience.
-- **Education**: Academic background and certifications.
-- **Projects**: A showcase of the projects I've worked on.
-- **Contact**: Information on how to reach out to me.
+- **Framework**: React 18 & Vite
+- **Routing**: React Router v7
+- **Styling**: Tailwind CSS v3
+- **Animations**: Framer Motion & Lenis
+- **3D Graphics**: React Three Fiber (`@react-three/fiber`)
+- **Forms API**: Web3Forms
 
----
+## 🛠️ Local Development
 
-## 💻 Technologies Used
-- **Frontend:** React.js with Vite
-- **Styling:** Tailwind CSS
-- **Animations:** Framer Motion
-- **Icons:** React Icons
-- **Deployment:** Vercel
+### Prerequisites
+- Node.js (v18+)
+- npm
 
----
+### Installation
 
-## Installation ⬇️
+1. **Clone the repository:**
+   ```bash
+   git clone https://github.com/shivanshmishra54/Portfolio.git
+   cd portfolio
+   ```
 
-You will need to download **Git** and **Node** to run this project.
+2. **Install dependencies:**
+   ```bash
+   npm install
+   ```
 
-### Git
+3. **Set up Environment Variables:**
+   Create a `.env` file in the root directory and add your Web3Forms access key for the contact forms to work:
+   ```env
+   VITE_WEB3FORMS_KEY=your_web3forms_access_key
+   ```
 
-- Download and install Git from the official website: [Git Downloads](https://git-scm.com/)
-- Verify the installation:
-  ```bash
-  git --version
-  ```
+4. **Start the Development Server:**
+   ```bash
+   npm run dev
+   ```
+   The application will be available at `http://localhost:5173`.
 
-### Node
+## 📂 Architecture & Documentation
 
-- Download and install Node.js from the official website: [Node.js Downloads](https://nodejs.org/)
-- Make sure you have the latest version of both Git and Node on your computer.
-- Verify the installation:
-  ```bash
-  node --version
-  ```
-
-# Getting Started 🎯
-
-### Fork and Clone the Repository 🚀
-1. Click the **Fork** button at the top-right corner of the page to create your own copy of the repository.
-2. After forking, open your terminal and run the following commands to clone the repo:
-
-  ```bash
-  git clone https://github.com/seraprogrammer/portfolio.git
-  ```
-Navigate to the Project Directory 📂
-Once the repository is cloned, change your directory to the project folder:
-```bash
-cd portfolio
-```
-
-Install Dependencies ⚙️
-From the root directory of your project, install the necessary packages:
-```bash
-npm install
-```
-
-Run the Development Server 🚀
-Start the development server to see your project live:
-```bash
-npm run dev
-```
-
-View the Project 🌐
-Open your browser and visit http://localhost:5173/ to see the result! 🎉
+Extensive project documentation and architectural guidelines are available in the repository:
+- `AGENTS.md` - Core operating principles, rules, and constraints for the project.
+- `docs/PRODUCT_SPEC.md` - Core requirements and audience definition.
+- `docs/ARCHITECTURE.md` - Component structure and routing strategy.
+- `docs/CONTENT_SCHEMA.md` - Data models and structures for the `src/data` folder.
+- `docs/3D_STRATEGY.md` - Performance and technical strategy for WebGL/3D integration.
 
 ## 📝 License
-This project is licensed under the MIT License - see the LICENSE file for details.
 
----
+This project is proprietary and intended for personal portfolio use by Shivansh Mishra.
 
-### 🤝 Contributing
-
-1. Fork the Project
-2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the Branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
-
----
-
-<div align="center"> Made with ❤️ by Nazmul Hossain </div>
-
+<div align="center"> Designed and built by Shivansh Mishra </div>

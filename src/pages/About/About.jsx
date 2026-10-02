@@ -1,4 +1,4 @@
-import HeroImg from "@/assets/images/hero.jpg";
+import { profile } from "@/data/profile";
 import { FaCode } from "react-icons/fa";
 
 export default function About() {
@@ -13,9 +13,9 @@ export default function About() {
             <div className="relative mb-6 sm:mb-0">
               <div className="bg-linear-to-b aspect-76/59 relative rounded-2xl p-px from-zinc-300 to-transparent">
                 <img
-                  src={HeroImg}
+                  src={profile.photo}
                   className="rounded-[15px] shadow block object-cover w-full h-full"
-                  alt="Shivansh Mishra"
+                  alt={profile.name}
                   width={1207}
                   height={929}
                 />

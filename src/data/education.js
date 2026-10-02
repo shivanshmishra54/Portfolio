@@ -1,0 +1,32 @@
+export const education = [
+  {
+    id: "kjsomaiya",
+    degree: "B.Tech in Information Technology",
+    institution: "K.J. Somaiya Institute of Technology, Sion",
+    period: "2024 - 2028 (Expected May 2028)",
+    description: "Pursuing Bachelor of Technology with focus on software engineering, distributed microservices, and algorithmic problem solving.",
+    achievements: ["CGPA: 8.72", "Engineering IT"],
+    skills: ["Java", "Data Structures", "Spring Boot", "React.js", "DBMS"],
+    logo: null,
+  },
+  {
+    id: "rktalreja",
+    degree: "Class XII (HSC) – Science",
+    institution: "R.K. Talreja College, Ulhasnagar",
+    period: "2022 - 2024",
+    description: "Secured 1st Rank across the entire college in Maharashtra State Board examinations, honored with the Principal's Award.",
+    achievements: ["Score: 89.33%", "College Topper", "Principal's Award"],
+    skills: ["Mathematics", "Physics", "Chemistry", "Computer Science"],
+    logo: null,
+  },
+  {
+    id: "patilbalmandir",
+    degree: "Class X (SSC)",
+    institution: "Patil Bal Mandir School, Kalyan",
+    period: "2020 - 2022",
+    description: "Secured 3rd Rank in Class X board examinations with 88.40%, building a strong mathematical and scientific foundation.",
+    achievements: ["Score: 88.40%", "Secured 3rd Rank"],
+    skills: ["Mathematics", "Science", "Social Studies", "English"],
+    logo: null,
+  },
+];

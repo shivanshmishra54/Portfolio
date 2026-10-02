@@ -4,116 +4,8 @@ import { useRef, useEffect, useState } from "react";
 import PropTypes from "prop-types";
 import { Award, ExternalLink, ShieldCheck, Calendar, Eye, X } from "lucide-react";
 
-const certificates = [
-  {
-    title: "Oracle Certified Foundations Associate – Agentic AI",
-    issuer: "Oracle University (Oracle Corporation)",
-    date: "July 24, 2026",
-    category: "Oracle AI & Cloud",
-    description:
-      "Recognized by Oracle Corporation as an Oracle Certified Foundations Associate in Agentic AI. Validates verified proficiency in Autonomous AI Agents, LLM orchestration, and enterprise AI workflows.",
-    image: "/certificates/oracle_agentic_ai.png",
-    pdfUrl: "https://catalog-education.oracle.com/ords/certview/sharebadge?id=4FCCDD2DFB294D18152688B766AFD599B771B614115B330A697ECB2868A56B6B",
-    color: "#F80000",
-    skills: ["Agentic AI", "Oracle Certified", "Autonomous Agents", "LLM Workflows"],
-  },
-  {
-    title: "AI for Bharat Hackathon by AWS",
-    issuer: "Amazon Web Services (AWS) & Hack2skill",
-    date: "June 3, 2026",
-    category: "Cloud & AI Hackathon",
-    description:
-      "Awarded for successfully building and submitting a qualified prototype for AI for Bharat, powered by AWS and Hack2skill, demonstrating technical execution using generative AI tools on AWS to solve real-world challenges.",
-    image: "/certificates/aws_ai_for_bharat.png",
-    pdfUrl: "https://certificate.hack2skill.com/verify/2026H2S04AIFB-P02473",
-    color: "#FF9900",
-    skills: ["AWS Cloud", "Generative AI", "Hack2skill", "Cloud Architecture"],
-  },
-  {
-    title: "HackerRank – Software Engineer Intern Certification",
-    issuer: "HackerRank",
-    date: "July 3, 2025",
-    category: "Problem Solving & DSA",
-    description:
-      "Successfully passed the HackerRank Role Certification test for Software Engineer Intern, validating core mastery in Data Structures, Algorithmic Complexity, Object-Oriented Programming, and problem solving.",
-    image: "/certificates/hackerrank_intern.png",
-    pdfUrl: "https://www.hackerrank.com/certificates/8c29caae6b96",
-    color: "#10B981",
-    skills: ["Data Structures", "Algorithms", "HackerRank Verified", "Software Engineering"],
-  },
-  {
-    title: "JPMorgan Chase – Software Engineering Job Simulation",
-    issuer: "JPMorgan Chase & Co. (Forage)",
-    date: "December 6, 2025",
-    category: "Enterprise Software Engineering",
-    description:
-      "Completed practical software engineering tasks at JPMorgan Chase & Co., including Project Setup, Kafka Integration, H2 Database Integration, and REST API Controller Development.",
-    image: "/certificates/jpmorgan_simulation.png",
-    pdfUrl: "https://www.theforage.com/completion-certificates/Sj7temL583QAYpHXD/E6McHJDKsQYh79moz_Sj7temL583QAYpHXD_DYvbSNthsYq8r6sjh_1765026316918_completion_certificate.pdf",
-    color: "#38BDF8",
-    skills: ["Kafka Integration", "REST API Controller", "H2 Database", "JPMorgan Chase"],
-  },
-  {
-    title: "The Economic Times – ET-AI Hackathon 2026 Semi-Finalist",
-    issuer: "The Economic Times Digital",
-    date: "May 7, 2026",
-    category: "Hackathon Excellence",
-    description:
-      "Recognized as a Semi-Finalist in the ET-AI Hackathon 2026 out of over 55,000 global applicants, honoring innovation, collaborative engineering, and building meaningful AI solutions.",
-    image: "/certificates/et_genai_hackathon.png",
-    pdfUrl: "/certificates/et_genai_hackathon.pdf",
-    color: "#6366F1",
-    skills: ["Generative AI", "System Architecture", "Hackathon Excellence", "Prompt Design"],
-  },
-  {
-    title: "Deloitte – Technology Job Simulation",
-    issuer: "Deloitte (via Forage)",
-    date: "June 26, 2025",
-    category: "Corporate Engineering",
-    description:
-      "Completed practical tasks in Coding and Development during the Deloitte Technology Job Simulation, mastering enterprise software engineering standards and agile development patterns.",
-    image: "/certificates/deloitte_simulation.png",
-    pdfUrl: "/certificates/deloitte_simulation.pdf",
-    color: "#86B817",
-    skills: ["Software Development", "Enterprise Coding", "Deloitte Tech", "Agile Patterns"],
-  },
-  {
-    title: "Apna College – Alpha (DSA with Java)",
-    issuer: "Apna College (Shradha Khapra)",
-    date: "2025",
-    category: "Data Structures & Algorithms",
-    description:
-      "Certificate of Completion for successfully mastering advanced Data Structures and Algorithms with Java, including dynamic programming, recursion, binary search trees, and graph algorithms.",
-    image: "/certificates/apna_college_alpha.png",
-    pdfUrl: "/certificates/apna_college_alpha.pdf",
-    color: "#A855F7",
-    skills: ["Java", "Data Structures", "Algorithms", "Dynamic Programming"],
-  },
-  {
-    title: "NPTEL Online Certification – German - I",
-    issuer: "IIT Madras & Swayam (MoE, Govt. of India)",
-    date: "Jan - Apr 2026",
-    category: "IIT Madras & Swayam",
-    description:
-      "Completed 12-week comprehensive German - I course funded by MoE, Govt. of India, issued by Indian Institute of Technology Madras with proctored exam and 4 academic credits recommended.",
-    image: "/certificates/nptel_german.png",
-    pdfUrl: "/certificates/nptel_german.pdf",
-    color: "#0EA5E9",
-    skills: ["German Language", "IIT Madras", "NPTEL Certified", "4 Credits"],
-  },
-  {
-    title: "HP LIFE – AI for Beginners",
-    issuer: "HP Foundation (HP LIFE)",
-    date: "February 14, 2025",
-    category: "Artificial Intelligence",
-    description:
-      "Successfully completed the HP LIFE online course covering core AI concepts, practical technological applications, business impact of data, and ethical considerations.",
-    image: "/certificates/hp_life_ai.png",
-    pdfUrl: "/certificates/hp_life_ai.pdf",
-    color: "#0096D6",
-    skills: ["Artificial Intelligence", "HP Foundation", "AI Ethics", "Data Science"],
-  },
-];
+import { certificates } from "@/data/certificates";
+
 
 export default function Certificates() {
   const container = useRef(null);
@@ -123,47 +15,7 @@ export default function Certificates() {
     offset: ["start start", "end end"],
   });
 
-  useEffect(() => {
-    const style = document.createElement("style");
-    style.textContent = `
-      @media screen and (width: 1366px) and (height: 768px),
-             screen and (width: 1367px) and (height: 768px),
-             screen and (width: 1368px) and (height: 769px) {
-        .cert-card {
-          scale: 0.85;
-          margin-top: -5vh;
-        }
-        .cert-container {
-          height: 90vh;
-        }
-      }
-    `;
-    document.head.appendChild(style);
 
-    const checkResolution = () => {
-      const isTargetResolution =
-        window.innerWidth >= 1360 &&
-        window.innerWidth <= 1370 &&
-        window.innerHeight >= 760 &&
-        window.innerHeight <= 775;
-
-      if (isTargetResolution) {
-        document.documentElement.style.setProperty("--cert-scale", "0.85");
-        document.documentElement.style.setProperty("--cert-margin", "-5vh");
-      } else {
-        document.documentElement.style.setProperty("--cert-scale", "1");
-        document.documentElement.style.setProperty("--cert-margin", "0");
-      }
-    };
-
-    checkResolution();
-    window.addEventListener("resize", checkResolution);
-
-    return () => {
-      document.head.removeChild(style);
-      window.removeEventListener("resize", checkResolution);
-    };
-  }, []);
 
   return (
     <ReactLenis root>
@@ -257,8 +109,6 @@ function CertificateCard({
         style={{
           scale,
           top: `calc(-3vh + ${i * 18}px)`,
-          transform: `scale(var(--cert-scale, 1))`,
-          marginTop: "var(--cert-margin, 0)",
         }}
         className="relative -top-[20%] h-auto w-[90%] md:w-[85%] lg:w-[75%] xl:w-[65%] origin-top cert-card"
         whileHover={{
@@ -273,6 +123,7 @@ function CertificateCard({
             <motion.img
               src={image}
               alt={title}
+              loading="lazy"
               className="w-full h-full object-contain p-2 md:p-3 transition-transform duration-500 group-hover/img:scale-105"
             />
 

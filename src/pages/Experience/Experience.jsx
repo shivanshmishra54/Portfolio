@@ -51,33 +51,9 @@ const ExperienceCard = ({
   </div>
 );
 
+import { experience as experiences } from "@/data/experience";
+
 const ExperienceSection = () => {
-  const experiences = [
-    {
-      icon: Code2,
-      title: "Web Development Intern",
-      company: "SkillCraft Technology",
-      period: "Aug 2025 - Sept 2025",
-      description:
-        "Designed, developed, and tested 4 web-based projects using React.js, JavaScript, and CSS within a remote Agile/Scrum environment, ensuring clean browser-internal rendering pipelines.",
-    },
-    {
-      icon: Cpu,
-      title: "Semi-Finalist (Top Tier)",
-      company: "ET GenAI Hackathon 2026",
-      period: "2026",
-      description:
-        "Secured Semi-Finalist rank out of 55,000+ global applicants, architecting AI-integrated software solutions under strict scalability and latency constraints.",
-    },
-    {
-      icon: Layers,
-      title: "Engineering Lead & Architect",
-      company: "Collegiate Software Hackathons",
-      period: "2024 - 2025",
-      description:
-        "Won Top 10 place out of 50+ competing teams; directed full-stack system architecture and backend workflows for a 4-member team across national competitions.",
-    },
-  ];
 
   return (
     <>
@@ -120,9 +96,10 @@ const ExperienceSection = () => {
 
           {/* Experience grid with improved layout */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 max-w-7xl mx-auto">
-            {experiences.map((exp, index) => (
-              <ExperienceCard key={index} {...exp} />
-            ))}
+            {experiences.map((exp, index) => {
+              const IconComp = exp.icon === "Code2" ? Code2 : exp.icon === "Cpu" ? Cpu : exp.icon === "Layers" ? Layers : exp.icon === "Activity" ? Activity : exp.icon === "Network" ? Network : exp.icon === "Binary" ? Binary : Code2;
+              return <ExperienceCard key={index} {...exp} icon={IconComp} />;
+            })}
           </div>
         </div>
 

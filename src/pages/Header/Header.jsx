@@ -19,13 +19,6 @@ export default function Header() {
     return path;
   });
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
-
-  useEffect(() => {
-    const handleResize = () => setWindowWidth(window.innerWidth);
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
-  }, []);
 
   const navLinks = [
     { id: "home", icon: FaHome, text: "Home", path: "/" },
@@ -98,20 +91,7 @@ export default function Header() {
         </div>
       </div>
 
-      <style>{`
-        @keyframes gradient-x {
-          0%, 100% {
-            background-position: 0% 50%;
-          }
-          50% {
-            background-position: 100% 50%;
-          }
-        }
-        .animate-gradient-x {
-          animation: gradient-x 3s linear infinite;
-          background-size: 200% 200%;
-        }
-      `}</style>
+
     </header>
   );
 }

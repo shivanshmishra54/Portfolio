@@ -10,41 +10,10 @@ import {
 } from "lucide-react";
 import { motion } from "framer-motion";
 
+import { education as educationData } from "@/data/education";
+
 const EducationSection = () => {
   const [hoveredIndex, setHoveredIndex] = useState(null);
-
-  const educationData = [
-    {
-      degree: "B.Tech in Information Technology",
-      school: "K.J. Somaiya Institute of Technology, Sion",
-      mascot: "🎓",
-      year: "2024 - 2028 (Expected May 2028)",
-      achievements: ["CGPA: 8.72", "Engineering IT"],
-      skills: ["Java", "Data Structures", "Spring Boot", "React.js", "DBMS"],
-      description:
-        "Pursuing Bachelor of Technology with focus on software engineering, distributed microservices, and algorithmic problem solving.",
-    },
-    {
-      degree: "Class XII (HSC) – Science",
-      school: "R.K. Talreja College, Ulhasnagar",
-      mascot: "🏆",
-      year: "2022 - 2024",
-      achievements: ["Score: 89.33%", "College Topper", "Principal's Award"],
-      skills: ["Mathematics", "Physics", "Chemistry", "Computer Science"],
-      description:
-        "Secured 1st Rank across the entire college in Maharashtra State Board examinations, honored with the Principal's Award.",
-    },
-    {
-      degree: "Class X (SSC)",
-      school: "Patil Bal Mandir School, Kalyan",
-      mascot: "📘",
-      year: "2020 - 2022",
-      achievements: ["Score: 88.40%", "Secured 3rd Rank"],
-      skills: ["Mathematics", "Science", "Social Studies", "English"],
-      description:
-        "Secured 3rd Rank in Class X board examinations with 88.40%, building a strong mathematical and scientific foundation.",
-    },
-  ];
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -114,18 +83,18 @@ const EducationSection = () => {
               <div className="space-y-6">
                 <div className="space-y-2">
                   <div className="flex items-center gap-3">
-                    <span className="text-3xl">{edu.mascot}</span>
+                    <span className="text-3xl">{edu.mascot || (index === 0 ? "🎓" : index === 1 ? "🏆" : "📘")}</span>
                     <h3 className="text-2xl font-bold text-white">
                       {edu.degree}
                     </h3>
                   </div>
                   <p className="text-lg text-gray-300 flex items-center gap-2">
                     <BookOpen className="w-5 h-5 text-teal-500" />
-                    {edu.school}
+                    {edu.institution || edu.school}
                   </p>
                   <p className="text-gray-400 flex items-center gap-2">
                     <Calendar className="w-4 h-4" />
-                    {edu.year}
+                    {edu.period || edu.year}
                   </p>
                 </div>
 

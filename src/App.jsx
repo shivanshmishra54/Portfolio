@@ -1,46 +1,50 @@
-import React, { useState } from "react";
+import React, { Suspense, lazy } from "react";
+import { Route, Routes, useLocation } from "react-router-dom";
+import { AnimatePresence } from "framer-motion";
+import { Navigation } from "./components/layout/Navigation";
+import { Footer } from "./components/layout/Footer";
+import { ContactProvider } from "./components/ui/ContactContext";
 import "./assets/css/index.css";
-import Experience from "./pages/Experience/Experience";
-import Contact from "./pages/Contact/Contact";
-import Projects from "./pages/Projects/Projects";
-import Header from "./pages/Header/Header";
-import Hero from "./pages/Hero/Hero";
-import Skills from "./pages/Skills/Skills";
-import Education from "./pages/Education/Education";
-import Certificates from "./pages/Certificates/Certificates";
 
-import { Route, Routes } from "react-router-dom";
+// Lazy load route components
+const HomePage = lazy(() => import("./pages/HomePage"));
+const FreelancerPage = lazy(() => import("./pages/FreelancerPage"));
+const DeveloperPage = lazy(() => import("./pages/DeveloperPage"));
+const JourneyPage = lazy(() => import("./pages/JourneyPage"));
+const ThreeLab = lazy(() => import("./pages/Lab/ThreeLab"));
 
 export default function App() {
-  const [isOnePage, setIsOnePage] = useState(false); // Toggle state
+  const location = useLocation();
+
+  // Loading fallback
+  const Fallback = () => (
+    <div className="min-h-screen flex items-center justify-center bg-gray-50 dark:bg-black">
+      <div className="w-8 h-8 border-4 border-gray-300 dark:border-gray-700 border-t-gray-900 dark:border-t-white rounded-full animate-spin"></div>
+    </div>
+  );
 
   return (
-    <>
-      <Header />
-      {/* Conditional Rendering */}
-      {isOnePage ? (
-        // One-Page Mode: Render all components together
-        <>
-          <Hero />
-          <Skills />
-          <Experience />
-          <Education />
-          <Projects />
-          <Certificates />
-          <Contact />
-        </>
-      ) : (
-        // Router Mode: Use routes for navigation
-        <Routes>
-          <Route path="/" element={<Hero />} />
-          <Route path="/skills" element={<Skills />} />
-          <Route path="/experience" element={<Experience />} />
-          <Route path="/education" element={<Education />} />
-          <Route path="/projects" element={<Projects />} />
-          <Route path="/certificates" element={<Certificates />} />
-          <Route path="/contact" element={<Contact />} />
-        </Routes>
-      )}
-    </>
+    <ContactProvider>
+      <div className="min-h-screen flex flex-col bg-gray-50 dark:bg-black text-gray-900 dark:text-gray-100 transition-colors duration-300">
+        <Navigation />
+        
+        <main className="flex-grow flex flex-col">
+          <Suspense fallback={<Fallback />}>
+            <AnimatePresence mode="wait">
+              <Routes location={location} key={location.pathname}>
+                <Route path="/" element={<HomePage />} />
+                <Route path="/freelancer" element={<FreelancerPage />} />
+                <Route path="/developer" element={<DeveloperPage />} />
+                <Route path="/journey" element={<JourneyPage />} />
+                {/* Maintain old paths mapping to new components if necessary, or just rely on main 3 */}
+                <Route path="/3d-lab" element={<ThreeLab />} />
+              </Routes>
+            </AnimatePresence>
+          </Suspense>
+        </main>
+
+        <Footer />
+      </div>
+    </ContactProvider>
   );
 }
