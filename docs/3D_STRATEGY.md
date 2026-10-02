@@ -133,6 +133,43 @@ When the custom model is ready:
 
 ---
 
+## Personal Avatar Reference Videos
+
+The `avatar-references/` directory contains 9 footage files serving as the definitive behavioral and identity reference for the future custom 3D avatar. These videos capture the genuine natural behavior of Shivansh.
+
+| Reference Video | Observed Behavior | Intended Avatar State | Future Animation Requirement |
+|---|---|---|---|
+| `neutral.mp4` | Default breathing, subtle posture adjustments, relaxed face | **IDLE** | Base idle loop, subtle chest/shoulder sway |
+| `blink.mp4` | Subtle blink and minor facial/eye movement | **IDLE (Variation)** | Random blink overlay, eye movement blendshapes |
+| `thinking.mp4` | Eyes shifting upward/sideways, thoughtful expression | **THINKING** | Eye tracking offset, eyebrow raise, slight head tilt |
+| `curious.mp4` | Attentive gaze, eyebrow raise, slight head tilt | **CURIOUS** | Pointer-tracking driven head tilt, alert expression |
+| `happy.mp4` | Genuine smile, brighter eyes, relaxed posture | **HAPPY** | Smile blendshape, eye squint, posture relaxation |
+| `greetings.mp4` | Eye contact, subtle nod, small hand acknowledgement | **GREETING** | Nod animation, hand raise/wave gesture |
+| `hand_gesture.mp4` | Hand reposition, explanatory gesture, professional tone | **FOCUSED / IDLE** | Upper-body IK for hands, contextual clips |
+| `look_left.mp4` | Head and eyes naturally tracking left | **POINTER TRACKING** | Clamped lookAt solver for eyes/neck |
+| `look_right.mp4` | Head and eyes naturally tracking right | **POINTER TRACKING** | Clamped lookAt solver for eyes/neck |
+
+---
+
+## Avatar State Architecture
+
+The avatar will use a centralized state machine decoupled from UI components.
+
+**Core States**:
+- `IDLE`: Default state, subtle breathing, blinking, occasional variation.
+- `THINKING`: Idle timeout variation. Eyes shift, thoughtful expression.
+- `HAPPY`: Triggered by meaningful interaction. Genuine smile, relaxed posture.
+- `CURIOUS`: Triggered by pointer movement/hovering. Attentive gaze.
+- `GREETING`: Initial page load or explicit interaction. Eye contact, subtle nod/wave.
+- `FOCUSED`: Triggered by Software Developer path interaction. Attentive gaze, professional expression.
+
+**Interaction Rules**:
+- **No Emojis**: Avatar emotion is communicated entirely through the model itself.
+- **Pointer Tracking**: Prioritizes Eyes -> Head -> Slight Upper-Body. Constrained and clamped.
+- **Path Selection**: Hovering "Freelancer" triggers a `HAPPY`/attentive state. Hovering "Software Developer" triggers a `FOCUSED` state.
+
+---
+
 ## Camera Strategy
 
 ### Hero Scene
@@ -349,3 +386,72 @@ When the custom avatar GLB is ready:
 | Timeline 3D Response | Developer Journey | Camera shift on milestone select | P2 |
 
 Only the Hero Scene and Avatar are essential. Other 3D elements are progressive enhancements.
+---
+
+## 5. Reference Video Mapping
+
+Based on a detailed visual inspection of the 9 files in `avatar-references/`, the following mapping dictates the final 3D rig behavior:
+
+| Reference Video | Observed Behavior | Intended Avatar State | Required Future Animation |
+| --- | --- | --- | --- |
+| `neutral.mp4` | Relaxed face, looking forward | **IDLE** | Subtle breathing, micro head movements |
+| `blink.mp4` | Double blink with neutral expression | **BLINK** | Procedural/random eye blinking |
+| `greetings.mp4` | Warm smile, slight head nod | **GREETING** | Initial load state; smile blendshape + nod |
+| `happy.mp4` | Wide, friendly smile | **HAPPY** | Activated on "Freelancer" hover; smile blendshapes |
+| `curious.mp4` | Eyebrows raised, eyes widened | **CURIOUS** | Activated during interactions; brow/eye blendshapes |
+| `thinking.mp4` | Eyes up/away, slight brow furrow | **THINKING** | Idle variation; eye/head rotation + brow blendshapes |
+| `look_left.mp4` | Head turns smoothly left | **GAZE (Left)** | Pointer tracking abstraction for head/neck bones |
+| `look_right.mp4` | Head turns smoothly right | **GAZE (Right)** | Pointer tracking abstraction for head/neck bones |
+| `hand_gesture.mp4` | Raising hand (hello/five) | **HAND GESTURE** | Arm/hand IK rig activation for greeting |
+
+---
+
+## 6. Final Avatar Requirements
+
+The final custom 3D model MUST support the following to match the personal brand references:
+
+### FACIAL
+- Neutral (default resting state)
+- Blink (procedural)
+- Subtle smile
+- Thoughtful expression
+- Attentive/curious expression
+- Eyebrow movement (up/down)
+- Eye direction (look-at target)
+
+### BODY
+- Breathing (procedural chest expansion/contraction)
+- Head movement (clamped look-at)
+- Shoulder movement (subtle shifting)
+- Posture adjustment
+- Subtle hand movement
+
+### GESTURES
+- Thinking (hand near face or slight head tilt)
+- Greeting (hand wave/nod)
+- Acknowledgement (nod)
+- Explanatory gesture (open palm)
+
+---
+
+## 7. Current Asset Status & Limitations
+
+**FINAL CUSTOM AVATAR ASSET = INTEGRATED (T2 VERSION)**
+
+- **Current Asset:** The application uses a custom Avaturn T2 human avatar (`public/models/avatar.glb`), completely replacing the old procedural placeholder.
+- **Capabilities Included:**
+  - Full humanoid rig (Spine, Neck, Head, Arms, etc.) for dynamic programmatic posing and gaze tracking.
+  - Complete facial blendshape (morph target) system across Head, Eyes, Eyelashes, and Teeth meshes. Includes `mouthSmile`, `browInnerUp`, `eyeBlinkLeft`, `eyeSquintLeft`, etc.
+  - Embedded animation clip (`[0] avaturn_animation`) for natural idle breathing and posture.
+- **Implementation Mapping:**
+  - **IDLE**: Natural breathing animation + pointer gaze tracking + automated blinking system.
+  - **BLINK**: Automated randomized interval (2-7s) using `eyesClosed` and `eyeBlink` morph targets.
+  - **HAPPY**: `mouthSmile` morph target engaged.
+  - **CURIOUS**: `browInnerUp` and `eyeWide` morph targets engaged.
+  - **THINKING**: `browOuterUp` morph targets + gaze redirected up/away by AvatarController.
+  - **FOCUSED**: `browDown` (frown) and `eyeSquint` morph targets engaged.
+  - **GREETING**: `mouthSmile` engaged + programmatic arm wave (via `RightArm`/`RightForeArm` rig manipulation).
+- **Path Selection Animation:** Implemented a cinematic transition inside `PathSelectorSection.jsx`. Hovering triggers a facial reaction, and clicking freezes the path, triggers a full-screen overlay based on the chosen path's thematic color, and navigates after a cinematic delay. No abrupt route changes.
+
+### Future Extensibility
+Since the avatar leverages standard Mixamo-style naming and Apple ARKit-style blendshapes, future animations can easily be exported and played back by appending more clips to the GLB, or further granular morph targets can be driven via the `AvatarState` mapping in `PersonalAvatar.jsx`.

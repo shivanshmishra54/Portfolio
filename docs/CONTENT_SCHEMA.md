@@ -129,13 +129,13 @@ export const projects = [
 
     // Case Study
     caseStudy: {                       // Optional — deep-dive content
-      freelancer: {                    // Shown at /freelancer/projects/:slug
+      freelancer: {                    // Shown inline on /freelancer
         clientProblem: "",
         approach: "",
         outcome: "",
         testimonial: null,            // Only if real
       },
-      developer: {                    // Shown at /developer/projects/:slug
+      developer: {                    // Shown inline on /developer
         systemDesign: "",
         architectureDiagram: "",
         performanceMetrics: "",

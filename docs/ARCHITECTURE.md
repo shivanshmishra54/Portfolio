@@ -48,9 +48,9 @@ graph TD
     subgraph "Routes - lazy loaded"
         S4 --> R1["/ → HomePage"]
         S4 --> R2["/freelancer → FreelancerPage"]
-        S4 --> R3["/freelancer/projects/:slug → FreelancerCaseStudy"]
+        S4 --> R3["/freelancer → FreelancerCaseStudy Inline"]
         S4 --> R4["/developer → DeveloperPage"]
-        S4 --> R5["/developer/projects/:slug → DeveloperCaseStudy"]
+        S4 --> R5["/developer → DeveloperCaseStudy Inline"]
         S4 --> R6["/developer/journey → JourneyPage"]
         S4 --> R7["/developer/certifications → CertificationsPage"]
         S4 --> R8["/contact → ContactPage"]
@@ -222,9 +222,9 @@ portfolio/
 ```
 /                                   → HomePage (universal overview)
 /freelancer                         → FreelancerPage (client experience)
-/freelancer/projects/:slug          → CaseStudyPage (business-oriented)
+/freelancer                         → FreelancerPage (business-oriented case studies inline)
 /developer                          → DeveloperPage (engineering experience)
-/developer/projects/:slug           → CaseStudyPage (technical-oriented)
+/developer                          → DeveloperPage (technical-oriented case studies inline)
 /developer/journey                  → JourneyPage (interactive timeline)
 /developer/certifications           → CertificationsPage (full collection)
 /contact                            → ContactPage (shared)

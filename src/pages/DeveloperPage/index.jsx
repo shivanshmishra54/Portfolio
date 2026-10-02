@@ -1,28 +1,36 @@
-import React from 'react';
 import { PageTransition } from '../../components/layout/PageTransition';
 import { SEOHead } from '../../components/layout/SEOHead';
-import { Link } from 'react-router-dom';
-import { ArrowLeft } from 'lucide-react';
+import { DeveloperHero } from './DeveloperHero';
+import { ArchitectureSection } from './ArchitectureSection';
+import { TechnicalSkillsSection } from './TechnicalSkillsSection';
+import { EngineeringProjectsSection } from './EngineeringProjectsSection';
+import { ProblemSolvingSection } from './ProblemSolvingSection';
+import { CodingProfilesSection } from './CodingProfilesSection';
+import { DeveloperContactSection } from './DeveloperContactSection';
+
+// Shared Portfolio sections
+import ExperienceSection from '../Experience/Experience';
+import Education from '../Education/Education';
+import Certificates from '../Certificates/Certificates';
 
 export default function DeveloperPage() {
   return (
     <PageTransition>
-      <SEOHead title="Software Developer" description="Hire me as a Software Developer" />
-      <div className="min-h-screen w-full flex items-center justify-center bg-gray-50 dark:bg-black pt-24 px-6">
-        <div className="max-w-2xl text-center">
-          <h1 className="text-4xl md:text-6xl font-bold tracking-tight uppercase text-gray-900 dark:text-white mb-6">
-            Software Developer
-          </h1>
-          <p className="text-xl font-light text-gray-600 dark:text-gray-400 mb-12">
-            Engineering-focused experience coming into focus in the next phase.
-          </p>
-          <Link 
-            to="/" 
-            className="inline-flex items-center gap-3 text-sm font-bold tracking-widest uppercase text-gray-900 dark:text-white hover:opacity-70 transition-opacity"
-          >
-            <ArrowLeft size={16} /> Back to Overview
-          </Link>
-        </div>
+      <SEOHead 
+        title="Software Engineer — Shivansh Mishra" 
+        description="Explore my software engineering portfolio, technical skills, system architecture approach, and projects." 
+      />
+      <div className="flex flex-col w-full min-h-screen">
+        <div id="hero"><DeveloperHero /></div>
+        <div id="engineering-profile"><ArchitectureSection /></div>
+        <div id="skills"><TechnicalSkillsSection /></div>
+        <div id="projects"><EngineeringProjectsSection /></div>
+        <div id="problem-solving"><ProblemSolvingSection /></div>
+        <div id="coding-profiles"><CodingProfilesSection /></div>
+        <div id="experience"><ExperienceSection /></div>
+        <div id="education"><Education /></div>
+        <div id="certifications"><Certificates /></div>
+        <div id="contact"><DeveloperContactSection /></div>
       </div>
     </PageTransition>
   );

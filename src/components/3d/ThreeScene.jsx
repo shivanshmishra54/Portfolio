@@ -7,10 +7,11 @@ import { CameraRig } from './CameraRig';
 import { WebGLFallback } from './WebGLFallback';
 import { AvatarPlaceholder } from './AvatarPlaceholder';
 import { PersonalAvatar } from './PersonalAvatar';
+import { AvatarController } from './AvatarController';
 
 export function ThreeScene({ 
   fallbackImage, 
-  usePlaceholder = true,
+  usePlaceholder = false,
   avatarProps = {},
   className = ""
 }) {
@@ -39,6 +40,8 @@ export function ThreeScene({
         <Canvas
           shadows
           camera={{ position: [0, 0, 8], fov: 45 }}
+          eventSource={document.body}
+          eventPrefix="client"
           gl={{ 
             antialias: true,
             alpha: true, 
@@ -51,11 +54,13 @@ export function ThreeScene({
             <SceneLighting />
             
             <CameraRig>
-              {usePlaceholder ? (
-                <AvatarPlaceholder />
-              ) : (
-                <PersonalAvatar {...avatarProps} />
-              )}
+              <AvatarController>
+                {usePlaceholder ? (
+                  <AvatarPlaceholder />
+                ) : (
+                  <PersonalAvatar {...avatarProps} />
+                )}
+              </AvatarController>
             </CameraRig>
           </Suspense>
         </Canvas>

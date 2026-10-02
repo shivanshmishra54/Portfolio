@@ -5,7 +5,7 @@ export const profile = {
   phone: "+91 9820689183", // Assuming this is correct from previous prompt/audit (wait, let me check Contact.jsx first)
   location: "Mumbai, Maharashtra, India", // Let me double check Contact.jsx
   photo: "/hero.webp",
-  resume: "/resume.pdf",
+  resume: "/Shivansh_Mishra_resume_f1.pdf",
   currentFocus: "Currently pursuing B.Tech in Information Technology at K.J. Somaiya Institute of Technology",
   bio: {
     short: "Full-Stack Developer 🚀 | Java & Spring Boot Enthusiast 🔧 | Crafting scalable architectures and clean code 💻✨",
@@ -16,6 +16,7 @@ export const profile = {
     linkedin: "https://www.linkedin.com/in/shivansh-mishra54",
     leetcode: "https://leetcode.com/u/shivanshmishra54/",
     twitter: "",
+    youtube: "https://www.youtube.com/@ShivanshMishra54",
     email: "mailto:shivansh54mishra@gmail.com",
   },
   seo: {

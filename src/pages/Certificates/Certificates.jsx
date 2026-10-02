@@ -123,6 +123,7 @@ function CertificateCard({
             <motion.img
               src={image}
               alt={title}
+              loading="lazy"
               className="w-full h-full object-contain p-2 md:p-3 transition-transform duration-500 group-hover/img:scale-105"
             />
 

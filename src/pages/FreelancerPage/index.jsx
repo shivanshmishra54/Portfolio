@@ -1,28 +1,33 @@
 import React from 'react';
 import { PageTransition } from '../../components/layout/PageTransition';
 import { SEOHead } from '../../components/layout/SEOHead';
-import { Link } from 'react-router-dom';
-import { ArrowLeft } from 'lucide-react';
+import { FreelancerHero } from './FreelancerHero';
+import { ServicesSection } from './ServicesSection';
+import { WhatICanBuildSection } from './WhatICanBuildSection';
+import { FreelanceWorkSection } from './FreelanceWorkSection';
+import { ProcessSection } from './ProcessSection';
+import { TechCapabilitiesSection } from './TechCapabilitiesSection';
+import { WhyWorkWithMeSection } from './WhyWorkWithMeSection';
+import { FAQSection } from './FAQSection';
+import { ProjectInquirySection } from './ProjectInquirySection';
 
 export default function FreelancerPage() {
   return (
     <PageTransition>
-      <SEOHead title="Freelancer" description="Hire me as a Freelancer" />
-      <div className="min-h-screen w-full flex items-center justify-center bg-gray-50 dark:bg-black pt-24 px-6">
-        <div className="max-w-2xl text-center">
-          <h1 className="text-4xl md:text-6xl font-bold tracking-tight uppercase text-gray-900 dark:text-white mb-6">
-            Freelancer
-          </h1>
-          <p className="text-xl font-light text-gray-600 dark:text-gray-400 mb-12">
-            Client-focused experience coming into focus in the next phase.
-          </p>
-          <Link 
-            to="/" 
-            className="inline-flex items-center gap-3 text-sm font-bold tracking-widest uppercase text-gray-900 dark:text-white hover:opacity-70 transition-opacity"
-          >
-            <ArrowLeft size={16} /> Back to Overview
-          </Link>
-        </div>
+      <SEOHead 
+        title="Freelancer — Shivansh Mishra" 
+        description="Hire Shivansh Mishra as a freelance software developer. Full-stack web development, backend APIs, React frontends, and complete software solutions." 
+      />
+      <div className="flex flex-col w-full min-h-screen">
+        <div id="hero"><FreelancerHero /></div>
+        <div id="services"><ServicesSection /></div>
+        <div id="capabilities"><WhatICanBuildSection /></div>
+        <div id="work"><FreelanceWorkSection /></div>
+        <div id="process"><ProcessSection /></div>
+        <div id="tech"><TechCapabilitiesSection /></div>
+        <div id="why-me"><WhyWorkWithMeSection /></div>
+        <div id="faq"><FAQSection /></div>
+        <div id="inquiry"><ProjectInquirySection /></div>
       </div>
     </PageTransition>
   );

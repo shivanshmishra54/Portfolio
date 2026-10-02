@@ -231,7 +231,7 @@ Both paths share the same underlying data layer but present it through different
 
 - Deep-dive pages for selected projects
 - Problem → Solution → Architecture → Result flow
-- Route: `/freelancer/projects/:slug` or `/developer/projects/:slug`
+- Route: Inline expandable on `/freelancer` or `/developer`
 
 ### Contact Experience
 

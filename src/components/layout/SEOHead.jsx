@@ -1,7 +1,8 @@
-import React from 'react';
 import { Helmet } from 'react-helmet-async';
 import { profile } from '../../data/profile';
 import { useLocation } from 'react-router-dom';
+import { useTheme } from 'next-themes';
+import { useEffect } from 'react';
 
 export function SEOHead({ 
   title, 
@@ -11,17 +12,27 @@ export function SEOHead({
   jsonLd 
 }) {
   const location = useLocation();
+  const { resolvedTheme } = useTheme();
   const canonicalUrl = `https://shivanshmishra.com${location.pathname}`;
   
   const siteTitle = title ? `${title} | ${profile.name}` : profile.seo.title;
   const siteDescription = description || profile.seo.description;
   const siteImage = image || profile.seo.ogImage;
 
+  // Update favicon dynamically without relying purely on Helmet to avoid flashing
+  useEffect(() => {
+    const favicon = document.getElementById('dynamic-favicon');
+    if (favicon) {
+      favicon.href = resolvedTheme === 'dark' ? '/favicon-dark.svg' : '/favicon-light.svg';
+    }
+  }, [resolvedTheme]);
+
   return (
     <Helmet>
       <title>{siteTitle}</title>
       <meta name="description" content={siteDescription} />
       <link rel="canonical" href={canonicalUrl} />
+
 
       {/* Open Graph / Facebook */}
       <meta property="og:type" content={type} />

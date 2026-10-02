@@ -3,14 +3,10 @@ import { motion } from 'framer-motion';
 import { SectionHeading } from '../../components/shared/SectionHeading';
 import { Link } from 'react-router-dom';
 import { ArrowRight } from 'lucide-react';
+import { journey } from '../../data/journey';
 
 export function JourneyPreviewSection() {
-  const steps = [
-    { year: "2022", title: "K.J. Somaiya IT", subtitle: "B.Tech Started" },
-    { year: "2023", title: "Smart India Hackathon", subtitle: "Finalist" },
-    { year: "2024", title: "Full-Stack Dev", subtitle: "Teqniq Freelance" },
-    { year: "NOW", title: "Building & Scaling", subtitle: "Current" },
-  ];
+  const previewSteps = journey.filter(item => item.featured).slice(0, 4);
 
   return (
     <section className="py-24 md:py-32 bg-gray-50 dark:bg-gray-950">
@@ -25,9 +21,9 @@ export function JourneyPreviewSection() {
           <div className="absolute top-1/2 left-0 w-full h-[1px] bg-gray-200 dark:bg-gray-800 hidden md:block -translate-y-1/2"></div>
           
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
-            {steps.map((step, idx) => (
+            {previewSteps.map((step, idx) => (
               <motion.div
-                key={step.title}
+                key={step.id}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-50px" }}
@@ -35,9 +31,9 @@ export function JourneyPreviewSection() {
                 className="relative z-10 flex flex-col md:items-center text-left md:text-center group"
               >
                 <div className="w-3 h-3 bg-gray-900 dark:bg-white rounded-full mb-6 hidden md:block outline outline-8 outline-gray-50 dark:outline-gray-950 transition-transform group-hover:scale-150"></div>
-                <span className="text-sm font-mono tracking-widest text-gray-500 dark:text-gray-400 mb-2">{step.year}</span>
+                <span className="text-sm font-mono tracking-widest text-gray-500 dark:text-gray-400 mb-2">{step.dateLabel}</span>
                 <h4 className="text-lg font-bold tracking-tight text-gray-900 dark:text-white uppercase mb-1">{step.title}</h4>
-                <p className="text-sm text-gray-600 dark:text-gray-500 font-light">{step.subtitle}</p>
+                <p className="text-sm text-gray-600 dark:text-gray-500 font-light">{step.category}</p>
               </motion.div>
             ))}
           </div>
@@ -45,10 +41,10 @@ export function JourneyPreviewSection() {
 
         <div className="mt-8 flex justify-start md:justify-center">
           <Link 
-            to="/developer/journey"
+            to="/journey"
             className="group flex items-center gap-3 text-sm font-bold tracking-widest uppercase text-gray-900 dark:text-white"
           >
-            Explore Full Journey
+            View Full Journey
             <motion.span
               animate={{ x: [0, 5, 0] }}
               transition={{ repeat: Infinity, duration: 1.5 }}

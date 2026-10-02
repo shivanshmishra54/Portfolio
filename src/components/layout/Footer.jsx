@@ -10,7 +10,7 @@ export function Footer() {
     <footer className="w-full py-12 md:py-20 bg-gray-50 dark:bg-gray-950 border-t border-gray-200 dark:border-gray-900">
       <div className="container mx-auto px-6 max-w-7xl">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-12 md:gap-8">
-          
+
           {/* Identity */}
           <div className="md:col-span-2">
             <Link to="/" className="text-2xl font-bold tracking-tight text-gray-900 dark:text-white uppercase mb-4 block">

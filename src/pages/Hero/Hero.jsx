@@ -175,8 +175,8 @@ const profile = {
 
                   {/* Resume Button */}
                   <a
-                    href="/resume.pdf"
-                    download="Shivansh_Mishra_Resume.pdf"
+                    href="/Shivansh_Mishra_resume_f1.pdf"
+                    download="Shivansh_Mishra_resume_f1.pdf"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="inline-flex items-center justify-center gap-2 px-6 sm:px-7 py-3 rounded-xl bg-slate-900/90 hover:bg-slate-800/90 border border-slate-700/80 text-gray-200 hover:text-white font-medium text-sm sm:text-base transition-all duration-300 hover:scale-105 hover:border-slate-500 shadow-md"

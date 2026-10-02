@@ -4,16 +4,30 @@ import * as THREE from 'three';
 import { useReducedMotion } from './hooks/useReducedMotion';
 import { useQuality } from './QualityManager';
 import { Float, MeshDistortMaterial } from '@react-three/drei';
+import { useAvatarState, AvatarState } from './AvatarContext';
 
 export function AvatarPlaceholder({ position = [0, 0, 0], scale = 1 }) {
   const meshRef = useRef();
   const materialRef = useRef();
   const prefersReducedMotion = useReducedMotion();
   const quality = useQuality();
+  const { avatarState } = useAvatarState();
 
   // Premium procedural geometry (monochrome, minimal, editorial)
   // We use an icosahedron to give it a technical, structured feel
   const geometry = useMemo(() => new THREE.IcosahedronGeometry(1.5, quality === 'HIGH' ? 4 : (quality === 'MEDIUM' ? 2 : 1)), [quality]);
+
+  // Map state to distortion targets to visualize emotion on the placeholder
+  const getTargetDistortion = () => {
+    switch (avatarState) {
+      case AvatarState.HAPPY: return 0.4;
+      case AvatarState.FOCUSED: return 0.1;
+      case AvatarState.THINKING: return 0.3;
+      case AvatarState.CURIOUS: return 0.35;
+      case AvatarState.GREETING: return 0.25;
+      default: return 0.2; // IDLE
+    }
+  };
 
   useFrame((state, delta) => {
     if (prefersReducedMotion || !meshRef.current) return;
@@ -24,9 +38,10 @@ export function AvatarPlaceholder({ position = [0, 0, 0], scale = 1 }) {
     
     // Subtle breathing effect on the material distortion
     if (materialRef.current && quality === 'HIGH') {
+      const baseDistort = getTargetDistortion();
       materialRef.current.distort = THREE.MathUtils.lerp(
         materialRef.current.distort,
-        0.2 + Math.sin(state.clock.elapsedTime * 0.5) * 0.1,
+        baseDistort + Math.sin(state.clock.elapsedTime * 0.5) * 0.1,
         0.05
       );
     }

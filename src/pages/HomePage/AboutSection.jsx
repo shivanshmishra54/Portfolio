@@ -11,6 +11,24 @@ export function AboutSection() {
           
           <div>
             <SectionHeading title="Who is Shivansh?" subtitle="A brief introduction to my professional identity." />
+            
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ duration: 0.6 }}
+              className="mt-12"
+            >
+              <div className="relative inline-block">
+                <div className="absolute -inset-4 bg-gray-200 dark:bg-gray-800/50 rounded-lg transform -rotate-2 scale-95 opacity-50 blur-sm transition-all duration-500 group-hover:scale-100 group-hover:-rotate-1" />
+                <img 
+                  src={profile.photo} 
+                  alt="Shivansh Mishra" 
+                  loading="lazy"
+                  className="relative w-full max-w-xs md:max-w-sm rounded bg-gray-100 dark:bg-gray-900 object-cover grayscale hover:grayscale-0 transition-all duration-700 shadow-xl"
+                />
+              </div>
+            </motion.div>
           </div>
 
           <div className="space-y-12">

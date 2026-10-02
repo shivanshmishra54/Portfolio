@@ -1,6 +1,8 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { SectionHeading } from '../../components/shared/SectionHeading';
+import { PlatformStatsCard } from '../../components/ui/PlatformStatsCard';
+import { platforms } from '../../data/platforms';
 import { achievements } from '../../data/achievements';
 import { certificates } from '../../data/certificates';
 import { projects } from '../../data/projects';
@@ -25,7 +27,7 @@ export function ProofSection() {
           className="text-white"
         />
 
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-12 mt-16">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-12 mt-16 mb-16">
           {metrics.map((metric, idx) => (
             <motion.div
               key={metric.label}
@@ -40,6 +42,21 @@ export function ProofSection() {
             </motion.div>
           ))}
         </div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-50px" }}
+          transition={{ duration: 0.6 }}
+          className="max-w-2xl mx-auto md:mx-0"
+        >
+          {Object.values(platforms)
+            .filter(p => p.showOn.includes('homepage'))
+            .map(platform => (
+              <PlatformStatsCard key={platform.id} platform={platform} />
+            ))
+          }
+        </motion.div>
       </div>
     </section>
   );

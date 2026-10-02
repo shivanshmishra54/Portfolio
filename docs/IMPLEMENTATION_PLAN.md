@@ -168,7 +168,7 @@
 - [ ] **3.8** Create `FAQSection.jsx` — common questions
 - [ ] **3.9** Create `ProjectInquirySection.jsx` — project inquiry form (Web3Forms)
 - [ ] **3.10** Create `src/pages/CaseStudyPage/index.jsx` — shared case study renderer
-- [ ] **3.11** Wire `/freelancer/projects/:slug` route
+- [ ] **3.11** Wire inline expandable project UX on `/freelancer`
 - [ ] **3.12** Populate `src/data/services.js` with actual offerings
 - [ ] **3.13** Add freelancer case study content to relevant projects
 - [ ] **3.14** Responsive testing
@@ -180,7 +180,7 @@
 - Freelancer page follows approved storyline (10 sections)
 - Services displayed with client language
 - Projects filtered by `freelancerRelevant`
-- Case study pages render at `/freelancer/projects/:slug`
+- Case study details render inline expandably on `/freelancer`
 - Inquiry form works (Web3Forms)
 - Consistent with design system
 - Deep-linkable
@@ -213,7 +213,7 @@
 - [ ] **4.18** Create `src/pages/CertificationsPage/index.jsx` — full certification collection
 - [ ] **4.19** Create `src/components/shared/CertificateCard.jsx` — premium card + lightbox
 - [ ] **4.20** Create `src/components/shared/TimelineMilestone.jsx` — reusable milestone
-- [ ] **4.21** Wire `/developer/projects/:slug` route (reuses CaseStudyPage)
+- [ ] **4.21** Wire inline project rendering on `/developer` (reuses components)
 - [ ] **4.22** Wire `/developer/journey` route
 - [ ] **4.23** Wire `/developer/certifications` route
 - [ ] **4.24** Add developer case study content to relevant projects
@@ -229,7 +229,7 @@
 - Milestones expand with animation
 - Certifications use premium cards with lightbox
 - Developer projects filtered by `developerRelevant`
-- Case study pages render at `/developer/projects/:slug`
+- Case study details render inline via scrolling lists on `/developer`
 - GitHub and resume links work
 - Deep-linkable
 
