@@ -2,18 +2,12 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { SectionHeading } from '../../components/shared/SectionHeading';
 import { PlatformStatsCard } from '../../components/ui/PlatformStatsCard';
+import { AnimatedNumber } from '../../components/ui/AnimatedNumber';
 import { platforms } from '../../data/platforms';
-import { achievements } from '../../data/achievements';
-import { certificates } from '../../data/certificates';
-import { projects } from '../../data/projects';
+import { getCredibilityMetrics } from '../../data/achievements';
 
 export function ProofSection() {
-  const metrics = [
-    { label: "Projects Completed", value: projects.length + "+" },
-    { label: "Certifications", value: certificates.length },
-    { label: "Hackathons", value: "3" }, // From accomplishments
-    { label: "LeetCode Solved", value: "200+" } // From profile
-  ];
+  const metrics = getCredibilityMetrics();
 
   return (
     <section className="py-24 md:py-32 bg-black text-white relative overflow-hidden">
@@ -23,22 +17,28 @@ export function ProofSection() {
       <div className="container mx-auto px-6 max-w-7xl relative z-10">
         <SectionHeading 
           title="Credibility" 
-          subtitle="A track record of continuous learning and delivery." 
+          subtitle="A verified track record of real-time software engineering and competitive accomplishments." 
           className="text-white"
         />
 
         <div className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-12 mt-16 mb-16">
           {metrics.map((metric, idx) => (
             <motion.div
-              key={metric.label}
+              key={metric.id || metric.label}
               initial={{ opacity: 0, scale: 0.9 }}
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true, margin: "-50px" }}
               transition={{ duration: 0.5, delay: idx * 0.1 }}
-              className="flex flex-col items-center md:items-start border-l border-gray-800 pl-6"
+              className="flex flex-col items-start border-l border-neutral-800 pl-6 group"
             >
-              <span className="text-4xl md:text-6xl font-light tracking-tighter mb-2">{metric.value}</span>
-              <span className="text-xs font-mono tracking-widest text-gray-400 uppercase">{metric.label}</span>
+              <div className="text-4xl md:text-6xl font-light tracking-tighter mb-2 text-white flex items-baseline">
+                <AnimatedNumber value={metric.rawCount} />
+                {metric.hasPlus && <span className="text-3xl md:text-5xl font-extralight text-neutral-400">+</span>}
+              </div>
+              <span className="text-xs font-mono tracking-widest text-neutral-300 uppercase mb-1 font-semibold">{metric.label}</span>
+              {metric.description && (
+                <span className="text-[11px] font-mono text-neutral-500 hidden sm:inline-block leading-tight">{metric.description}</span>
+              )}
             </motion.div>
           ))}
         </div>

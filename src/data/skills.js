@@ -36,6 +36,7 @@ export const skills = [
       { name: "MySQL", icon: "SiMysql", iconColor: "#4479A1" },
       { name: "PostgreSQL", icon: "SiPostgresql", iconColor: "#336791" },
       { name: "Redis", icon: "SiRedis", iconColor: "#DC382D" },
+      { name: "Apache Kafka", icon: "Layers", iconColor: "#231F20" },
       { name: "DBMS", icon: "Database", iconColor: "#10B981" },
     ],
   },
@@ -51,6 +52,20 @@ export const skills = [
       { name: "VS Code", icon: "TbBrandVscode", iconColor: "#007ACC" },
       { name: "Postman", icon: "SiPostman", iconColor: "#FF6C37" },
       { name: "Maven", icon: "SiApachemaven", iconColor: "#C71A36" },
+    ],
+  },
+  {
+    id: "ai-tools",
+    category: "AI & LLM Workflows",
+    icon: "Sparkles",
+    color: "text-purple-400",
+    items: [
+      { name: "ChatGPT", icon: "SiOpenai", iconColor: "#10A37F" },
+      { name: "Claude", icon: "SiAnthropic", iconColor: "#D97706" },
+      { name: "Gemini", icon: "SiGooglegemini", iconColor: "#8E75FF" },
+      { name: "Perplexity", icon: "SiPerplexity", iconColor: "#20B2AA" },
+      { name: "DeepSeek", icon: "Cpu", iconColor: "#0066FF" },
+      { name: "Grok AI", icon: "Sparkles", iconColor: "#FFFFFF" },
     ],
   },
   {

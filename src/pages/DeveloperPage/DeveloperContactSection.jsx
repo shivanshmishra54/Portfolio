@@ -1,11 +1,22 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { profile } from '../../data/profile';
-import { ArrowRight, Github, Linkedin, Mail } from 'lucide-react';
+import { ArrowRight, Github, Linkedin, Mail, Youtube } from 'lucide-react';
+import { SiCodechef, SiCodeforces, SiLeetcode } from 'react-icons/si';
 import { useContactModal } from '../../components/ui/ContactContext';
 
 export function DeveloperContactSection() {
   const { openModal } = useContactModal();
+
+  const devSocials = [
+    { href: profile.social.github, icon: Github, label: 'GitHub' },
+    { href: profile.social.linkedin, icon: Linkedin, label: 'LinkedIn' },
+    { href: profile.social.youtube, icon: Youtube, label: 'YouTube' },
+    { href: profile.social.leetcode, icon: SiLeetcode, label: 'LeetCode' },
+    { href: profile.social.codeforces, icon: SiCodeforces, label: 'Codeforces' },
+    { href: profile.social.codechef, icon: SiCodechef, label: 'CodeChef' },
+    { href: profile.social.email, icon: Mail, label: 'Email' },
+  ].filter(s => Boolean(s.href));
   
   return (
     <section className="py-32 bg-gray-900 dark:bg-black text-white relative overflow-hidden">
@@ -33,19 +44,20 @@ export function DeveloperContactSection() {
             </button>
           </div>
 
-          <div className="flex items-center gap-8 text-gray-400">
-            <a href={profile.social.github} target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors p-2">
-              <Github size={24} />
-              <span className="sr-only">GitHub</span>
-            </a>
-            <a href={profile.social.linkedin} target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors p-2">
-              <Linkedin size={24} />
-              <span className="sr-only">LinkedIn</span>
-            </a>
-            <a href={profile.social.email} className="hover:text-white transition-colors p-2">
-              <Mail size={24} />
-              <span className="sr-only">Email</span>
-            </a>
+          <div className="flex flex-wrap justify-center items-center gap-5 text-gray-400">
+            {devSocials.map(({ href, icon: Icon, label }) => (
+              <a
+                key={label}
+                href={href}
+                target={href.startsWith('mailto:') ? undefined : '_blank'}
+                rel={href.startsWith('mailto:') ? undefined : 'noopener noreferrer'}
+                className="hover:text-white transition-colors p-2.5 rounded-lg hover:bg-white/5"
+                title={label}
+                aria-label={label}
+              >
+                <Icon size={22} className="w-[22px] h-[22px]" />
+              </a>
+            ))}
           </div>
 
         </div>

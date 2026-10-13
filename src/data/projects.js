@@ -3,124 +3,218 @@ export const projects = [
     id: "shorturl",
     slug: "shorturl",
     category: "backend",
-    github: "https://github.com/Shivansh54mishra",
-    liveDemo: "https://github.com/Shivansh54mishra",
-    image: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=1200&q=80",
-    color: "#5196fd",
+    github: "https://github.com/shivanshmishra54/spring-boot-react-url-shortener",
+    liveDemo: null,
+    image: null,
+    color: "#262626",
     paths: {
       freelancer: true,
       developer: true
     },
     freelancer: {
       title: "ShortUrl",
-      summary: "Distributed URL Shortening Platform",
-      problem: "Need a scalable backend system that can shorten, store, and redirect URLs with high performance and security.",
-      solution: "Built a distributed microservices system with independent API gateways, JWT authentication, and optimized redirect logic.",
-      features: ["Base-62 encoding", "JWT auth", "Dynamic discovery", "Sub-15ms latency"],
-      outcome: "Delivered a production-ready platform supporting billions of unique URLs with sub-15ms redirect latency."
+      summary: "Distributed URL Shortening & Analytics Platform",
+      problem: "Organizations and high-traffic campaigns require a high-throughput, secure link shortening infrastructure capable of compressing millions of links with real-time click tracking without latency bottlenecks.",
+      solution: "Engineered a distributed microservices system with Spring Boot 3, Spring Cloud Gateway WebMVC, Netflix Eureka discovery, Base-62 compression, and a modern React client.",
+      features: [
+        "Base-62 URL Compression",
+        "JWT Authentication & Dashboard",
+        "Real-Time Click Analytics",
+        "Netflix Eureka Discovery",
+        "Resilient Redirection Cache"
+      ],
+      outcome: "Delivered a production-ready microservices platform supporting 56.8B+ unique URLs with sub-15ms p95 redirect latency."
     },
     developer: {
-      title: "ShortUrl",
-      overview: "Architected a distributed system with independent API Gateways & microservices. Implemented Base-62 encoding supporting 56.8B+ URLs, JWT auth, dynamic Netflix Eureka discovery, and sub-15ms p95 redirect latency.",
-      technologies: ["Java", "Spring Boot", "Microservices", "Netflix Eureka", "JWT"],
+      title: "ShortUrl — Distributed URL Shortener Microservices",
+      overview: "Enterprise-grade microservices system engineered with Spring Boot 3, Spring Cloud Gateway WebMVC, and Netflix Eureka. Implements Base-62 encoding supporting 56.8B+ URLs, JWT security, dynamic click analytics, and sub-15ms p95 redirection latency.",
+      technologies: [
+        "Java 21",
+        "Spring Boot 3",
+        "Spring Cloud Eureka",
+        "Spring Cloud Gateway",
+        "React 19",
+        "Tailwind CSS",
+        "JWT",
+        "Spring Data JPA",
+        "MySQL"
+      ],
       architecture: {
-        description: "Microservices architecture with API gateway, service discovery via Netflix Eureka, Base-62 encoding for compact URLs, and JWT-based authentication."
+        description: "Distributed microservices topology featuring decoupled API Gateway WebMVC routing, dynamic service registration via Netflix Eureka, Base-62 hashing engine, and isolated redirect caching for maximum throughput."
       },
-      challenges: ["Achieving sub-15ms redirect latency", "Designing for 56.8B+ URL capacity", "Implementing dynamic service discovery"],
-      engineeringDecisions: ["Base-62 encoding", "JWT auth", "Dynamic discovery"]
+      challenges: [
+        "Achieving sub-15ms p95 redirect throughput under high concurrent traffic",
+        "Designing resilient Base-62 encoding with collision prevention across 56.8B+ URLs",
+        "Implementing dynamic routing and token validation across gateway filter chains"
+      ],
+      engineeringDecisions: [
+        "Decoupled gateway and discovery registry microservices",
+        "Stateless JWT token issuance with BCrypt encryption",
+        "Optimized database indexing on shortened hash tokens"
+      ]
     }
   },
   {
     id: "track2act",
     slug: "track2act",
     category: "fullstack",
-    github: "https://github.com/Shivansh54mishra",
-    liveDemo: "https://github.com/Shivansh54mishra",
-    image: "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=1200&q=80",
-    color: "#10B981",
+    github: "https://github.com/shivanshmishra54/track2act",
+    liveDemo: null,
+    image: null,
+    color: "#171717",
     paths: {
       freelancer: true,
       developer: true
     },
     freelancer: {
       title: "Track2Act",
-      summary: "AI-Powered Logistics & Fleet Management",
-      problem: "A logistics operation needed a platform to track fleet routes, manage shipments, and provide different access levels to different team roles.",
-      solution: "Developed a full-stack React + MySQL application with live map integration, real-time shipment tracking, and a 4-tier role-based access system.",
-      features: ["Role-Based Access Control", "Live route visualization", "Real-time monitoring"],
-      outcome: "Delivered a complete platform enabling real-time fleet monitoring and multi-role operational management."
+      summary: "AI-Powered Supply Chain & Fleet Logistics Ecosystem",
+      problem: "Modern supply chain operations struggle with unexpected route delays, lack of real-time GPS fleet tracking, and manual bottleneck resolution across diverse supply chain stakeholders.",
+      solution: "Developed an enterprise PaaS combining interactive live map telemetry via React Leaflet, a 6-tier RBAC system, and autonomous route exception intelligence powered by Hugging Face foundation models.",
+      features: [
+        "Real-Time GPS Telemetry",
+        "Hugging Face AI Exception Analytics",
+        "6-Role Access Control (RBAC)",
+        "Interactive React Leaflet Map",
+        "Driver Milestone Proof-of-Delivery"
+      ],
+      outcome: "Equipped logistics teams with automated predictive rerouting, driver proof-of-delivery updates, and end-to-end supply chain operational clarity."
     },
     developer: {
-      title: "Track2Act",
-      overview: "Full-stack logistics platform with Role-Based Access Control (RBAC) across 4 user roles. Features live route visualization via React Leaflet, optimized MySQL queries, and real-time shipment monitoring.",
-      technologies: ["React.js", "MySQL", "React Leaflet"],
+      title: "Track2Act — AI Supply Chain & Logistics PaaS",
+      overview: "Full-stack enterprise logistics platform integrating Hugging Face AI (Mixtral-8x7B) for automated route deviation reasoning. Features 6-tier RBAC, React Leaflet GPS telemetry, Spring Boot 3 REST APIs, and optimized transactional schemas.",
+      technologies: [
+        "React 18",
+        "Spring Boot 3",
+        "Java 21",
+        "Hugging Face AI",
+        "React Leaflet",
+        "MySQL",
+        "Tailwind CSS",
+        "shadcn/ui",
+        "JWT"
+      ],
       architecture: {
-        description: "Built a full-stack application with React frontend featuring live map visualization, a MySQL-backed API layer, and role-based access for 4 distinct user types."
+        description: "Enterprise PaaS uncoupled monolith architecture designed for microservices migration. Communicates strictly over REST with JWT filter authentication, delegating predictive reasoning to Hugging Face inference pipelines."
       },
-      challenges: ["Implementing live route visualization with React Leaflet", "Designing a 4-role RBAC system", "Optimizing complex MySQL queries for real-time data"],
-      engineeringDecisions: ["React Leaflet integration", "MySQL optimization", "RBAC"]
+      challenges: [
+        "Real-time GPS telemetry event synchronization across dispatchers and mobile drivers",
+        "Integrating LLM inference with strict enterprise latency guardrails and fallback states",
+        "Handling complex 6-role permission trees within single-page state management"
+      ],
+      engineeringDecisions: [
+        "Hugging Face inference integration for automated disruption analytics",
+        "React Leaflet geospatial visualization with dynamic marker updates",
+        "Fine-grained Spring Security RBAC filters across multi-tenant endpoints"
+      ]
     }
   },
   {
-    id: "auth-engine",
-    slug: "auth-engine",
+    id: "employee-management",
+    slug: "employee-management",
+    category: "fullstack",
+    github: "https://github.com/shivanshmishra54/Employee-Management-System-using-React-and-Spring-Boot",
+    liveDemo: null,
+    image: null,
+    color: "#262626",
+    paths: {
+      freelancer: true,
+      developer: true
+    },
+    freelancer: {
+      title: "Employee Management System",
+      summary: "Full-Stack HR & Workforce Operations Platform",
+      problem: "Growing companies need a reliable, centralized platform to oversee workforce records, manage department personnel, and perform real-time CRUD operations without human data discrepancies.",
+      solution: "Engineered a modern full-stack web application with React client and Spring Boot 3 backend, incorporating instant form validation, clean REST APIs, and responsive data tables.",
+      features: [
+        "Real-Time Personnel CRUD",
+        "Instant Form Validation",
+        "Controller-Service-Repository Flow",
+        "Clean Responsive Data Grids",
+        "CORS-Secured API Communication"
+      ],
+      outcome: "Delivered a clean, high-reliability HR portal that streamlines personnel administration and ensures zero data loss."
+    },
+    developer: {
+      title: "Employee Management System — Spring Boot & React CRUD Suite",
+      overview: "Full-stack workforce management platform engineered with Spring Boot 3 (Java 21) and React 18. Implements Controller-Service-Repository architecture, complete RESTful CRUD APIs, Hibernate ORM entity mapping, and responsive React data grids.",
+      technologies: [
+        "Java 21",
+        "Spring Boot 3",
+        "React 18",
+        "MySQL",
+        "Hibernate ORM",
+        "RESTful APIs",
+        "Bootstrap 5",
+        "Maven"
+      ],
+      architecture: {
+        description: "Multi-tier layered architecture adhering to strict separation of concerns (Controller, Service, Repository). Uses Hibernate JPA for automated schema binding and connection pooling with CORS-enabled REST endpoints."
+      },
+      challenges: [
+        "Ensuring ACID consistency across high-volume employee record mutations",
+        "Maintaining synchronized validation rules between frontend forms and backend DTOs",
+        "Decoupling REST endpoints with secure CORS configuration for multi-origin client compatibility"
+      ],
+      engineeringDecisions: [
+        "Controller-Service-Repository pattern for maximum testability and modularity",
+        "Hibernate ORM with connection pooling for relational integrity",
+        "Unified error handling controller advice for consistent JSON error contracts"
+      ]
+    }
+  },
+  {
+    id: "spring-boot-login-system",
+    slug: "spring-boot-login-system",
     category: "backend",
-    github: "https://github.com/Shivansh54mishra",
-    liveDemo: "https://github.com/Shivansh54mishra",
-    image: "https://images.unsplash.com/photo-1563986768609-322da13575f3?auto=format&fit=crop&w=1200&q=80",
-    color: "#8f89ff",
+    github: "https://github.com/shivanshmishra54/spring-boot-login-system",
+    liveDemo: null,
+    image: null,
+    color: "#171717",
     paths: {
       freelancer: true,
       developer: true
     },
     freelancer: {
-      title: "Authentication Engine",
-      summary: "Secure Identity Provider System",
-      problem: "Need a secure, reusable authentication system supporting multiple user roles and email verification.",
-      solution: "Developed a standalone identity provider with JWT, BCrypt hashing, Spring Security filter chains, and async email OTP.",
-      features: ["Role-based access", "Password hashing", "Email OTP"],
-      outcome: "Delivered a production-ready auth engine that can be integrated into any application requiring secure user management."
+      title: "Spring Boot Security Login System",
+      summary: "Enterprise Authentication & Access Control Engine",
+      problem: "Web applications require robust identity protection, automated email verification, and secure password recovery mechanisms to prevent unauthorized access and credential vulnerability.",
+      solution: "Built a standalone security identity provider featuring Spring Security 6, multi-threaded async email OTP verification, time-limited token password resets, and role-based permissions.",
+      features: [
+        "Spring Security 6 Protection",
+        "Async Multi-Threaded Email OTP",
+        "Time-Based Token Password Reset",
+        "ROLE_USER & ROLE_ADMIN RBAC",
+        "Professional HTML Email Templates"
+      ],
+      outcome: "Implemented a hardened authentication foundation ensuring safe registration, instant OTP verification, and foolproof credential recovery."
     },
     developer: {
-      title: "Authentication & Authorization Engine",
-      overview: "Standalone identity provider subsystem using JWT to secure 10+ role-based API endpoints. Configured BCrypt hashing, custom Spring Security filter chains, and asynchronous email OTP notifications.",
-      technologies: ["Java", "Spring Security", "JWT", "BCrypt"],
+      title: "Spring Boot Security Login & Access Management System",
+      overview: "Enterprise identity provider and access manager built with Spring Boot 3 and Spring Security 6. Implements database-backed UserDetailsService, multi-threaded async email OTP delivery, time-limited cryptographic password reset tokens, and tuned connection pooling.",
+      technologies: [
+        "Java 21",
+        "Spring Boot 3",
+        "Spring Security 6",
+        "Spring Data JPA",
+        "MySQL",
+        "Thymeleaf",
+        "JavaMailSender",
+        "Maven"
+      ],
       architecture: {
-        description: "Built a standalone auth engine with JWT tokens, BCrypt password hashing, custom Spring Security filter chains, and asynchronous email OTP verification."
+        description: "Multi-layered security pipeline incorporating Spring Security 6 filter chains, custom UserDetailsService, BCrypt hashing, and asynchronous mail service task executors for non-blocking email dispatch."
       },
-      challenges: ["Designing custom Spring Security filter chains", "Implementing asynchronous email OTP flow", "Securing 10+ role-based API endpoints"],
-      engineeringDecisions: ["JWT for stateless auth", "BCrypt hashing", "Custom security filter chains"]
-    }
-  },
-  {
-    id: "skillcraft",
-    slug: "skillcraft",
-    category: "frontend",
-    github: "https://github.com/Shivansh54mishra",
-    liveDemo: "https://portfolio-or-shivansh-mishra--shivansh54iron.replit.app/",
-    image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1200&q=80",
-    color: "#ed649e",
-    paths: {
-      freelancer: true,
-      developer: true
-    },
-    freelancer: {
-      title: "SkillCraft Interactive Suite",
-      summary: "Suite of 4 responsive web applications",
-      problem: "Required multiple interactive web applications built rapidly with consistent responsive design.",
-      solution: "Developed 4 React-based applications with Tailwind CSS, clean component architecture, and optimized rendering.",
-      features: ["Landing page", "Calculator", "To-do app", "Browser game"],
-      outcome: "Delivered a complete suite of interactive web applications meeting all quality and responsiveness requirements."
-    },
-    developer: {
-      title: "SkillCraft Interactive Web Apps Suite",
-      overview: "Suite of 4 responsive web applications including a modern landing page, advanced calculator, interactive to-do app, and browser game built with React.js, Tailwind CSS, and clean rendering pipelines.",
-      technologies: ["React.js", "Tailwind CSS"],
-      architecture: {
-        description: "Built 4 distinct React applications all with responsive layouts and clean component rendering pipelines."
-      },
-      challenges: ["Delivering 4 distinct applications within a tight timeline", "Maintaining consistent quality across different app types", "Ensuring responsive design for each application"],
-      engineeringDecisions: ["React components", "Tailwind styling", "Clean rendering pipelines"]
+      challenges: [
+        "Preventing thread blocking during SMTP email OTP transactions via asynchronous executors",
+        "Securing time-sensitive token lifecycles for password recovery against replay attacks",
+        "Enforcing strict role hierarchies without degrading session query performance"
+      ],
+      engineeringDecisions: [
+        "Spring Security 6 filter chain configuration with stateless session capability",
+        "Database-backed UserDetailsService with BCrypt hashing",
+        "Async multi-threaded email dispatching with JavaMailSender"
+      ]
     }
   }
 ];

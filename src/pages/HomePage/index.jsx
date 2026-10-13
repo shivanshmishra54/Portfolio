@@ -8,6 +8,7 @@ import { SelectedWorkSection } from './SelectedWorkSection';
 import { ProofSection } from './ProofSection';
 import { JourneyPreviewSection } from './JourneyPreviewSection';
 import { CurrentlyBuildingSection } from './CurrentlyBuildingSection';
+import { WelcomePathPrompt } from '../../components/ui/WelcomePathPrompt';
 
 import { AvatarProvider } from '../../components/3d/AvatarContext';
 
@@ -26,6 +27,7 @@ export default function HomePage() {
           <div id="proof"><ProofSection /></div>
           <div id="journey"><JourneyPreviewSection /></div>
           <div id="now"><CurrentlyBuildingSection /></div>
+          <WelcomePathPrompt />
         </div>
       </AvatarProvider>
     </PageTransition>

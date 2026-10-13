@@ -1,114 +1,209 @@
 import React from "react";
-import { Code2, Activity, Cpu, Layers, Network, Binary } from "lucide-react";
-
-const ExperienceCard = ({
-  title,
-  company,
-  period,
-  description,
-  icon: Icon,
-}) => (
-  <div className="group relative overflow-hidden transform hover:-translate-y-2 transition-all duration-300">
-    {/* Glass morphism effect */}
-    <div className="absolute inset-0 backdrop-blur-lg bg-white/5 rounded-lg" />
-
-    {/* Animated gradient border */}
-    <div className="absolute -inset-[2px] bg-gradient-to-r from-cyan-500 via-blue-500 to-purple-500 rounded-lg opacity-0 group-hover:opacity-100 animate-gradient-xy transition-all duration-500" />
-
-    <div className="relative bg-gray-900/90 rounded-lg p-8 h-full border border-gray-800/50 shadow-xl backdrop-blur-xl">
-      {/* Floating icon with pulse effect */}
-      <div className="relative mb-6">
-        <div className="absolute -inset-4 bg-gradient-to-r from-cyan-500 to-blue-500 opacity-25 rounded-full blur-xl group-hover:opacity-75 animate-pulse transition-all duration-500" />
-        <Icon className="w-12 h-12 text-cyan-400 relative z-10 transform group-hover:rotate-12 transition-transform duration-300" />
-      </div>
-
-      {/* Content with improved typography */}
-      <div className="space-y-3">
-        <h3 className="text-2xl font-bold bg-gradient-to-r from-cyan-400 to-blue-400 bg-clip-text text-transparent">
-          {title}
-        </h3>
-        <div className="flex justify-between items-center text-gray-300">
-          <span className="font-semibold text-blue-400">{company}</span>
-          <span className="text-sm font-mono bg-blue-500/10 px-3 py-1 rounded-full">
-            {period}
-          </span>
-        </div>
-        <p className="text-gray-300 border-l-4 border-blue-500/50 pl-4 mt-4 leading-relaxed">
-          {description}
-        </p>
-      </div>
-
-      {/* Decorative elements */}
-      <div className="absolute top-4 right-4 w-20 h-20">
-        <div className="absolute top-0 right-0 w-6 h-[2px] bg-cyan-500/50" />
-        <div className="absolute top-0 right-0 w-[2px] h-6 bg-cyan-500/50" />
-      </div>
-      <div className="absolute bottom-4 left-4 w-20 h-20">
-        <div className="absolute bottom-0 left-0 w-6 h-[2px] bg-purple-500/50" />
-        <div className="absolute bottom-0 left-0 w-[2px] h-6 bg-purple-500/50" />
-      </div>
-    </div>
-  </div>
-);
-
+import {
+  Code2,
+  Activity,
+  Cpu,
+  Layers,
+  Network,
+  Binary,
+  Calendar,
+  Briefcase,
+  GitPullRequest,
+  Trophy,
+  ExternalLink,
+  CheckCircle2,
+} from "lucide-react";
 import { experience as experiences } from "@/data/experience";
+import { CircularCardDeck } from "@/components/ui/CircularCardDeck";
 
-const ExperienceSection = () => {
+export default function ExperienceSection() {
+  const getTypeBadge = (type) => {
+    switch ((type || "").toLowerCase()) {
+      case "opensource":
+        return {
+          label: "Open Source Contribution",
+          icon: <GitPullRequest className="w-3.5 h-3.5" />,
+        };
+      case "hackathon":
+        return {
+          label: "National Hackathon",
+          icon: <Trophy className="w-3.5 h-3.5" />,
+        };
+      case "work":
+        return {
+          label: "Work Experience",
+          icon: <Briefcase className="w-3.5 h-3.5" />,
+        };
+      default:
+        return {
+          label: "Engineering Simulation",
+          icon: <Layers className="w-3.5 h-3.5" />,
+        };
+    }
+  };
+
+  const getIcon = (iconName) => {
+    switch (iconName) {
+      case "Github":
+        return <GitPullRequest className="w-6 h-6" />;
+      case "Cpu":
+        return <Cpu className="w-6 h-6" />;
+      case "Network":
+        return <Network className="w-6 h-6" />;
+      case "Binary":
+        return <Binary className="w-6 h-6" />;
+      case "Activity":
+        return <Activity className="w-6 h-6" />;
+      case "Layers":
+        return <Layers className="w-6 h-6" />;
+      default:
+        return <Code2 className="w-6 h-6" />;
+    }
+  };
 
   return (
-    <>
-      <div className="min-h-screen bg-gradient-to-b relative overflow-hidden pt-32 pb-20">
-        {/* Animated gradient background */}
-        <div className="absolute inset-0 bg-[#04081A]" />
-
-        {/* Grid background */}
-        <div className="absolute inset-0 bg-[linear-gradient(rgba(50,50,70,0.15)_1px,transparent_1px),linear-gradient(90deg,rgba(50,50,70,0.15)_1px,transparent_1px)] bg-[size:40px_40px] [mask-image:radial-gradient(ellipse_80%_80%_at_50%_50%,#000_70%,transparent_100%)]" />
-
-        {/* Animated particles */}
-        <div className="absolute inset-0">
-          {[...Array(20)].map((_, i) => (
-            <div
-              key={i}
-              className="absolute w-2 h-2 bg-blue-500/20 rounded-full animate-float"
-              style={{
-                top: `${Math.random() * 100}%`,
-                left: `${Math.random() * 100}%`,
-                animationDelay: `${Math.random() * 5}s`,
-              }}
-            />
-          ))}
+    <section className="relative bg-gray-50 dark:bg-black transition-colors duration-300 py-24 overflow-hidden">
+      <div className="container mx-auto px-6 max-w-7xl">
+        {/* Section Header */}
+        <div className="flex flex-col mb-10">
+          <div className="flex items-center gap-4 mb-4">
+            <span className="h-[1px] w-8 bg-gray-900 dark:bg-white" />
+            <span className="text-sm font-bold tracking-[0.2em] uppercase text-gray-900 dark:text-white">
+              Experience & Track Record
+            </span>
+          </div>
+          <h2 className="text-4xl md:text-5xl font-bold tracking-tighter text-gray-900 dark:text-white mb-6">
+            Professional Experience & Hackathons
+          </h2>
+          <p className="text-gray-600 dark:text-gray-400 max-w-2xl font-light text-base md:text-lg">
+            Swipe right-to-left to explore open source contributions, software engineering internships, national hackathon podiums, and enterprise simulations.
+          </p>
         </div>
 
-        {/* Content container */}
-        <div className="relative container mx-auto px-6 mt-10">
-          {/* Section header with enhanced effects */}
-          <div className="flex flex-col items-center space-y-8 mb-20">
-            <div className="relative">
-              <h2 className="text-5xl md:text-7xl font-black text-transparent bg-gradient-to-r from-teal-400 to-blue-500 bg-clip-text text-center">
-                Professional Journey
-              </h2>
-              <div className="absolute inset-0 -z-10 bg-gradient-to-r from-cyan-500/20 to-purple-500/20 blur-3xl rounded-full" />
-            </div>
-            <p className="text-lg md:text-xl text-gray-400 font-medium tracking-wide text-center max-w-2xl">
-              "Transforming ideas into digital reality, one project at a time"
-            </p>
-          </div>
+        {/* Circular Swipe Cards Deck */}
+        <CircularCardDeck
+          items={experiences}
+          aspectClass="min-h-[500px] md:min-h-[540px]"
+          renderCard={(experience, index, { total }) => {
+            const typeBadge = getTypeBadge(experience.type);
+            return (
+              <div className="w-full rounded-2xl border border-gray-200 dark:border-neutral-800 bg-white dark:bg-[#0c0c0c] shadow-2xl overflow-hidden transition-all duration-300">
+                {/* Header Bar */}
+                <div className="flex items-center justify-between px-6 py-4 border-b border-gray-100 dark:border-neutral-900 bg-gray-50/70 dark:bg-[#111111]/70">
+                  <div className="flex items-center gap-3">
+                    <span className="text-xs font-mono font-bold uppercase tracking-widest text-gray-400 dark:text-neutral-500">
+                      0{index + 1} / 0{total}
+                    </span>
+                    <span className="h-3 w-[1px] bg-gray-300 dark:bg-neutral-800" />
+                    <div className="flex items-center gap-1.5 px-2.5 py-0.5 text-xs font-mono font-semibold uppercase tracking-wider bg-gray-200/80 dark:bg-neutral-800 text-gray-800 dark:text-neutral-200 rounded">
+                      {typeBadge.icon}
+                      <span>{typeBadge.label}</span>
+                    </div>
+                  </div>
 
-          {/* Experience grid with improved layout */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 max-w-7xl mx-auto">
-            {experiences.map((exp, index) => {
-              const IconComp = exp.icon === "Code2" ? Code2 : exp.icon === "Cpu" ? Cpu : exp.icon === "Layers" ? Layers : exp.icon === "Activity" ? Activity : exp.icon === "Network" ? Network : exp.icon === "Binary" ? Binary : Code2;
-              return <ExperienceCard key={index} {...exp} icon={IconComp} />;
-            })}
-          </div>
-        </div>
+                  <div className="flex items-center gap-2">
+                    <span className="text-xs font-mono uppercase tracking-wider text-gray-500 dark:text-neutral-400 flex items-center gap-1.5">
+                      <Calendar className="w-3.5 h-3.5" />
+                      {experience.period}
+                    </span>
+                    {experience.link && (
+                      <a
+                        href={experience.link}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="ml-2 inline-flex items-center gap-1 px-2.5 py-1 rounded bg-gray-900 text-white dark:bg-white dark:text-black text-xs font-mono font-semibold hover:opacity-85 transition-opacity"
+                        onClick={(e) => e.stopPropagation()}
+                      >
+                        <span>Repo</span>
+                        <ExternalLink className="w-3 h-3" />
+                      </a>
+                    )}
+                  </div>
+                </div>
 
-        {/* Enhanced background effects */}
-        <div className="absolute top-20 left-20 w-96 h-96 bg-cyan-500/10 rounded-full filter blur-3xl animate-pulse" />
-        <div className="absolute bottom-20 right-20 w-96 h-96 bg-purple-500/10 rounded-full filter blur-3xl animate-pulse delay-1000" />
+                {/* Card Body */}
+                <div className="p-6 md:p-8 lg:p-10 flex flex-col justify-between gap-6">
+                  <div className="space-y-4">
+                    <div className="flex items-start gap-4">
+                      <div className="w-12 h-12 rounded-xl bg-gray-100 dark:bg-black border border-gray-200 dark:border-neutral-800 flex items-center justify-center text-gray-900 dark:text-white shrink-0 mt-1 shadow-sm">
+                        {getIcon(experience.icon)}
+                      </div>
+                      <div className="flex-1 min-w-0">
+                        <div className="flex flex-wrap items-center justify-between gap-2">
+                          <h3 className="text-2xl md:text-3xl font-bold tracking-tight text-gray-900 dark:text-white">
+                            {experience.title}
+                          </h3>
+                          {experience.role && (
+                            <span className="text-xs font-mono uppercase px-2.5 py-1 rounded bg-gray-100 dark:bg-neutral-900 border border-gray-200/70 dark:border-neutral-800 text-gray-600 dark:text-neutral-300">
+                              {experience.role}
+                            </span>
+                          )}
+                        </div>
+                        <p className="text-base font-medium text-gray-700 dark:text-neutral-300 mt-1 flex items-center gap-2">
+                          <Briefcase className="w-4 h-4 text-gray-400" />
+                          {experience.company}
+                        </p>
+                      </div>
+                    </div>
+
+                    <p className="text-sm md:text-base text-gray-600 dark:text-gray-400 leading-relaxed font-light pl-4 border-l-2 border-gray-300 dark:border-neutral-700">
+                      {experience.description}
+                    </p>
+
+                    {/* Key Highlights */}
+                    {experience.highlights && experience.highlights.length > 0 && (
+                      <div className="p-5 rounded-xl border border-gray-100 dark:border-neutral-900 bg-gray-50/70 dark:bg-[#111111]/70 mt-3">
+                        <h4 className="text-xs font-mono font-bold uppercase tracking-[0.2em] text-gray-400 dark:text-neutral-500 mb-3 flex items-center gap-2">
+                          <CheckCircle2 className="w-3.5 h-3.5 text-gray-700 dark:text-gray-300" />
+                          Key Impact & Milestones
+                        </h4>
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-2.5">
+                          {experience.highlights.map((highlight, hIdx) => (
+                            <div
+                              key={hIdx}
+                              className="flex items-start gap-2 text-xs md:text-sm text-gray-700 dark:text-neutral-300"
+                            >
+                              <span className="w-1.5 h-1.5 rounded-full bg-gray-900 dark:bg-white mt-1.5 shrink-0" />
+                              <span>{highlight}</span>
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+                    )}
+                  </div>
+
+                  {/* Footer with Technologies & Action */}
+                  <div className="pt-4 border-t border-gray-100 dark:border-neutral-900 flex flex-wrap items-center justify-between gap-4">
+                    <div className="flex flex-wrap gap-1.5">
+                      {experience.technologies?.map((tech, tIdx) => (
+                        <span
+                          key={tIdx}
+                          className="px-2.5 py-1 text-xs font-mono bg-gray-100 dark:bg-neutral-900 text-gray-700 dark:text-neutral-300 rounded border border-gray-200/50 dark:border-neutral-800"
+                        >
+                          {tech}
+                        </span>
+                      ))}
+                    </div>
+
+                    {experience.prLink && (
+                      <a
+                        href={experience.prLink}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-1.5 text-xs font-mono uppercase tracking-wider text-gray-900 dark:text-white font-semibold hover:underline"
+                        onClick={(e) => e.stopPropagation()}
+                      >
+                        <span>View Merged PR #5738</span>
+                        <ExternalLink className="w-3.5 h-3.5" />
+                      </a>
+                    )}
+                  </div>
+                </div>
+              </div>
+            );
+          }}
+        />
       </div>
-    </>
+    </section>
   );
-};
-
-export default ExperienceSection;
+}

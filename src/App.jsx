@@ -3,6 +3,7 @@ import { Route, Routes, useLocation } from "react-router-dom";
 import { AnimatePresence } from "framer-motion";
 import { Navigation } from "./components/layout/Navigation";
 import { Footer } from "./components/layout/Footer";
+import { ScrollToTop } from "./components/layout/ScrollToTop";
 import { ContactProvider } from "./components/ui/ContactContext";
 import "./assets/css/index.css";
 
@@ -25,10 +26,11 @@ export default function App() {
 
   return (
     <ContactProvider>
-      <div className="min-h-screen flex flex-col bg-gray-50 dark:bg-black text-gray-900 dark:text-gray-100 transition-colors duration-300">
+      <div className="min-h-screen w-full max-w-full overflow-x-hidden flex flex-col bg-gray-50 dark:bg-black text-gray-900 dark:text-gray-100 transition-colors duration-300">
+        <ScrollToTop />
         <Navigation />
         
-        <main className="flex-grow flex flex-col">
+        <main className="flex-grow flex flex-col w-full max-w-full overflow-x-hidden">
           <Suspense fallback={<Fallback />}>
             <AnimatePresence mode="wait">
               <Routes location={location} key={location.pathname}>

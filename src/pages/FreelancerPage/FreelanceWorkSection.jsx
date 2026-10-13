@@ -2,7 +2,8 @@ import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { getFreelancerProjects } from '../../data/projects';
 import { ScrollReveal } from '../../components/layout/ScrollReveal';
-import { ExternalLink, Github, ChevronRight } from 'lucide-react';
+import { Github, ChevronRight } from 'lucide-react';
+import { ProjectVisualBanner } from '../../components/ui/ProjectVisualBanner';
 
 export function FreelanceWorkSection() {
   const projects = getFreelancerProjects();
@@ -72,13 +73,13 @@ export function FreelanceWorkSection() {
                   >
                     <div className="px-6 md:px-8 pb-8 pt-2">
                       <div className="rounded-xl border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-950 p-6 md:p-8">
-                        {/* Project Image */}
-                        <div className="w-full aspect-video rounded-lg overflow-hidden mb-8 bg-gray-100 dark:bg-gray-900">
-                          <img 
-                            src={project.image} 
-                            alt={project.freelancer.title}
-                            className="w-full h-full object-cover"
-                            loading="lazy"
+                        {/* Project Visual (Text Banner placeholder until photos arrive) */}
+                        <div className="w-full mb-8">
+                          <ProjectVisualBanner
+                            title={project.freelancer.title}
+                            category={project.category}
+                            tags={project.freelancer.features}
+                            image={project.image}
                           />
                         </div>
 
@@ -120,21 +121,10 @@ export function FreelanceWorkSection() {
                               href={project.github}
                               target="_blank"
                               rel="noopener noreferrer"
-                              className="inline-flex items-center gap-2 text-sm font-medium text-gray-900 dark:text-white hover:opacity-70 transition-opacity"
+                              className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-gray-900 text-white dark:bg-white dark:text-black font-semibold text-sm hover:opacity-90 transition-opacity"
                               aria-label={`View ${project.freelancer.title} on GitHub`}
                             >
-                              <Github size={16} /> Source Code
-                            </a>
-                          )}
-                          {project.liveDemo && project.liveDemo !== project.github && (
-                            <a
-                              href={project.liveDemo}
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              className="inline-flex items-center gap-2 text-sm font-medium text-gray-900 dark:text-white hover:opacity-70 transition-opacity"
-                              aria-label={`View ${project.freelancer.title} live demo`}
-                            >
-                              <ExternalLink size={16} /> Live Demo
+                              <Github size={16} /> View Codebase on GitHub
                             </a>
                           )}
                         </div>

@@ -1,10 +1,22 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { profile } from '../../data/profile';
-import { Github, Linkedin, Mail, FileText } from 'lucide-react';
+import { Github, Linkedin, Mail, FileText, Youtube } from 'lucide-react';
+import { SiCodechef, SiCodeforces, SiLeetcode } from 'react-icons/si';
 
 export function Footer() {
   const currentYear = new Date().getFullYear();
+
+  const socialLinks = [
+    { href: profile.social.github, icon: Github, label: 'GitHub' },
+    { href: profile.social.linkedin, icon: Linkedin, label: 'LinkedIn' },
+    { href: profile.social.youtube, icon: Youtube, label: 'YouTube' },
+    { href: profile.social.leetcode, icon: SiLeetcode, label: 'LeetCode' },
+    { href: profile.social.codechef, icon: SiCodechef, label: 'CodeChef' },
+    { href: profile.social.codeforces, icon: SiCodeforces, label: 'Codeforces' },
+    { href: profile.social.email, icon: Mail, label: 'Email' },
+    { href: profile.resume, icon: FileText, label: 'Resume' },
+  ].filter(item => Boolean(item.href));
 
   return (
     <footer className="w-full py-12 md:py-20 bg-gray-50 dark:bg-gray-950 border-t border-gray-200 dark:border-gray-900">
@@ -16,22 +28,23 @@ export function Footer() {
             <Link to="/" className="text-2xl font-bold tracking-tight text-gray-900 dark:text-white uppercase mb-4 block">
               {profile.name}
             </Link>
-            <p className="text-gray-600 dark:text-gray-400 max-w-md mb-6">
+            <p className="text-gray-600 dark:text-gray-400 max-w-md mb-6 text-sm md:text-base">
               {profile.tagline}
             </p>
-            <div className="flex items-center gap-4">
-              <a href={profile.social.github} target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors" aria-label="GitHub">
-                <Github size={20} />
-              </a>
-              <a href={profile.social.linkedin} target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors" aria-label="LinkedIn">
-                <Linkedin size={20} />
-              </a>
-              <a href={profile.social.email} className="text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors" aria-label="Email">
-                <Mail size={20} />
-              </a>
-              <a href={profile.resume} target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors" aria-label="Resume">
-                <FileText size={20} />
-              </a>
+            <div className="flex flex-wrap items-center gap-2">
+              {socialLinks.map(({ href, icon: Icon, label }) => (
+                <a
+                  key={label}
+                  href={href}
+                  target={href.startsWith('mailto:') ? undefined : '_blank'}
+                  rel={href.startsWith('mailto:') ? undefined : 'noopener noreferrer'}
+                  className="p-2.5 rounded-lg border border-transparent hover:border-gray-200 dark:hover:border-neutral-800 text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white hover:bg-gray-100 dark:hover:bg-neutral-900 transition-all duration-200"
+                  aria-label={label}
+                  title={label}
+                >
+                  <Icon size={19} className="w-[19px] h-[19px]" />
+                </a>
+              ))}
             </div>
           </div>
 

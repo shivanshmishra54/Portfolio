@@ -2,7 +2,8 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { profile } from '../../data/profile';
 import { useReducedMotion } from '../../components/3d/hooks/useReducedMotion';
-import { Terminal, BrainCircuit, Code, GitMerge } from 'lucide-react';
+import { Terminal, BrainCircuit, GitMerge, ExternalLink } from 'lucide-react';
+import { SiCodechef, SiCodeforces, SiLeetcode } from 'react-icons/si';
 
 export function ProblemSolvingSection() {
   const prefersReducedMotion = useReducedMotion();
@@ -25,17 +26,44 @@ export function ProblemSolvingSection() {
               Strong foundation in Data Structures and Algorithms is crucial for writing efficient, optimized, and scalable software. My problem-solving journey involves actively tackling algorithmic challenges and mastering core computer science fundamentals.
             </p>
             
-            {profile.social.leetcode && (
-              <a 
-                href={profile.social.leetcode} 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-3 px-6 py-4 bg-[#FFA116]/10 text-[#FFA116] hover:bg-[#FFA116]/20 transition-colors font-bold uppercase tracking-wider text-sm"
-              >
-                <Code size={18} />
-                View LeetCode Profile
-              </a>
-            )}
+            <div className="flex flex-wrap items-center gap-3">
+              {profile.social.leetcode && (
+                <a 
+                  href={profile.social.leetcode} 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2.5 px-4 py-3 rounded-lg border border-gray-200 dark:border-neutral-800 bg-gray-50 dark:bg-neutral-900 text-gray-900 dark:text-white hover:bg-gray-100 dark:hover:bg-neutral-800 transition-colors font-medium text-xs uppercase tracking-wider"
+                >
+                  <SiLeetcode className="w-4 h-4 text-[#FFA116]" />
+                  <span>LeetCode</span>
+                  <ExternalLink size={12} className="opacity-60" />
+                </a>
+              )}
+              {profile.social.codeforces && (
+                <a 
+                  href={profile.social.codeforces} 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2.5 px-4 py-3 rounded-lg border border-gray-200 dark:border-neutral-800 bg-gray-50 dark:bg-neutral-900 text-gray-900 dark:text-white hover:bg-gray-100 dark:hover:bg-neutral-800 transition-colors font-medium text-xs uppercase tracking-wider"
+                >
+                  <SiCodeforces className="w-4 h-4 text-blue-500" />
+                  <span>Codeforces</span>
+                  <ExternalLink size={12} className="opacity-60" />
+                </a>
+              )}
+              {profile.social.codechef && (
+                <a 
+                  href={profile.social.codechef} 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2.5 px-4 py-3 rounded-lg border border-gray-200 dark:border-neutral-800 bg-gray-50 dark:bg-neutral-900 text-gray-900 dark:text-white hover:bg-gray-100 dark:hover:bg-neutral-800 transition-colors font-medium text-xs uppercase tracking-wider"
+                >
+                  <SiCodechef className="w-4 h-4 text-amber-700 dark:text-amber-500" />
+                  <span>CodeChef</span>
+                  <ExternalLink size={12} className="opacity-60" />
+                </a>
+              )}
+            </div>
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">

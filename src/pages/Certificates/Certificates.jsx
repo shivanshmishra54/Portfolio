@@ -20,12 +20,18 @@ export default function Certificates() {
   return (
     <ReactLenis root>
       <main className="bg-black" ref={container}>
-        <section className="text-white w-full bg-slate-950 pt-24 pb-16">
-          <div className="text-center pt-6 pb-6 px-4">
-            <h1 className="text-4xl md:text-6xl font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-teal-400 via-blue-500 to-purple-500">
+        <section className="text-gray-900 dark:text-white w-full bg-white dark:bg-black pt-24 pb-16">
+          <div className="flex flex-col mb-16 container mx-auto px-6 max-w-7xl">
+            <div className="flex items-center gap-4 mb-4">
+              <span className="h-[1px] w-8 bg-gray-900 dark:bg-white" />
+              <span className="text-sm font-bold tracking-[0.2em] uppercase text-gray-900 dark:text-white">
+                Credentials
+              </span>
+            </div>
+            <h2 className="text-4xl md:text-5xl font-bold tracking-tighter text-gray-900 dark:text-white mb-6">
               Certifications & Honors
-            </h1>
-            <p className="text-gray-400 mt-3 text-base md:text-lg max-w-2xl mx-auto">
+            </h2>
+            <p className="text-gray-600 dark:text-gray-400 max-w-2xl font-light text-base md:text-lg">
               Verified certifications across Software Engineering, Cloud Architecture, Artificial Intelligence, and Algorithmic Problem Solving.
             </p>
           </div>
@@ -146,7 +152,7 @@ function CertificateCard({
 
             {/* Issuer overlay tag */}
             <div className="absolute bottom-4 left-4 md:bottom-6 md:left-6 bg-black/80 backdrop-blur-md px-3 py-1 rounded-lg text-xs md:text-sm text-gray-200 flex items-center gap-1.5 border border-white/10 shadow-lg">
-              <ShieldCheck className="w-4 h-4 text-teal-400" />
+              <ShieldCheck className="w-4 h-4 text-white" />
               <span>{issuer}</span>
             </div>
           </div>
@@ -157,10 +163,7 @@ function CertificateCard({
               {/* Category & Date Header */}
               <div className="flex items-center justify-between gap-3 mb-3">
                 <div className="flex items-center gap-2">
-                  <div
-                    className="w-2.5 h-2.5 rounded-full"
-                    style={{ backgroundColor: color }}
-                  />
+                  <div className="w-2 h-2 rounded-full bg-white" />
                   <span className="text-xs md:text-sm font-semibold uppercase tracking-wider text-gray-400">
                     {category}
                   </span>
@@ -198,17 +201,11 @@ function CertificateCard({
                 href={pdfUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl font-medium text-sm transition-all duration-300 group shadow-lg"
-                style={{
-                  backgroundColor: `${color}20`,
-                  borderColor: `${color}60`,
-                  borderWidth: "1px",
-                  color: "#fff",
-                }}
+                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl font-medium text-sm transition-all duration-300 group shadow-lg bg-white text-black hover:bg-gray-200 border border-white"
                 whileHover={{ scale: 1.03 }}
                 whileTap={{ scale: 0.98 }}
               >
-                <ShieldCheck className="w-4 h-4 text-emerald-400" />
+                <ShieldCheck className="w-4 h-4 text-black" />
                 <span>
                   {pdfUrl.includes("oracle.com")
                     ? "Verify Oracle Badge"

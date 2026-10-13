@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { useLocation } from 'react-router-dom';
 import { useReducedMotion } from '../3d/hooks/useReducedMotion';
@@ -6,6 +6,10 @@ import { useReducedMotion } from '../3d/hooks/useReducedMotion';
 export function PageTransition({ children }) {
   const location = useLocation();
   const prefersReducedMotion = useReducedMotion();
+
+  useEffect(() => {
+    window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+  }, [location.pathname]);
 
   // If reduced motion is on, don't animate opacity/y, just render children immediately
   if (prefersReducedMotion) {
