@@ -1,3 +1,5 @@
+'use client';
+
 import React, { Suspense, useState, useEffect } from 'react';
 import { Canvas } from '@react-three/fiber';
 import { QualityManager } from './QualityManager';
@@ -16,8 +18,10 @@ export function ThreeScene({
   className = ""
 }) {
   const [webGLSupported, setWebGLSupported] = useState(true);
+  const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
+    setMounted(true);
     // Basic WebGL support check
     try {
       const canvas = document.createElement('canvas');
@@ -30,7 +34,7 @@ export function ThreeScene({
     }
   }, []);
 
-  if (!webGLSupported) {
+  if (!mounted || !webGLSupported) {
     return <WebGLFallback fallbackImage={fallbackImage} />;
   }
 
@@ -40,7 +44,7 @@ export function ThreeScene({
         <Canvas
           shadows
           camera={{ position: [0, 0, 8], fov: 45 }}
-          eventSource={document.body}
+          eventSource={typeof document !== 'undefined' ? document.body : undefined}
           eventPrefix="client"
           gl={{ 
             antialias: true,

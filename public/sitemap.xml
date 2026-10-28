@@ -1,33 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://shivanshmishra.com/</loc>
+    <loc>https://shivansh-mishra.netlify.app/</loc>
     <priority>1.0</priority>
-    <changefreq>monthly</changefreq>
+    <changefreq>weekly</changefreq>
   </url>
   <url>
-    <loc>https://shivanshmishra.com/freelancer</loc>
+    <loc>https://shivansh-mishra.netlify.app/developer</loc>
     <priority>0.9</priority>
     <changefreq>monthly</changefreq>
   </url>
   <url>
-    <loc>https://shivanshmishra.com/developer</loc>
+    <loc>https://shivansh-mishra.netlify.app/freelancer</loc>
     <priority>0.9</priority>
     <changefreq>monthly</changefreq>
   </url>
   <url>
-    <loc>https://shivanshmishra.com/developer/journey</loc>
+    <loc>https://shivansh-mishra.netlify.app/journey</loc>
     <priority>0.8</priority>
     <changefreq>monthly</changefreq>
   </url>
   <url>
-    <loc>https://shivanshmishra.com/developer/certifications</loc>
+    <loc>https://shivansh-mishra.netlify.app/3d-lab</loc>
     <priority>0.8</priority>
     <changefreq>monthly</changefreq>
-  </url>
-  <url>
-    <loc>https://shivanshmishra.com/contact</loc>
-    <priority>0.7</priority>
-    <changefreq>yearly</changefreq>
   </url>
 </urlset>

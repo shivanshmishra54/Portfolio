@@ -1,31 +1,12 @@
-import React, { useEffect } from 'react';
-import { motion } from 'framer-motion';
-import { useLocation } from 'react-router-dom';
-import { useReducedMotion } from '../3d/hooks/useReducedMotion';
+'use client';
 
+import React from 'react';
+
+/**
+ * PageTransition wrapper
+ * Passthrough container that avoids double-nested Framer Motion transforms
+ * while template.jsx handles route-level entrance and ScrollToTop handles resets.
+ */
 export function PageTransition({ children }) {
-  const location = useLocation();
-  const prefersReducedMotion = useReducedMotion();
-
-  useEffect(() => {
-    window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
-  }, [location.pathname]);
-
-  // If reduced motion is on, don't animate opacity/y, just render children immediately
-  if (prefersReducedMotion) {
-    return <div key={location.pathname}>{children}</div>;
-  }
-
-  return (
-    <motion.div
-      key={location.pathname}
-      initial={{ opacity: 0, y: 10 }}
-      animate={{ opacity: 1, y: 0 }}
-      exit={{ opacity: 0, y: -10 }}
-      transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
-      className="w-full h-full"
-    >
-      {children}
-    </motion.div>
-  );
+  return <div className="w-full h-full flex flex-col">{children}</div>;
 }

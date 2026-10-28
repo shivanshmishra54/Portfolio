@@ -5,8 +5,8 @@ import { useReducedMotion } from '../../components/3d/hooks/useReducedMotion';
 export function ScrollReveal({ 
   children, 
   delay = 0, 
-  yOffset = 40,
-  duration = 0.6,
+  yOffset = 24,
+  duration = 0.75,
   className = ""
 }) {
   const prefersReducedMotion = useReducedMotion();
@@ -23,8 +23,8 @@ export function ScrollReveal({
     <motion.div
       initial={{ opacity: 0, y: yOffset }}
       whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-50px" }}
-      transition={{ duration, delay, ease: "easeOut" }}
+      viewport={{ once: true, margin: "-60px" }}
+      transition={{ duration, delay, ease: [0.16, 1, 0.3, 1] }}
       className={className}
     >
       {children}

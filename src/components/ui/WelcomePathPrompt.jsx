@@ -1,5 +1,7 @@
+'use client';
+
 import React, { useState, useEffect, useRef } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useRouter } from 'next/navigation';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X, Briefcase, Code2, ArrowRight } from 'lucide-react';
 
@@ -7,7 +9,7 @@ export function WelcomePathPrompt() {
   const [isVisible, setIsVisible] = useState(false);
   const [progress, setProgress] = useState(100);
   const [isPaused, setIsPaused] = useState(false);
-  const navigate = useNavigate();
+  const router = useRouter();
 
   const autoDismissDuration = 5000; // 5 seconds
   const remainingTimeRef = useRef(autoDismissDuration);
@@ -68,7 +70,7 @@ export function WelcomePathPrompt() {
   const handleSelectPath = (path) => {
     sessionStorage.setItem('seen_path_prompt', 'true');
     setIsVisible(false);
-    navigate(path);
+    router.push(path);
   };
 
   return (

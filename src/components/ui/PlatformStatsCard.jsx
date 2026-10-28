@@ -36,24 +36,24 @@ export function PlatformStatsCard({ platform }) {
     if (stats?.status === 'success') {
       if (platform.statsProvider === 'youtube') {
         return (
-          <div className="grid grid-cols-3 gap-4 pt-4 border-t border-gray-200 dark:border-gray-800">
+          <div className="grid grid-cols-3 gap-4 pt-4 border-t border-white/[0.08]">
             <div>
-              <div className="text-xl md:text-2xl font-light text-gray-900 dark:text-white mb-1">
+              <div className="text-xl md:text-2xl font-serif text-[#f1eee8] mb-1">
                 <AnimatedNumber value={stats.videos} />
               </div>
-              <div className="text-[10px] md:text-xs font-mono uppercase tracking-widest text-gray-500">Videos</div>
+              <div className="text-[10px] md:text-xs font-mono uppercase tracking-widest text-[#aaa9a4]">Videos</div>
             </div>
             <div>
-              <div className="text-xl md:text-2xl font-light text-gray-900 dark:text-white mb-1">
+              <div className="text-xl md:text-2xl font-serif text-[#f1eee8] mb-1">
                 <AnimatedNumber value={stats.subscribers} />
               </div>
-              <div className="text-[10px] md:text-xs font-mono uppercase tracking-widest text-gray-500">Subscribers</div>
+              <div className="text-[10px] md:text-xs font-mono uppercase tracking-widest text-[#aaa9a4]">Subscribers</div>
             </div>
             <div>
-              <div className="text-xl md:text-2xl font-light text-gray-900 dark:text-white mb-1">
+              <div className="text-xl md:text-2xl font-serif text-[#f1eee8] mb-1">
                 <AnimatedNumber value={stats.views} />
               </div>
-              <div className="text-[10px] md:text-xs font-mono uppercase tracking-widest text-gray-500">Views</div>
+              <div className="text-[10px] md:text-xs font-mono uppercase tracking-widest text-[#aaa9a4]">Views</div>
             </div>
           </div>
         );
@@ -61,29 +61,29 @@ export function PlatformStatsCard({ platform }) {
 
       if (platform.statsProvider === 'leetcode') {
         return (
-          <div className="pt-4 border-t border-gray-200 dark:border-gray-800">
-            <div className="text-3xl font-light text-gray-900 dark:text-white mb-1">
+          <div className="pt-4 border-t border-white/[0.08]">
+            <div className="text-3xl font-serif text-[#f1eee8] mb-1">
               <AnimatedNumber value={stats.totalSolved} format={false} />
             </div>
-            <div className="text-xs font-mono uppercase tracking-widest text-gray-500">Problems Solved</div>
+            <div className="text-xs font-mono uppercase tracking-widest text-[#aaa9a4]">Problems Solved</div>
           </div>
         );
       }
 
       if (platform.statsProvider === 'codeforces') {
         return (
-          <div className="grid grid-cols-2 gap-4 pt-4 border-t border-gray-200 dark:border-gray-800">
+          <div className="grid grid-cols-2 gap-4 pt-4 border-t border-white/[0.08]">
             <div>
-              <div className="text-xl font-light text-gray-900 dark:text-white mb-1">
+              <div className="text-xl font-serif text-[#f1eee8] mb-1">
                 <AnimatedNumber value={stats.rating} format={false} />
               </div>
-              <div className="text-[10px] uppercase tracking-widest text-gray-500 font-mono">Rating</div>
+              <div className="text-[10px] uppercase tracking-widest text-[#aaa9a4] font-mono">Rating</div>
             </div>
             <div>
-              <div className="text-xl font-light text-gray-900 dark:text-white mb-1">
+              <div className="text-xl font-serif text-[#f1eee8] mb-1">
                 {stats.rank || 'N/A'}
               </div>
-              <div className="text-[10px] uppercase tracking-widest text-gray-500 font-mono">Rank</div>
+              <div className="text-[10px] uppercase tracking-widest text-[#aaa9a4] font-mono">Rank</div>
             </div>
           </div>
         );
@@ -91,19 +91,19 @@ export function PlatformStatsCard({ platform }) {
     }
 
     return (
-      <div className="flex flex-col pt-4 border-t border-gray-200 dark:border-gray-800">
-        <div className="text-xl font-light text-gray-900 dark:text-white mb-1">—</div>
-        <div className="text-[10px] uppercase tracking-widest text-gray-500 font-mono">Stats unavailable right now</div>
+      <div className="flex flex-col pt-4 border-t border-white/[0.08]">
+        <div className="text-xl font-serif text-[#f1eee8] mb-1">—</div>
+        <div className="text-[10px] uppercase tracking-widest text-[#aaa9a4] font-mono">Stats unavailable right now</div>
       </div>
     );
   };
 
   return (
-    <div className="group flex flex-col p-6 bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 hover:border-gray-300 dark:hover:border-gray-700 transition-colors">
+    <div className="group flex flex-col p-6 rounded-2xl bg-[#0c0c0c] border border-white/[0.08] hover:border-white/[0.22] transition-colors">
       <div className="flex justify-between items-start mb-6">
         <div>
-          <h3 className="text-lg font-semibold text-gray-900 dark:text-white">{platform.label}</h3>
-          <p className="text-sm text-gray-500 dark:text-gray-400">@{platform.handle}</p>
+          <h3 className="text-lg font-serif font-normal text-[#f1eee8]">{platform.label}</h3>
+          <p className="text-xs font-mono text-[#aaa9a4]">@{platform.handle}</p>
         </div>
       </div>
       
@@ -113,9 +113,10 @@ export function PlatformStatsCard({ platform }) {
         href={platform.url}
         target="_blank"
         rel="noopener noreferrer"
-        className="mt-6 flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-gray-900 dark:text-white hover:opacity-70 transition-opacity"
+        className="mt-6 inline-flex items-center gap-1.5 text-xs font-mono uppercase tracking-wider text-[#aaa9a4] hover:text-[#f1eee8] transition-colors"
       >
-        Visit Profile <ExternalLink className="w-4 h-4" />
+        <span>Visit Profile</span>
+        <ExternalLink className="w-3 h-3" />
       </a>
     </div>
   );

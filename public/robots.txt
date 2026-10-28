@@ -1,4 +1,5 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://shivanshmishra.com/sitemap.xml
+Sitemap: https://shivansh-mishra.netlify.app/sitemap.xml
+Host: https://shivansh-mishra.netlify.app

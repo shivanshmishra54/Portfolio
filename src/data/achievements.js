@@ -41,47 +41,52 @@ export const achievements = [
  * Dynamically computes credibility counts based on current portfolio dataset
  */
 export function getCredibilityMetrics() {
-  const hackathonsCount = experience.filter(item => item.type === 'hackathon').length;
-  const projectsCount = projects.length;
-  const certsCount = certificates.length;
-
-  const leetcodeAchievement = achievements.find(a => a.category === 'competitive' && a.id?.includes('leetcode'));
-  const leetcodeNum = leetcodeAchievement 
-    ? (leetcodeAchievement.title.match(/\d+/) ? parseInt(leetcodeAchievement.title.match(/\d+/)[0], 10) : 200)
-    : 200;
+  const hackathonsCount = 6;
+  const projectsCount = 6;
+  const prsCount = 10;
+  const leetcodeNum = 200;
+  const clientsCount = 1;
 
   return [
-    {
-      id: "projects",
-      label: "Projects Completed",
-      value: `${projectsCount}+`,
-      rawCount: projectsCount,
-      hasPlus: true,
-      description: "Full-Stack & Systems"
-    },
-    {
-      id: "certifications",
-      label: "Certifications",
-      value: `${certsCount}`,
-      rawCount: certsCount,
-      hasPlus: false,
-      description: "Oracle, AWS, HackerRank & JPMorgan"
-    },
     {
       id: "hackathons",
       label: "Hackathons",
       value: `${hackathonsCount}`,
       rawCount: hackathonsCount,
       hasPlus: false,
-      description: "National & University Competitions"
+      description: "ET GenAI Semi-Finalist & Adobe Top 200"
     },
     {
-      id: "leetcode",
-      label: "LeetCode Solved",
+      id: "projects",
+      label: "Production Projects",
+      value: `${projectsCount}+`,
+      rawCount: projectsCount,
+      hasPlus: true,
+      description: "Distributed Systems & Full-Stack"
+    },
+    {
+      id: "prs",
+      label: "PRs Submitted & Merged",
+      value: `${prsCount}+`,
+      rawCount: prsCount,
+      hasPlus: true,
+      description: "Spring Boot Admin & Open Source"
+    },
+    {
+      id: "dsa",
+      label: "DSA Problems Solved",
       value: `${leetcodeNum}+`,
       rawCount: leetcodeNum,
       hasPlus: true,
-      description: "Algorithmic Challenges"
+      description: "LeetCode & Competitive Platforms"
+    },
+    {
+      id: "clients",
+      label: "Freelance Client",
+      value: `${clientsCount}`,
+      rawCount: clientsCount,
+      hasPlus: false,
+      description: "Production Solutions Delivered"
     }
   ];
 }
