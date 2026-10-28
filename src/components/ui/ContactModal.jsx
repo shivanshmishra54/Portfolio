@@ -1,11 +1,13 @@
+'use client';
+
 import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X, Send, CheckCircle2, ArrowRight } from 'lucide-react';
 
 const InputField = ({ label, name, type = 'text', required = false, placeholder, value, onChange }) => (
   <div className="mb-4">
-    <label className="block text-xs font-bold tracking-widest uppercase text-gray-500 mb-2">
-      {label} {required && <span className="text-red-500">*</span>}
+    <label className="block text-[10px] font-mono tracking-widest uppercase text-white/50 mb-1.5">
+      {label} {required && <span className="text-[#f97316]">*</span>}
     </label>
     <input
       type={type}
@@ -14,15 +16,15 @@ const InputField = ({ label, name, type = 'text', required = false, placeholder,
       placeholder={placeholder}
       onChange={onChange}
       value={value || ''}
-      className="w-full bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-800 text-gray-900 dark:text-white px-4 py-3 focus:outline-none focus:border-gray-400 dark:focus:border-gray-600 transition-colors"
+      className="w-full bg-white/[0.03] border border-white/[0.08] text-[#f1eee8] placeholder-white/20 px-4 py-2.5 rounded-xl focus:outline-none focus:border-white/30 focus:bg-white/[0.05] transition-colors text-sm font-sans"
     />
   </div>
 );
 
 const TextAreaField = ({ label, name, required = false, placeholder, value, onChange }) => (
   <div className="mb-4">
-    <label className="block text-xs font-bold tracking-widest uppercase text-gray-500 mb-2">
-      {label} {required && <span className="text-red-500">*</span>}
+    <label className="block text-[10px] font-mono tracking-widest uppercase text-white/50 mb-1.5">
+      {label} {required && <span className="text-[#f97316]">*</span>}
     </label>
     <textarea
       name={name}
@@ -31,7 +33,7 @@ const TextAreaField = ({ label, name, required = false, placeholder, value, onCh
       rows={4}
       onChange={onChange}
       value={value || ''}
-      className="w-full bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-800 text-gray-900 dark:text-white px-4 py-3 focus:outline-none focus:border-gray-400 dark:focus:border-gray-600 transition-colors resize-none"
+      className="w-full bg-white/[0.03] border border-white/[0.08] text-[#f1eee8] placeholder-white/20 px-4 py-2.5 rounded-xl focus:outline-none focus:border-white/30 focus:bg-white/[0.05] transition-colors resize-none text-sm font-sans"
     />
   </div>
 );
@@ -84,7 +86,12 @@ export function ContactModal({ isOpen, onClose, context, onSuccess }) {
     setIsSubmitting(true);
     setSubmitStatus(null);
 
-    const apiKey = import.meta.env.VITE_WEB3FORMS_KEY || import.meta.env.VITE_WEB3FORMS_ACCESS_KEY;
+    const apiKey = 
+      process.env.NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY || 
+      process.env.NEXT_PUBLIC_WEB3FORMS_KEY ||
+      (typeof process !== 'undefined' && process.env?.VITE_WEB3FORMS_ACCESS_KEY) ||
+      (typeof process !== 'undefined' && process.env?.VITE_WEB3FORMS_KEY) ||
+      '319cf23f-b091-4f65-8a31-920030bdde78';
     
     if (!apiKey) {
       console.error('Web3Forms API key is missing');
@@ -94,32 +101,35 @@ export function ContactModal({ isOpen, onClose, context, onSuccess }) {
     }
 
     try {
-      const payload = new FormData();
-      payload.append('access_key', apiKey);
-      payload.append('subject', `Portfolio Inquiry (${activeContext.toUpperCase()}) from ${formData.name}`);
-      payload.append('from_name', formData.name);
-      
-      Object.entries(formData).forEach(([key, value]) => {
-        if (value) {
-          payload.append(key, value);
-        }
-      });
+      const subjectTag = (activeContext || 'general').toUpperCase();
+      const payload = {
+        access_key: apiKey,
+        subject: `Portfolio Inquiry (${subjectTag}) from ${formData.name || 'Visitor'}`,
+        from_name: formData.name || 'Portfolio Visitor',
+        ...formData,
+      };
 
       const response = await fetch('https://api.web3forms.com/submit', {
         method: 'POST',
-        body: payload
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json',
+        },
+        body: JSON.stringify(payload),
       });
 
-      const data = await response.json();
-      if (data.success) {
+      const data = await response.json().catch(() => null);
+      if (response.ok && data?.success) {
         setSubmitStatus(null);
         setFormData({});
         onClose();
         if (onSuccess) onSuccess();
       } else {
+        console.error('Web3Forms submission failed:', data?.message || response.statusText);
         setSubmitStatus('error');
       }
     } catch (error) {
+      console.error('Error submitting form:', error);
       setSubmitStatus('error');
     } finally {
       setIsSubmitting(false);
@@ -134,26 +144,26 @@ export function ContactModal({ isOpen, onClose, context, onSuccess }) {
         <InputField label="Company / Organization" name="company" value={formData.company} onChange={handleChange} />
         
         <div className="mb-4">
-          <label className="block text-xs font-bold tracking-widest uppercase text-gray-500 mb-2">Project Type <span className="text-red-500">*</span></label>
+          <label className="block text-[10px] font-mono tracking-widest uppercase text-white/50 mb-1.5">Project Type <span className="text-[#f97316]">*</span></label>
           <select 
             name="projectType" 
             required 
             onChange={handleChange}
             value={formData.projectType || ''}
-            className="w-full bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-800 text-gray-900 dark:text-white px-4 py-3 focus:outline-none focus:border-gray-400 dark:focus:border-gray-600 appearance-none"
+            className="w-full bg-[#080808] border border-white/[0.08] text-[#f1eee8] px-4 py-2.5 rounded-xl focus:outline-none focus:border-white/30 transition-colors text-sm font-sans"
           >
-            <option value="" disabled>Select project type</option>
-            <option value="Personal Portfolio">Personal Portfolio</option>
-            <option value="Business Website">Business Website</option>
-            <option value="Web Application">Web Application</option>
-            <option value="SaaS Application">SaaS Application</option>
-            <option value="Dashboard / Admin Panel">Dashboard / Admin Panel</option>
-            <option value="E-commerce Website">E-commerce Website</option>
-            <option value="AI Application">AI Application</option>
-            <option value="API / Backend Solution">API / Backend Solution</option>
-            <option value="Automation / Integration">Automation / Integration</option>
-            <option value="Bug Fixing / Existing Project">Bug Fixing / Existing Project</option>
-            <option value="Other">Other</option>
+            <option value="" disabled className="bg-[#080808]">Select project type</option>
+            <option value="Personal Portfolio" className="bg-[#080808]">Personal Portfolio</option>
+            <option value="Business Website" className="bg-[#080808]">Business Website</option>
+            <option value="Web Application" className="bg-[#080808]">Web Application</option>
+            <option value="SaaS Application" className="bg-[#080808]">SaaS Application</option>
+            <option value="Dashboard / Admin Panel" className="bg-[#080808]">Dashboard / Admin Panel</option>
+            <option value="E-commerce Website" className="bg-[#080808]">E-commerce Website</option>
+            <option value="AI Application" className="bg-[#080808]">AI Application</option>
+            <option value="API / Backend Solution" className="bg-[#080808]">API / Backend Solution</option>
+            <option value="Automation / Integration" className="bg-[#080808]">Automation / Integration</option>
+            <option value="Bug Fixing / Existing Project" className="bg-[#080808]">Bug Fixing / Existing Project</option>
+            <option value="Other" className="bg-[#080808]">Other</option>
           </select>
         </div>
 
@@ -170,9 +180,9 @@ export function ContactModal({ isOpen, onClose, context, onSuccess }) {
       <button 
         type="submit" 
         disabled={isSubmitting}
-        className="w-full mt-4 bg-gray-900 dark:bg-white text-white dark:text-black py-4 font-bold tracking-widest uppercase text-sm hover:opacity-90 transition-opacity disabled:opacity-50 flex items-center justify-center gap-2 shrink-0"
+        className="w-full mt-4 bg-[#f1eee8] text-[#030303] py-3.5 rounded-full font-medium tracking-wider uppercase text-xs hover:bg-white transition-all disabled:opacity-50 flex items-center justify-center gap-2 shrink-0 shadow-lg"
       >
-        {isSubmitting ? 'Sending...' : 'Send Project Inquiry'} <Send size={16} />
+        {isSubmitting ? 'Sending...' : 'Send Project Inquiry'} <Send size={14} />
       </button>
     </form>
   );
@@ -185,22 +195,22 @@ export function ContactModal({ isOpen, onClose, context, onSuccess }) {
         <InputField label="Company / Organization" name="company" required value={formData.company} onChange={handleChange} />
         
         <div className="mb-4">
-          <label className="block text-xs font-bold tracking-widest uppercase text-gray-500 mb-2">Purpose <span className="text-red-500">*</span></label>
+          <label className="block text-[10px] font-mono tracking-widest uppercase text-white/50 mb-1.5">Purpose <span className="text-[#f97316]">*</span></label>
           <select 
             name="purpose" 
             required 
             onChange={handleChange}
             value={formData.purpose || ''}
-            className="w-full bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-800 text-gray-900 dark:text-white px-4 py-3 focus:outline-none focus:border-gray-400 dark:focus:border-gray-600 appearance-none"
+            className="w-full bg-[#080808] border border-white/[0.08] text-[#f1eee8] px-4 py-2.5 rounded-xl focus:outline-none focus:border-white/30 transition-colors text-sm font-sans"
           >
-            <option value="" disabled>Select an option...</option>
-            <option value="Full-Time Opportunity">Full-Time Opportunity</option>
-            <option value="Internship Opportunity">Internship Opportunity</option>
-            <option value="Freelance / Contract Discussion">Freelance / Contract Discussion</option>
-            <option value="Technical Discussion">Technical Discussion</option>
-            <option value="Collaboration">Collaboration</option>
-            <option value="Open Source">Open Source</option>
-            <option value="Other">Other</option>
+            <option value="" disabled className="bg-[#080808]">Select an option...</option>
+            <option value="Full-Time Opportunity" className="bg-[#080808]">Full-Time Opportunity</option>
+            <option value="Internship Opportunity" className="bg-[#080808]">Internship Opportunity</option>
+            <option value="Freelance / Contract Discussion" className="bg-[#080808]">Freelance / Contract Discussion</option>
+            <option value="Technical Discussion" className="bg-[#080808]">Technical Discussion</option>
+            <option value="Collaboration" className="bg-[#080808]">Collaboration</option>
+            <option value="Open Source" className="bg-[#080808]">Open Source</option>
+            <option value="Other" className="bg-[#080808]">Other</option>
           </select>
         </div>
 
@@ -213,9 +223,9 @@ export function ContactModal({ isOpen, onClose, context, onSuccess }) {
       <button 
         type="submit" 
         disabled={isSubmitting}
-        className="w-full mt-4 bg-gray-900 dark:bg-white text-white dark:text-black py-4 font-bold tracking-widest uppercase text-sm hover:opacity-90 transition-opacity disabled:opacity-50 flex items-center justify-center gap-2 shrink-0"
+        className="w-full mt-4 bg-[#f1eee8] text-[#030303] py-3.5 rounded-full font-medium tracking-wider uppercase text-xs hover:bg-white transition-all disabled:opacity-50 flex items-center justify-center gap-2 shrink-0 shadow-lg"
       >
-        {isSubmitting ? 'Sending...' : 'Send Message'} <Send size={16} />
+        {isSubmitting ? 'Sending...' : 'Send Message'} <Send size={14} />
       </button>
     </form>
   );
@@ -224,29 +234,33 @@ export function ContactModal({ isOpen, onClose, context, onSuccess }) {
     <div className="mt-8 space-y-4">
       <button 
         onClick={() => setActiveContext('freelancer')}
-        className="w-full text-left p-6 border border-gray-200 dark:border-gray-800 hover:border-gray-900 dark:hover:border-white transition-colors group flex items-center justify-between"
+        className="w-full text-left p-6 rounded-2xl bg-[#080808] border border-white/[0.08] hover:border-white/[0.2] hover:bg-[#101010] transition-all group flex items-center justify-between"
       >
         <div>
-          <h4 className="text-lg font-bold text-gray-900 dark:text-white">Work on a Project</h4>
-          <p className="text-sm text-gray-500 mt-1">Hire me to build your next web application.</p>
+          <h4 className="text-lg font-serif text-[#f1eee8] group-hover:text-white transition-colors">Work on a Project</h4>
+          <p className="text-sm text-[#aaa9a4] font-light mt-1">Hire me for full-stack engineering, API architecture, or custom web apps.</p>
         </div>
-        <ArrowRight className="text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white transition-colors" />
+        <div className="w-8 h-8 rounded-full bg-white/[0.04] border border-white/[0.08] flex items-center justify-center text-[#aaa9a4] group-hover:text-white transition-all">
+          <ArrowRight size={14} />
+        </div>
       </button>
       
       <button 
         onClick={() => setActiveContext('developer')}
-        className="w-full text-left p-6 border border-gray-200 dark:border-gray-800 hover:border-gray-900 dark:hover:border-white transition-colors group flex items-center justify-between"
+        className="w-full text-left p-6 rounded-2xl bg-[#080808] border border-white/[0.08] hover:border-white/[0.2] hover:bg-[#101010] transition-all group flex items-center justify-between"
       >
         <div>
-          <h4 className="text-lg font-bold text-gray-900 dark:text-white">Career / Engineering</h4>
-          <p className="text-sm text-gray-500 mt-1">Recruitment, internships, or technical collaboration.</p>
+          <h4 className="text-lg font-serif text-[#f1eee8] group-hover:text-white transition-colors">Career / Engineering</h4>
+          <p className="text-sm text-[#aaa9a4] font-light mt-1">Recruitment, full-time roles, internships, or open-source collaboration.</p>
         </div>
-        <ArrowRight className="text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white transition-colors" />
+        <div className="w-8 h-8 rounded-full bg-white/[0.04] border border-white/[0.08] flex items-center justify-center text-[#aaa9a4] group-hover:text-white transition-all">
+          <ArrowRight size={14} />
+        </div>
       </button>
 
-      <div className="pt-6 mt-6 border-t border-gray-100 dark:border-gray-800">
-        <p className="text-xs text-gray-500 uppercase tracking-widest font-bold mb-4">Or use direct email</p>
-        <a href="mailto:shivansh54mishra@gmail.com" className="text-gray-900 dark:text-white hover:underline underline-offset-4">shivansh54mishra@gmail.com</a>
+      <div className="pt-6 mt-6 border-t border-white/[0.06]">
+        <p className="text-[10px] text-white/50 uppercase tracking-widest font-mono mb-2">Direct Inquiry</p>
+        <a href="mailto:shivansh54mishra@gmail.com" className="text-sm font-mono text-[#f1eee8] hover:underline underline-offset-4">shivansh54mishra@gmail.com</a>
       </div>
     </div>
   );
@@ -272,7 +286,7 @@ export function ContactModal({ isOpen, onClose, context, onSuccess }) {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             onClick={onClose}
-            className="fixed inset-0 bg-black/60 backdrop-blur-sm z-50"
+            className="fixed inset-0 bg-black/80 backdrop-blur-md z-50"
           />
 
           {/* Modal Container */}
@@ -283,28 +297,28 @@ export function ContactModal({ isOpen, onClose, context, onSuccess }) {
               animate={{ opacity: 1, y: 0, scale: 1 }}
               exit={{ opacity: 0, y: 20, scale: 0.95 }}
               transition={{ duration: 0.3 }}
-              className="w-full max-w-lg bg-white dark:bg-black border border-gray-200 dark:border-gray-800 shadow-2xl relative flex flex-col pointer-events-auto max-h-[90vh]"
+              className="w-full max-w-lg bg-[#0c0c0c] border border-white/[0.1] rounded-3xl shadow-2xl relative flex flex-col pointer-events-auto max-h-[90vh]"
             >
               <button 
                 onClick={onClose}
-                className="absolute top-4 right-4 p-2 text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors z-10 bg-white/80 dark:bg-black/80 backdrop-blur-md rounded-full"
+                className="absolute top-5 right-5 p-2 text-[#aaa9a4] hover:text-white transition-colors z-10 bg-white/[0.04] border border-white/[0.08] backdrop-blur-md rounded-full"
                 aria-label="Close dialog"
               >
-                <X size={20} />
+                <X size={16} />
               </button>
 
               <div className="p-6 md:p-8 flex flex-col h-full overflow-hidden">
                 {title && (
                   <div className="shrink-0">
-                    <h2 className="text-2xl font-light text-gray-900 dark:text-white mb-2 pr-8">{title}</h2>
-                    {subtitle && <p className="text-sm text-gray-500 dark:text-gray-400">{subtitle}</p>}
+                    <h2 className="text-2xl md:text-3xl font-serif text-[#f1eee8] mb-1.5 pr-8">{title}</h2>
+                    {subtitle && <p className="text-xs md:text-sm text-[#aaa9a4] font-light">{subtitle}</p>}
                   </div>
                 )}
                 
                 <div className="flex-grow overflow-hidden flex flex-col">
                   {submitStatus === 'error' && (
-                    <div className="mt-4 p-4 bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-900 text-red-600 dark:text-red-400 text-sm">
-                      Unable to send your message. Please try again.
+                    <div className="mt-4 p-4 rounded-xl bg-red-900/20 border border-red-500/30 text-red-300 text-xs font-mono">
+                      Unable to send your message. Please email directly to shivansh54mishra@gmail.com.
                     </div>
                   )}
 
