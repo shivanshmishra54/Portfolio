@@ -1,0 +1,96 @@
+// SCSS Mixins for Shivansh Mishra Portfolio
+@use 'variables' as *;
+
+// Breakpoint Mixins
+@mixin sm {
+  @media (min-width: #{$bp-sm}) {
+    @content;
+  }
+}
+
+@mixin md {
+  @media (min-width: #{$bp-md}) {
+    @content;
+  }
+}
+
+@mixin lg {
+  @media (min-width: #{$bp-lg}) {
+    @content;
+  }
+}
+
+@mixin xl {
+  @media (min-width: #{$bp-xl}) {
+    @content;
+  }
+}
+
+@mixin 2xl {
+  @media (min-width: #{$bp-2xl}) {
+    @content;
+  }
+}
+
+// Typography Mixins
+@mixin font-serif {
+  font-family: $font-serif;
+  letter-spacing: -0.02em;
+}
+
+@mixin font-sans {
+  font-family: $font-sans;
+}
+
+@mixin font-mono {
+  font-family: $font-mono;
+}
+
+// Editorial Visual Mixins
+@mixin subtle-border {
+  border: 1px solid $line-subtle;
+}
+
+@mixin card-surface {
+  background-color: $card-dark;
+  border: 1px solid $line-subtle;
+  border-radius: $radius-lg;
+  transition: border-color $duration-standard $ease-editorial, transform $duration-standard $ease-editorial;
+
+  &:hover {
+    border-color: $border-hover;
+  }
+}
+
+@mixin editorial-pill {
+  border-radius: $radius-pill;
+  border: 1px solid $line-subtle;
+  background-color: rgba($surface-dark, 0.85);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+}
+
+@mixin editorial-header-inset {
+  border-radius: $radius-header-sm;
+  border: 1px solid $line-subtle;
+  background-color: rgba($surface-dark, 0.85);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.7);
+
+  @include sm {
+    border-radius: $radius-header;
+  }
+}
+
+@mixin editorial-kicker {
+  font-family: $font-mono;
+  font-size: $text-label-mono;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  color: $muted-light;
+}
+
+@mixin orange-glow {
+  box-shadow: 0 0 14px $orange-glow;
+}

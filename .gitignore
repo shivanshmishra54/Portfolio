@@ -10,6 +10,7 @@ lerna-debug.log*
 node_modules
 dist
 dist-ssr
+.next
 *.local
 .env
 .env.*
@@ -27,3 +28,6 @@ dist-ssr
 # Media Assets / References
 avatar-references/
 public/avatar-references/
+
+# Local Netlify folder
+.netlify
