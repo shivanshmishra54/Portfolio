@@ -192,7 +192,7 @@ function SkillPin({ skill, globeRef, distanceFactor = 12 }) {
         >
           {/* Badge Container: sleek, compact typography */}
           <div className="flex items-center gap-1 px-1.5 py-0.5 rounded-full border border-gray-300/50 dark:border-neutral-700/70 bg-white/85 dark:bg-black/90 backdrop-blur-sm text-gray-800 dark:text-neutral-200 shadow-md text-[8px] sm:text-[9px] font-mono tracking-wider uppercase whitespace-nowrap">
-            <span className="h-1 w-1 rounded-full bg-emerald-500 animate-pulse"></span>
+            <span className="h-1 w-1 rounded-full bg-[#f97316] shadow-[0_0_4px_rgba(249,115,22,0.6)] animate-pulse"></span>
             <span className="font-semibold">{skill.name}</span>
           </div>
         </div>
