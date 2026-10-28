@@ -4,7 +4,8 @@ export const profile = {
   email: "shivansh54mishra@gmail.com",
   phone: "+91 9820689183",
   location: "Mumbai, Maharashtra, India",
-  photo: "/hero.webp",
+  photo: "/hero-editorial.webp",
+  originalPhoto: "/hero.webp",
   resume: "/Shivansh_Mishra_resume_f1.pdf",
   currentFocus: "Currently pursuing B.Tech in Information Technology at K.J. Somaiya Institute of Technology",
   currentlyDoing: [

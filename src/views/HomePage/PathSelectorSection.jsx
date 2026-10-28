@@ -1,12 +1,14 @@
+'use client';
+
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { useNavigate } from 'react-router-dom';
+import { useRouter } from 'next/navigation';
 import { ArrowRight, Code, Briefcase, Loader2 } from 'lucide-react';
 import { useAvatarState, AvatarState } from '../../components/3d/AvatarContext';
 
 export function PathSelectorSection() {
   const { setAvatarState } = useAvatarState();
-  const navigate = useNavigate();
+  const router = useRouter();
   const [transitioningTo, setTransitioningTo] = useState(null);
 
   const handlePathSelect = (path, state) => {
@@ -21,7 +23,7 @@ export function PathSelectorSection() {
 
     // Wait for cinematic effect then navigate
     setTimeout(() => {
-      navigate(`/${path}`);
+      router.push(`/${path}`);
     }, 1500);
   };
 

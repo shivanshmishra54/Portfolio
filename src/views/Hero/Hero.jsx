@@ -3,7 +3,7 @@ import Prism from "prismjs";
 import "prismjs/components/prism-javascript";
 import "@/assets/css/tomorrow.css";
 import Meteors from "@/components/ui/meteors";
-import PortfolioPage from "@/pages/About/About";
+import PortfolioPage from "@/views/About/About";
 import SparklesText from "@/components/ui/sparkles-text";
 import { FlipWords } from "@/components/ui/flip-words";
 import { Link } from "react-router-dom";

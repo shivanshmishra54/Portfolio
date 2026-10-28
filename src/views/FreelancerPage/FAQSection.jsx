@@ -1,5 +1,8 @@
+'use client';
+
 import React from 'react';
 import { motion } from 'framer-motion';
+import { AnimeTextReveal } from '../../components/ui/AnimeTextReveal';
 
 const faqs = [
   {
@@ -22,18 +25,22 @@ const faqs = [
 
 export function FAQSection() {
   return (
-    <section id="faq" className="py-24 md:py-32 bg-gray-50 dark:bg-gray-900 border-t border-gray-200 dark:border-gray-800">
+    <section id="faq" className="py-24 md:py-32 bg-[#030303] border-t border-white/[0.06]">
       <div className="container mx-auto px-6 max-w-4xl">
         <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-5xl font-bold tracking-tight text-gray-900 dark:text-white uppercase mb-6">
-            Frequently Asked Questions
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/[0.03] border border-white/[0.08] mb-4">
+            <span className="w-1.5 h-1.5 rounded-full bg-[#f97316] animate-pulse shadow-[0_0_8px_rgba(249,115,22,0.6)]" />
+            <p className="text-[11px] font-mono tracking-[0.25em] text-[#f97316]/90 uppercase">08 / ANSWERS</p>
+          </div>
+          <h2 className="text-3xl md:text-5xl lg:text-6xl font-serif tracking-tight text-[#f1eee8] mb-4">
+            <AnimeTextReveal trigger="visible">Frequently Asked Questions</AnimeTextReveal>
           </h2>
-          <p className="text-gray-500 dark:text-gray-400 max-w-2xl mx-auto">
-            Common questions about my freelance services, process, and technical capabilities.
+          <p className="text-base md:text-lg text-[#aaa9a4] max-w-2xl mx-auto font-light leading-relaxed">
+            Direct clarity regarding freelance scope, collaboration workflows, turnaround times, and tech architecture.
           </p>
         </div>
 
-        <div className="space-y-8">
+        <div className="space-y-4">
           {faqs.map((faq, index) => (
             <motion.div 
               key={index}
@@ -41,10 +48,10 @@ export function FAQSection() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: index * 0.1 }}
-              className="bg-white dark:bg-black p-8 border border-gray-100 dark:border-gray-800"
+              className="bg-[#0c0c0c] p-6 md:p-8 rounded-2xl border border-white/[0.08] hover:border-white/[0.18] transition-colors"
             >
-              <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-4">{faq.question}</h3>
-              <p className="text-gray-600 dark:text-gray-400 leading-relaxed">{faq.answer}</p>
+              <h3 className="text-lg md:text-xl font-serif text-[#f1eee8] mb-3">{faq.question}</h3>
+              <p className="text-sm md:text-base text-[#aaa9a4] leading-relaxed font-light">{faq.answer}</p>
             </motion.div>
           ))}
         </div>

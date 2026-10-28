@@ -48,7 +48,7 @@ export function ProjectVisualBanner({
           <span>{category}</span>
         </div>
         <div className="flex items-center gap-1.5 text-[11px] font-mono tracking-widest uppercase text-gray-400 dark:text-neutral-500">
-          <span className="w-1.5 h-1.5 rounded-full bg-emerald-500/80 animate-pulse" />
+          <span className="w-1.5 h-1.5 rounded-full bg-[#f97316] shadow-[0_0_6px_rgba(249,115,22,0.6)] animate-pulse" />
           <span>CODEBASE READY</span>
         </div>
       </div>

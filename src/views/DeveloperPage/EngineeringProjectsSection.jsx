@@ -1,28 +1,29 @@
+'use client';
+
 import React from 'react';
 import { getDeveloperProjects } from '../../data/projects';
 import { ArrowUpRight, Github, Database, Server, Workflow } from 'lucide-react';
 import { ProjectVisualBanner } from '../../components/ui/ProjectVisualBanner';
 import { CircularCardDeck } from '../../components/ui/CircularCardDeck';
+import { AnimeTextReveal } from '../../components/ui/AnimeTextReveal';
 
 export function EngineeringProjectsSection() {
   const projects = getDeveloperProjects();
 
   return (
-    <section className="relative bg-gray-50 dark:bg-black transition-colors duration-300 py-24 overflow-hidden">
+    <section className="relative bg-[#030303] text-[#f1eee8] transition-colors duration-300 py-24 md:py-32 overflow-hidden border-b border-white/[0.08]">
       <div className="container mx-auto px-6 max-w-7xl">
         {/* Section Header */}
         <div className="flex flex-col mb-10">
-          <div className="flex items-center gap-4 mb-4">
-            <span className="h-[1px] w-8 bg-gray-900 dark:bg-white" />
-            <span className="text-sm font-bold tracking-[0.2em] uppercase text-gray-900 dark:text-white">
-              Systems & Architecture
-            </span>
+          <div className="flex items-center gap-2.5 mb-3 text-xs font-mono tracking-[0.2em] uppercase text-[#aaa9a4]">
+            <span className="w-2 h-2 rounded-full bg-[#f97316] animate-pulse shadow-[0_0_8px_rgba(249,115,22,0.6)]" />
+            <span className="text-[#f97316]/90 font-medium">04 / SYSTEMS &amp; ARCHITECTURE</span>
           </div>
-          <h2 className="text-4xl md:text-5xl font-bold tracking-tighter text-gray-900 dark:text-white mb-6">
-            Selected Systems
+          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-serif font-normal tracking-tight text-[#f1eee8] leading-[1.08] mb-4">
+            <AnimeTextReveal trigger="visible">Selected Systems</AnimeTextReveal>
           </h2>
-          <p className="text-gray-600 dark:text-gray-400 max-w-2xl font-light text-base md:text-lg">
-            Swipe right-to-left to explore scalable backend architectures, distributed services, and full-stack ecosystems.
+          <p className="text-[#aaa9a4] max-w-2xl font-light text-base md:text-lg leading-relaxed">
+            Swipe right-to-left to explore scalable backend architectures, distributed services, and full-stack engineering implementations.
           </p>
         </div>
 
@@ -31,15 +32,15 @@ export function EngineeringProjectsSection() {
           items={projects}
           aspectClass="min-h-[580px] md:min-h-[620px]"
           renderCard={(project, index, { total }) => (
-            <div className="w-full rounded-2xl border border-gray-200 dark:border-neutral-800 bg-white dark:bg-[#0c0c0c] shadow-2xl overflow-hidden transition-all duration-300">
+            <div className="w-full rounded-2xl border border-white/[0.08] bg-[#0c0c0c] shadow-2xl overflow-hidden transition-all duration-300">
               {/* Card Header Bar */}
-              <div className="flex items-center justify-between px-6 py-4 border-b border-gray-100 dark:border-neutral-900 bg-gray-50/70 dark:bg-[#111111]/70">
+              <div className="flex items-center justify-between px-6 py-4 border-b border-white/[0.08] bg-[#080808]/90">
                 <div className="flex items-center gap-3">
-                  <span className="text-xs font-mono font-bold uppercase tracking-widest text-gray-400 dark:text-neutral-500">
+                  <span className="text-xs font-mono font-bold uppercase tracking-widest text-[#aaa9a4]">
                     0{index + 1} / 0{total}
                   </span>
-                  <span className="h-3 w-[1px] bg-gray-300 dark:bg-neutral-800" />
-                  <span className="px-2.5 py-0.5 text-xs font-mono font-semibold uppercase tracking-wider bg-gray-200/80 dark:bg-neutral-800 text-gray-800 dark:text-neutral-200 rounded">
+                  <span className="h-3 w-[1px] bg-white/[0.12]" />
+                  <span className="px-2.5 py-0.5 text-xs font-mono font-semibold uppercase tracking-wider bg-white/[0.06] text-[#f1eee8] rounded-full border border-white/[0.08]">
                     {project.category}
                   </span>
                 </div>
@@ -49,7 +50,7 @@ export function EngineeringProjectsSection() {
                     href={project.github}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-1.5 px-3 py-1 rounded-md text-xs font-mono uppercase tracking-wider bg-gray-900 text-white dark:bg-white dark:text-black font-semibold hover:opacity-85 transition-opacity"
+                    className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-mono uppercase tracking-wider bg-[#f1eee8] text-[#030303] font-semibold hover:bg-white transition-colors"
                     onClick={(e) => e.stopPropagation()}
                   >
                     <Github size={13} />
@@ -72,10 +73,10 @@ export function EngineeringProjectsSection() {
                   />
 
                   <div>
-                    <h3 className="text-xl md:text-2xl font-bold tracking-tight text-gray-900 dark:text-white mb-2">
+                    <h3 className="text-xl md:text-2xl font-serif font-normal tracking-tight text-[#f1eee8] mb-2">
                       {project.developer.title}
                     </h3>
-                    <p className="text-sm text-gray-600 dark:text-gray-400 leading-relaxed font-light mb-4">
+                    <p className="text-sm text-[#aaa9a4] leading-relaxed font-light mb-4">
                       {project.developer.overview}
                     </p>
 
@@ -84,7 +85,7 @@ export function EngineeringProjectsSection() {
                       {project.developer.technologies?.map((tech, i) => (
                         <span
                           key={i}
-                          className="px-2.5 py-1 text-xs font-mono bg-gray-100 dark:bg-neutral-900 text-gray-700 dark:text-neutral-300 rounded border border-gray-200/50 dark:border-neutral-800"
+                          className="px-2.5 py-1 text-xs font-mono bg-white/[0.04] text-[#dcd8d0] rounded border border-white/[0.06]"
                         >
                           {tech}
                         </span>
@@ -96,24 +97,24 @@ export function EngineeringProjectsSection() {
                 {/* Right Column: Architectural Depth & Engineering Decisions */}
                 <div className="lg:col-span-7 flex flex-col gap-5">
                   {/* System Architecture Block */}
-                  <div className="p-5 rounded-xl border border-gray-100 dark:border-neutral-900 bg-gray-50/70 dark:bg-[#111111]/70">
-                    <h4 className="text-xs font-mono font-bold uppercase tracking-[0.2em] text-gray-400 dark:text-neutral-500 mb-3 flex items-center gap-2">
-                      <Workflow size={14} /> System Architecture & Decisions
+                  <div className="p-5 rounded-xl border border-white/[0.08] bg-[#080808]">
+                    <h4 className="text-xs font-mono font-bold uppercase tracking-[0.2em] text-[#aaa9a4] mb-3 flex items-center gap-2">
+                      <Workflow size={14} className="text-[#f1eee8]" /> System Architecture & Decisions
                     </h4>
-                    <p className="text-sm text-gray-700 dark:text-gray-300 leading-relaxed mb-3">
+                    <p className="text-sm text-[#f1eee8] leading-relaxed mb-3">
                       {project.developer.architecture?.description}
                     </p>
 
                     {project.developer.engineeringDecisions && (
-                      <div className="pt-3 border-t border-gray-200/60 dark:border-neutral-800">
-                        <span className="text-[11px] font-mono uppercase tracking-wider text-gray-400 dark:text-neutral-500 block mb-2">
+                      <div className="pt-3 border-t border-white/[0.08]">
+                        <span className="text-[11px] font-mono uppercase tracking-wider text-[#aaa9a4] block mb-2">
                           Key Decisions:
                         </span>
-                        <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs text-gray-600 dark:text-neutral-400">
+                        <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs font-mono text-[#aaa9a4]">
                           {project.developer.engineeringDecisions.map((dec, i) => (
                             <li key={i} className="flex items-center gap-2">
-                              <span className="w-1.5 h-1.5 rounded-full bg-gray-900 dark:bg-white shrink-0" />
-                              <span>{dec}</span>
+                              <span className="w-1.5 h-1.5 rounded-full bg-[#f97316] shrink-0" />
+                              <span className="text-[#dcd8d0]">{dec}</span>
                             </li>
                           ))}
                         </ul>
@@ -122,17 +123,17 @@ export function EngineeringProjectsSection() {
                   </div>
 
                   {/* Technical Challenges Block */}
-                  <div className="p-5 rounded-xl border border-gray-100 dark:border-neutral-900 bg-gray-50/70 dark:bg-[#111111]/70">
-                    <h4 className="text-xs font-mono font-bold uppercase tracking-[0.2em] text-gray-400 dark:text-neutral-500 mb-3 flex items-center gap-2">
-                      <Server size={14} /> Engineering Challenges
+                  <div className="p-5 rounded-xl border border-white/[0.08] bg-[#080808]">
+                    <h4 className="text-xs font-mono font-bold uppercase tracking-[0.2em] text-[#aaa9a4] mb-3 flex items-center gap-2">
+                      <Server size={14} className="text-[#f1eee8]" /> Engineering Challenges
                     </h4>
                     <ul className="space-y-2">
                       {project.developer.challenges?.map((challenge, i) => (
                         <li
                           key={i}
-                          className="text-xs md:text-sm text-gray-600 dark:text-neutral-400 flex items-start gap-2.5"
+                          className="text-xs md:text-sm text-[#aaa9a4] flex items-start gap-2.5 font-light"
                         >
-                          <span className="w-1.5 h-1.5 mt-1.5 rounded-full bg-gray-400 dark:bg-neutral-600 shrink-0" />
+                          <span className="w-1.5 h-1.5 mt-2 rounded-full bg-white/[0.3] shrink-0" />
                           <span className="leading-relaxed">{challenge}</span>
                         </li>
                       ))}
@@ -141,7 +142,7 @@ export function EngineeringProjectsSection() {
 
                   {/* Bottom Actions */}
                   <div className="flex items-center justify-between pt-1">
-                    <span className="text-xs font-mono text-gray-400 dark:text-neutral-600">
+                    <span className="text-[11px] font-mono text-[#aaa9a4]">
                       STATUS: PRODUCTION READY
                     </span>
                     {project.github && (
@@ -149,10 +150,10 @@ export function EngineeringProjectsSection() {
                         href={project.github}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-gray-900 text-white dark:bg-white dark:text-black font-semibold text-sm hover:opacity-90 transition-opacity"
+                        className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-[#f1eee8] text-[#030303] font-semibold text-xs font-mono uppercase tracking-wider hover:bg-white transition-colors"
                         onClick={(e) => e.stopPropagation()}
                       >
-                        <Github size={16} /> Explore Repository
+                        <Github size={14} /> Explore Repository
                       </a>
                     )}
                   </div>

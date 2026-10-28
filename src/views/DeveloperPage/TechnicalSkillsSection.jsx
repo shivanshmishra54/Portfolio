@@ -1,6 +1,7 @@
 import { skills } from '../../data/skills';
 import { getDeveloperProjects } from '../../data/projects';
 import { ScrollReveal } from '../../components/layout/ScrollReveal';
+import { AnimeTextReveal } from '../../components/ui/AnimeTextReveal';
 import * as LucideIcons from 'lucide-react';
 import { FaJava, FaReact, FaJsSquare, FaHtml5, FaCss3Alt, FaGitAlt, FaGithub } from 'react-icons/fa';
 import { SiSpringboot, SiSpringsecurity, SiHibernate, SiTailwindcss, SiVite, SiMysql, SiPostgresql, SiRedis, SiIntellijidea, SiPostman, SiApachemaven, SiLeetcode } from 'react-icons/si';
@@ -27,21 +28,21 @@ export function TechnicalSkillsSection() {
   };
 
   return (
-    <section className="py-24 bg-gray-50 dark:bg-black">
+    <section className="py-24 md:py-32 bg-[#030303] text-[#f1eee8] border-b border-white/[0.08]">
       <div className="container mx-auto px-6 max-w-7xl">
         
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-8">
           <div>
-            <div className="flex items-center gap-4 mb-4">
-              <span className="h-[1px] w-8 bg-gray-900 dark:bg-white"></span>
-              <span className="text-sm font-bold tracking-[0.2em] uppercase text-gray-900 dark:text-white">Arsenal</span>
+            <div className="flex items-center gap-2.5 mb-3 text-xs font-mono tracking-[0.2em] uppercase text-[#aaa9a4]">
+              <span className="w-2 h-2 rounded-full bg-[#f97316] animate-pulse shadow-[0_0_8px_rgba(249,115,22,0.6)]" />
+              <span className="text-[#f97316]/90 font-medium">03 / ARSENAL</span>
             </div>
-            <h2 className="text-4xl md:text-5xl font-bold tracking-tighter text-gray-900 dark:text-white">
-              Technical Stack
+            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-serif font-normal tracking-tight text-[#f1eee8] leading-[1.08]">
+              <AnimeTextReveal trigger="visible">Technical Stack</AnimeTextReveal>
             </h2>
           </div>
-          <p className="text-gray-600 dark:text-gray-400 max-w-md font-light text-sm md:text-base">
-            Verified technologies utilized across production systems, custom applications, and theoretical computer science.
+          <p className="text-[#aaa9a4] max-w-md font-light text-sm md:text-base leading-relaxed">
+            Verified technologies utilized across production systems, custom client applications, and theoretical computer science.
           </p>
         </div>
 
@@ -55,16 +56,16 @@ export function TechnicalSkillsSection() {
                 delay={idx * 0.1}
                 yOffset={20}
               >
-                <div className="flex items-center gap-4 mb-8 border-b border-gray-200 dark:border-gray-800 pb-4">
-                  <div className={`p-2 bg-white dark:bg-gray-900 rounded-lg border border-gray-200 dark:border-gray-700 ${category.color}`}>
-                    <CategoryIcon size={20} />
+                <div className="flex items-center gap-3.5 mb-8 border-b border-white/[0.08] pb-4">
+                  <div className="p-2.5 bg-white/[0.04] rounded-xl border border-white/[0.08] text-[#f1eee8]">
+                    <CategoryIcon size={18} />
                   </div>
-                  <h3 className="text-2xl font-bold text-gray-900 dark:text-white tracking-tight">
+                  <h3 className="text-xl sm:text-2xl font-serif font-normal text-[#f1eee8] tracking-tight">
                     {category.category}
                   </h3>
                 </div>
                 
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5 sm:gap-6">
                   {category.items.map((skill, sIdx) => {
                     const relatedProjects = getProjectsForSkill(skill.name);
                     const TechIcon = TechIconMap[skill.icon] || LucideIcons.Code;
@@ -72,34 +73,34 @@ export function TechnicalSkillsSection() {
                     return (
                       <div 
                         key={sIdx}
-                        className="flex flex-col p-6 bg-white dark:bg-[#0a0a0a] border border-gray-200 dark:border-gray-800 hover:border-gray-400 dark:hover:border-gray-600 transition-colors"
+                        className="flex flex-col p-6 rounded-2xl bg-[#0c0c0c] border border-white/[0.08] hover:border-white/[0.22] transition-colors justify-between"
                       >
                         <div className="flex items-start gap-4 mb-4">
-                          <div className="text-4xl shrink-0" style={{ color: skill.iconColor || 'currentColor' }}>
+                          <div className="text-3xl shrink-0 text-[#f1eee8] opacity-80">
                             <TechIcon />
                           </div>
                           <div>
-                            <h4 className="text-lg font-bold text-gray-900 dark:text-white uppercase tracking-wider">{skill.name}</h4>
-                            <p className="text-xs text-gray-500 font-mono mt-1">{category.category.replace(' & ', ' / ')}</p>
+                            <h4 className="text-sm font-mono uppercase tracking-wider text-[#f1eee8] font-semibold">{skill.name}</h4>
+                            <p className="text-[11px] text-[#aaa9a4] font-mono mt-0.5">{category.category.replace(' & ', ' / ')}</p>
                           </div>
                         </div>
 
                         {/* Project mapping */}
-                        <div className="mt-auto pt-4 border-t border-gray-100 dark:border-gray-900">
-                          <p className="text-xs font-bold text-gray-400 dark:text-gray-600 uppercase tracking-widest mb-2">Used In:</p>
+                        <div className="mt-auto pt-4 border-t border-white/[0.08]">
+                          <p className="text-[10px] font-mono uppercase tracking-widest text-[#aaa9a4] mb-1.5">Used In:</p>
                           {relatedProjects.length > 0 ? (
                             <ul className="space-y-1">
-                              {relatedProjects.slice(0, 3).map(p => (
-                                <li key={p.id} className="text-sm font-medium text-gray-700 dark:text-gray-300 truncate">
+                              {relatedProjects.slice(0, 2).map(p => (
+                                <li key={p.id} className="text-xs font-mono text-[#dcd8d0] truncate">
                                   {p.developer?.title}
                                 </li>
                               ))}
-                              {relatedProjects.length > 3 && (
-                                <li className="text-xs text-gray-500 italic">+{relatedProjects.length - 3} more...</li>
+                              {relatedProjects.length > 2 && (
+                                <li className="text-[11px] font-mono text-[#aaa9a4]">+{relatedProjects.length - 2} more...</li>
                               )}
                             </ul>
                           ) : (
-                            <p className="text-sm text-gray-500 italic">Core/Theoretical Knowledge</p>
+                            <p className="text-xs font-mono text-[#aaa9a4] italic">Core/Theoretical Rigor</p>
                           )}
                         </div>
                       </div>

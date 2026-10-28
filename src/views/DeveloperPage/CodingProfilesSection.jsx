@@ -10,11 +10,12 @@ export function CodingProfilesSection() {
   if (codingPlatforms.length === 0) return null;
 
   return (
-    <section className="py-24 md:py-32 bg-gray-50 dark:bg-black">
+    <section className="py-24 md:py-32 bg-[#030303] text-[#f1eee8] border-b border-white/[0.08]">
       <div className="container mx-auto px-6 max-w-7xl">
         <SectionHeading 
+          kicker="06 / BENCHMARKS"
           title="Coding Profiles" 
-          subtitle="Continuous problem solving and competitive programming." 
+          subtitle="Continuous competitive programming, algorithmic contests, and verified problem solving." 
         />
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-16">

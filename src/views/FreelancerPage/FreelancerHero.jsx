@@ -1,92 +1,90 @@
-import React from 'react';
-import { motion } from 'framer-motion';
-import { Link } from 'react-router-dom';
+'use client';
+
+import React, { useRef } from 'react';
+import { motion, useScroll, useTransform } from 'framer-motion';
 import { ArrowDown, ArrowRight } from 'lucide-react';
 import { profile } from '../../data/profile';
+import { useReducedMotion } from '../../components/3d/hooks/useReducedMotion';
+import { AnimeTextReveal } from '../../components/ui/AnimeTextReveal';
 
 export function FreelancerHero() {
+  const containerRef = useRef(null);
+  const prefersReducedMotion = useReducedMotion();
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ["start start", "end start"]
+  });
+
+  const contentY = useTransform(scrollYProgress, [0, 1], [0, prefersReducedMotion ? 0 : 90]);
+  const contentOpacity = useTransform(scrollYProgress, [0, 0.75], [1, 0]);
+  const contentScale = useTransform(scrollYProgress, [0, 1], [1, prefersReducedMotion ? 1 : 0.95]);
+
   return (
-    <section className="relative w-full min-h-[90vh] flex items-center justify-center bg-gray-50 dark:bg-black pt-24 pb-16 overflow-hidden">
-      {/* Subtle grid background */}
-      <div className="absolute inset-0 opacity-[0.03] dark:opacity-[0.05]"
-        style={{
-          backgroundImage: 'linear-gradient(rgba(0,0,0,0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(0,0,0,0.1) 1px, transparent 1px)',
-          backgroundSize: '64px 64px'
-        }}
+    <section 
+      ref={containerRef}
+      className="relative w-full min-h-[85vh] flex items-center justify-center bg-[#030303] text-[#f1eee8] pt-36 pb-20 overflow-hidden border-b border-white/[0.08]"
+    >
+      {/* Subtle vertical grid lines */}
+      <div 
+        aria-hidden="true"
+        className="absolute inset-0 pointer-events-none opacity-10 bg-[linear-gradient(90deg,#ffffff15_1px,transparent_1px)] bg-[size:16.666%_100%] [mask-image:linear-gradient(black_60%,transparent_95%)]"
       />
 
       <div className="relative z-10 container mx-auto px-6 max-w-5xl">
         <motion.div
+          style={{ y: contentY, opacity: contentOpacity, scale: contentScale }}
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, ease: "easeOut" }}
+          transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
           className="flex flex-col items-center text-center"
         >
           {/* Eyebrow */}
-          <motion.p
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.2, duration: 0.5 }}
-            className="text-xs font-mono tracking-[0.3em] text-gray-500 dark:text-gray-500 uppercase mb-8"
-          >
-            Freelance Software Developer
-          </motion.p>
+          <div className="flex items-center gap-2.5 mb-6 text-xs font-mono tracking-[0.2em] uppercase text-[#aaa9a4]">
+            <span className="w-2 h-2 rounded-full bg-[#f97316] animate-pulse shadow-[0_0_8px_rgba(249,115,22,0.6)]" />
+            <span className="text-[#f97316]/90 font-medium">01 / CLIENT SERVICES</span>
+            <span className="text-[#666666]">·</span>
+            <span className="text-[#aaa9a4]">FULL-STACK &amp; BACKEND ENGINEERING</span>
+          </div>
 
-          {/* Main Headline */}
-          <h1 className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-bold tracking-tighter text-gray-900 dark:text-white uppercase leading-[0.95] mb-6">
-            I turn ideas
-            <br />
-            <span className="text-gray-400 dark:text-gray-600">into working</span>
-            <br />
-            software
+          {/* Main Headline with Anime.js reveal */}
+          <h1 className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-serif font-normal tracking-tight text-[#f1eee8] leading-[1.02] mb-6">
+            <AnimeTextReveal delay={100}>I turn complex ideas into</AnimeTextReveal>{' '}
+            <AnimeTextReveal delay={250}>
+              <em className="italic font-normal text-[#dcd8d0]">production software</em>.
+            </AnimeTextReveal>
           </h1>
 
           {/* Supporting statement */}
           <motion.p
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.4, duration: 0.6 }}
-            className="text-lg md:text-xl font-light text-gray-600 dark:text-gray-400 max-w-2xl mx-auto mb-12 leading-relaxed"
+            transition={{ delay: 0.3, duration: 0.6 }}
+            className="text-base sm:text-lg md:text-xl font-light text-[#aaa9a4] max-w-2xl mx-auto mb-10 leading-relaxed"
           >
-            Full-stack development from concept to deployment. I build web applications, 
-            backend systems, and APIs using React, Java, Spring Boot, and modern tools.
+            Full-stack engineering from architectural design to deployment. I deliver robust web applications, 
+            high-throughput backend APIs, and responsive React interfaces using Java, Spring Boot, and modern tooling.
           </motion.p>
 
           {/* CTA Buttons */}
           <motion.div
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.6, duration: 0.5 }}
-            className="flex flex-col sm:flex-row items-center gap-4"
+            transition={{ delay: 0.45, duration: 0.5 }}
+            className="flex flex-wrap items-center justify-center gap-4"
           >
             <a
               href="#inquiry"
-              className="inline-flex items-center gap-3 px-8 py-4 bg-gray-900 dark:bg-white text-white dark:text-black text-sm font-bold tracking-widest uppercase rounded-lg hover:opacity-85 transition-opacity"
+              className="editorial-btn-primary px-8 py-3.5 shadow-xl"
             >
-              Start a Project <ArrowRight size={16} />
+              <span>Initiate Project Inquiry</span>
+              <ArrowRight size={14} />
             </a>
             <a
               href="#work"
-              className="inline-flex items-center gap-3 px-8 py-4 border border-gray-300 dark:border-gray-700 text-gray-900 dark:text-white text-sm font-bold tracking-widest uppercase rounded-lg hover:bg-gray-100 dark:hover:bg-gray-900 transition-colors"
+              className="editorial-btn-secondary px-8 py-3.5"
             >
-              View My Work
+              <span>Explore Client Work</span>
             </a>
-          </motion.div>
-        </motion.div>
-
-        {/* Scroll indicator */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 1.2 }}
-          className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2"
-        >
-          <span className="text-xs tracking-[0.2em] text-gray-400 uppercase font-medium">Explore</span>
-          <motion.div
-            animate={{ y: [0, 6, 0] }}
-            transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
-          >
-            <ArrowDown size={16} className="text-gray-400" />
           </motion.div>
         </motion.div>
       </div>

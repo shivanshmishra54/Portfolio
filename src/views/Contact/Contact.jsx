@@ -51,24 +51,30 @@ export default function Contact() {
       return;
     }
 
-    // Create a new FormData object to send to Web3Forms API
-    const form = new FormData();
-    form.append("access_key", import.meta.env.VITE_WEB3FORMS_ACCESS_KEY);
-    form.append("name", formData.name);
-    form.append("email", formData.email);
-    form.append("subject", formData.subject || "New Contact Form Submission");
-    form.append("message", formData.message);
+    const apiKey = 
+      process.env.NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY || 
+      process.env.NEXT_PUBLIC_WEB3FORMS_KEY ||
+      '319cf23f-b091-4f65-8a31-920030bdde78';
 
     try {
-      // Send form data to Web3Forms API
       const response = await fetch("https://api.web3forms.com/submit", {
         method: "POST",
-        body: form,
+        headers: {
+          "Content-Type": "application/json",
+          "Accept": "application/json",
+        },
+        body: JSON.stringify({
+          access_key: apiKey,
+          name: formData.name,
+          email: formData.email,
+          subject: formData.subject || "New Contact Form Submission",
+          message: formData.message,
+        }),
       });
 
-      const result = await response.json();
+      const result = await response.json().catch(() => null);
 
-      if (response.ok) {
+      if (response.ok && result?.success) {
         setStatus("Message sent successfully!");
         setFormData({
           name: "",

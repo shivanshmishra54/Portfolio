@@ -1,7 +1,10 @@
+'use client';
+
 import React from 'react';
 import { motion } from 'framer-motion';
 import { useReducedMotion } from '../../components/3d/hooks/useReducedMotion';
 import { ScrollReveal } from '../../components/layout/ScrollReveal';
+import { AnimeTextReveal } from '../../components/ui/AnimeTextReveal';
 import { Layers, Network, Lock, Zap, Server, Database, Code2, Workflow, Link as LinkIcon } from 'lucide-react';
 
 export function ArchitectureSection() {
@@ -65,25 +68,25 @@ export function ArchitectureSection() {
   };
 
   return (
-    <section className="py-24 bg-white dark:bg-[#0a0a0a]">
+    <section className="py-24 md:py-32 bg-[#030303] text-[#f1eee8] border-b border-white/[0.08]">
       <div className="container mx-auto px-6 max-w-7xl">
         
         <div className="flex flex-col mb-16">
-          <div className="flex items-center gap-4 mb-4">
-            <span className="h-[1px] w-8 bg-gray-900 dark:bg-white"></span>
-            <span className="text-sm font-bold tracking-[0.2em] uppercase text-gray-900 dark:text-white">Systems Thinking</span>
+          <div className="flex items-center gap-2.5 mb-3 text-xs font-mono tracking-[0.2em] uppercase text-[#aaa9a4]">
+            <span className="w-2 h-2 rounded-full bg-[#f97316] animate-pulse shadow-[0_0_8px_rgba(249,115,22,0.6)]" />
+            <span className="text-[#f97316]/90 font-medium">02 / SYSTEMS THINKING</span>
           </div>
-          <h2 className="text-4xl md:text-5xl font-bold tracking-tighter text-gray-900 dark:text-white mb-6">
-            Architecture Principles
+          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-serif font-normal tracking-tight text-[#f1eee8] leading-[1.08] mb-4">
+            <AnimeTextReveal trigger="visible">Architecture Principles</AnimeTextReveal>
           </h2>
-          <p className="text-gray-600 dark:text-gray-400 max-w-2xl font-light text-base md:text-lg">
-            I approach software development as an engineering discipline. It’s not just about writing code that works; it’s about structuring systems that are maintainable, secure, and scalable.
+          <p className="text-[#aaa9a4] max-w-2xl font-light text-base md:text-lg leading-relaxed">
+            I approach software development as an engineering discipline. It’s not just about writing code that works; it’s about structuring systems that are maintainable, secure, and resilient under load.
           </p>
         </div>
 
         {/* Architecture Diagram */}
-        <div className="mb-20 overflow-x-auto pb-8">
-          <div className="min-w-[800px] flex items-center justify-between py-12 px-8 bg-gray-50 dark:bg-[#111] border border-gray-100 dark:border-gray-800 rounded-xl relative">
+        <div className="mb-20 overflow-x-auto pb-6">
+          <div className="min-w-[800px] flex items-center justify-between py-12 px-8 bg-[#080808] border border-white/[0.08] rounded-2xl relative shadow-2xl">
             {diagramNodes.map((node, i) => (
               <React.Fragment key={node.id}>
                 <motion.div
@@ -94,11 +97,11 @@ export function ArchitectureSection() {
                   variants={nodeVariants}
                   className="flex flex-col items-center relative z-10 w-32"
                 >
-                  <div className="w-16 h-16 rounded-xl bg-white dark:bg-black border border-gray-200 dark:border-gray-700 flex items-center justify-center text-gray-900 dark:text-white mb-4 shadow-sm">
+                  <div className="w-16 h-16 rounded-2xl bg-[#0c0c0c] border border-white/[0.08] flex items-center justify-center text-[#f1eee8] mb-4 shadow-md group-hover:border-white/[0.2] transition-colors">
                     {node.icon}
                   </div>
-                  <h4 className="text-sm font-bold text-gray-900 dark:text-white text-center mb-1">{node.label}</h4>
-                  <p className="text-xs text-gray-500 dark:text-gray-500 text-center">{node.desc}</p>
+                  <h4 className="text-xs font-mono uppercase tracking-wider text-[#f1eee8] font-semibold text-center mb-1">{node.label}</h4>
+                  <p className="text-[11px] font-mono text-[#aaa9a4] text-center">{node.desc}</p>
                 </motion.div>
                 
                 {i < diagramNodes.length - 1 && (
@@ -108,9 +111,9 @@ export function ArchitectureSection() {
                     whileInView="visible"
                     viewport={{ once: true, margin: "-50px" }}
                     variants={edgeVariants}
-                    className="flex-grow h-[2px] bg-gray-300 dark:bg-gray-700 origin-left -mx-4 relative top-[-1.5rem]"
+                    className="flex-grow h-[1px] bg-white/[0.12] origin-left -mx-4 relative top-[-1.5rem]"
                   >
-                    <div className="absolute right-0 top-1/2 -translate-y-1/2 w-2 h-2 border-t-2 border-r-2 border-gray-300 dark:border-gray-700 rotate-45"></div>
+                    <div className="absolute right-0 top-1/2 -translate-y-1/2 w-2 h-2 border-t border-r border-white/[0.25] rotate-45" />
                   </motion.div>
                 )}
               </React.Fragment>
@@ -119,19 +122,19 @@ export function ArchitectureSection() {
         </div>
 
         {/* Principles Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
           {principles.map((p, idx) => (
             <ScrollReveal 
               key={idx}
               delay={idx * 0.1}
               yOffset={20}
-              className="p-8 border border-gray-100 dark:border-gray-800 bg-gray-50 dark:bg-[#111] hover:border-gray-300 dark:hover:border-gray-700 transition-colors"
+              className="p-8 rounded-2xl border border-white/[0.08] bg-[#0c0c0c] hover:border-white/[0.22] transition-colors"
             >
-              <div className="w-12 h-12 bg-white dark:bg-black border border-gray-200 dark:border-gray-800 flex items-center justify-center text-gray-900 dark:text-white mb-6">
+              <div className="w-12 h-12 rounded-xl bg-white/[0.04] border border-white/[0.08] flex items-center justify-center text-[#f1eee8] mb-6">
                 {p.icon}
               </div>
-              <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-3">{p.title}</h3>
-              <p className="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
+              <h3 className="text-xl font-serif font-normal text-[#f1eee8] mb-2">{p.title}</h3>
+              <p className="text-sm font-light text-[#aaa9a4] leading-relaxed">
                 {p.desc}
               </p>
             </ScrollReveal>

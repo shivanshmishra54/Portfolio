@@ -1,3 +1,5 @@
+'use client';
+
 import { PageTransition } from '../../components/layout/PageTransition';
 import { SEOHead } from '../../components/layout/SEOHead';
 import { DeveloperHero } from './DeveloperHero';

@@ -1,3 +1,5 @@
+'use client';
+
 import React from "react";
 import {
   Code2,
@@ -15,6 +17,7 @@ import {
 } from "lucide-react";
 import { experience as experiences } from "@/data/experience";
 import { CircularCardDeck } from "@/components/ui/CircularCardDeck";
+import { AnimeTextReveal } from "@/components/ui/AnimeTextReveal";
 
 export default function ExperienceSection() {
   const getTypeBadge = (type) => {
@@ -62,21 +65,19 @@ export default function ExperienceSection() {
   };
 
   return (
-    <section className="relative bg-gray-50 dark:bg-black transition-colors duration-300 py-24 overflow-hidden">
+    <section className="relative bg-[#030303] text-[#f1eee8] transition-colors duration-300 py-24 md:py-32 overflow-hidden border-b border-white/[0.08]">
       <div className="container mx-auto px-6 max-w-7xl">
         {/* Section Header */}
         <div className="flex flex-col mb-10">
-          <div className="flex items-center gap-4 mb-4">
-            <span className="h-[1px] w-8 bg-gray-900 dark:bg-white" />
-            <span className="text-sm font-bold tracking-[0.2em] uppercase text-gray-900 dark:text-white">
-              Experience & Track Record
-            </span>
+          <div className="flex items-center gap-2.5 mb-3 text-xs font-mono tracking-[0.2em] uppercase text-[#aaa9a4]">
+            <span className="w-2 h-2 rounded-full bg-[#f97316] animate-pulse shadow-[0_0_8px_rgba(249,115,22,0.6)]" />
+            <span className="text-[#f97316]/90 font-medium">07 / TRACK RECORD</span>
           </div>
-          <h2 className="text-4xl md:text-5xl font-bold tracking-tighter text-gray-900 dark:text-white mb-6">
-            Professional Experience & Hackathons
+          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-serif font-normal tracking-tight text-[#f1eee8] leading-[1.08] mb-4">
+            <AnimeTextReveal trigger="visible">Professional Experience &amp; Hackathons</AnimeTextReveal>
           </h2>
-          <p className="text-gray-600 dark:text-gray-400 max-w-2xl font-light text-base md:text-lg">
-            Swipe right-to-left to explore open source contributions, software engineering internships, national hackathon podiums, and enterprise simulations.
+          <p className="text-[#aaa9a4] max-w-2xl font-light text-base md:text-lg leading-relaxed">
+            Swipe right-to-left to explore verified open source contributions, software engineering internships, national hackathon podiums, and enterprise simulations.
           </p>
         </div>
 
@@ -87,22 +88,22 @@ export default function ExperienceSection() {
           renderCard={(experience, index, { total }) => {
             const typeBadge = getTypeBadge(experience.type);
             return (
-              <div className="w-full rounded-2xl border border-gray-200 dark:border-neutral-800 bg-white dark:bg-[#0c0c0c] shadow-2xl overflow-hidden transition-all duration-300">
+              <div className="w-full rounded-2xl border border-white/[0.08] bg-[#0c0c0c] shadow-2xl overflow-hidden transition-all duration-300">
                 {/* Header Bar */}
-                <div className="flex items-center justify-between px-6 py-4 border-b border-gray-100 dark:border-neutral-900 bg-gray-50/70 dark:bg-[#111111]/70">
+                <div className="flex items-center justify-between px-6 py-4 border-b border-white/[0.08] bg-[#080808]/90">
                   <div className="flex items-center gap-3">
-                    <span className="text-xs font-mono font-bold uppercase tracking-widest text-gray-400 dark:text-neutral-500">
+                    <span className="text-xs font-mono font-bold uppercase tracking-widest text-[#aaa9a4]">
                       0{index + 1} / 0{total}
                     </span>
-                    <span className="h-3 w-[1px] bg-gray-300 dark:bg-neutral-800" />
-                    <div className="flex items-center gap-1.5 px-2.5 py-0.5 text-xs font-mono font-semibold uppercase tracking-wider bg-gray-200/80 dark:bg-neutral-800 text-gray-800 dark:text-neutral-200 rounded">
+                    <span className="h-3 w-[1px] bg-white/[0.12]" />
+                    <div className="flex items-center gap-1.5 px-2.5 py-0.5 text-xs font-mono font-semibold uppercase tracking-wider bg-white/[0.06] text-[#f1eee8] rounded-full border border-white/[0.08]">
                       {typeBadge.icon}
                       <span>{typeBadge.label}</span>
                     </div>
                   </div>
 
                   <div className="flex items-center gap-2">
-                    <span className="text-xs font-mono uppercase tracking-wider text-gray-500 dark:text-neutral-400 flex items-center gap-1.5">
+                    <span className="text-xs font-mono uppercase tracking-wider text-[#aaa9a4] flex items-center gap-1.5">
                       <Calendar className="w-3.5 h-3.5" />
                       {experience.period}
                     </span>
@@ -111,7 +112,7 @@ export default function ExperienceSection() {
                         href={experience.link}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="ml-2 inline-flex items-center gap-1 px-2.5 py-1 rounded bg-gray-900 text-white dark:bg-white dark:text-black text-xs font-mono font-semibold hover:opacity-85 transition-opacity"
+                        className="ml-2 inline-flex items-center gap-1 px-3 py-1 rounded-full bg-[#f1eee8] text-[#030303] text-xs font-mono font-semibold hover:bg-white transition-colors"
                         onClick={(e) => e.stopPropagation()}
                       >
                         <span>Repo</span>
@@ -125,45 +126,45 @@ export default function ExperienceSection() {
                 <div className="p-6 md:p-8 lg:p-10 flex flex-col justify-between gap-6">
                   <div className="space-y-4">
                     <div className="flex items-start gap-4">
-                      <div className="w-12 h-12 rounded-xl bg-gray-100 dark:bg-black border border-gray-200 dark:border-neutral-800 flex items-center justify-center text-gray-900 dark:text-white shrink-0 mt-1 shadow-sm">
+                      <div className="w-12 h-12 rounded-xl bg-white/[0.04] border border-white/[0.08] flex items-center justify-center text-[#f1eee8] shrink-0 mt-1 shadow-sm">
                         {getIcon(experience.icon)}
                       </div>
                       <div className="flex-1 min-w-0">
                         <div className="flex flex-wrap items-center justify-between gap-2">
-                          <h3 className="text-2xl md:text-3xl font-bold tracking-tight text-gray-900 dark:text-white">
+                          <h3 className="text-xl sm:text-2xl md:text-3xl font-serif font-normal tracking-tight text-[#f1eee8]">
                             {experience.title}
                           </h3>
                           {experience.role && (
-                            <span className="text-xs font-mono uppercase px-2.5 py-1 rounded bg-gray-100 dark:bg-neutral-900 border border-gray-200/70 dark:border-neutral-800 text-gray-600 dark:text-neutral-300">
+                            <span className="text-xs font-mono uppercase px-2.5 py-1 rounded-full bg-white/[0.04] border border-white/[0.08] text-[#aaa9a4]">
                               {experience.role}
                             </span>
                           )}
                         </div>
-                        <p className="text-base font-medium text-gray-700 dark:text-neutral-300 mt-1 flex items-center gap-2">
-                          <Briefcase className="w-4 h-4 text-gray-400" />
+                        <p className="text-sm font-mono text-[#aaa9a4] mt-1 flex items-center gap-2">
+                          <Briefcase className="w-4 h-4 text-[#aaa9a4]" />
                           {experience.company}
                         </p>
                       </div>
                     </div>
 
-                    <p className="text-sm md:text-base text-gray-600 dark:text-gray-400 leading-relaxed font-light pl-4 border-l-2 border-gray-300 dark:border-neutral-700">
+                    <p className="text-sm md:text-base text-[#dcd8d0] leading-relaxed font-light pl-4 border-l-2 border-white/[0.15]">
                       {experience.description}
                     </p>
 
                     {/* Key Highlights */}
                     {experience.highlights && experience.highlights.length > 0 && (
-                      <div className="p-5 rounded-xl border border-gray-100 dark:border-neutral-900 bg-gray-50/70 dark:bg-[#111111]/70 mt-3">
-                        <h4 className="text-xs font-mono font-bold uppercase tracking-[0.2em] text-gray-400 dark:text-neutral-500 mb-3 flex items-center gap-2">
-                          <CheckCircle2 className="w-3.5 h-3.5 text-gray-700 dark:text-gray-300" />
+                      <div className="p-5 rounded-xl border border-white/[0.08] bg-[#080808] mt-3">
+                        <h4 className="text-xs font-mono font-bold uppercase tracking-[0.2em] text-[#aaa9a4] mb-3 flex items-center gap-2">
+                          <CheckCircle2 className="w-3.5 h-3.5 text-[#f97316]" />
                           Key Impact & Milestones
                         </h4>
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-2.5">
                           {experience.highlights.map((highlight, hIdx) => (
                             <div
                               key={hIdx}
-                              className="flex items-start gap-2 text-xs md:text-sm text-gray-700 dark:text-neutral-300"
+                              className="flex items-start gap-2 text-xs md:text-sm text-[#dcd8d0] font-light"
                             >
-                              <span className="w-1.5 h-1.5 rounded-full bg-gray-900 dark:bg-white mt-1.5 shrink-0" />
+                              <span className="w-1.5 h-1.5 rounded-full bg-[#f97316] mt-1.5 shrink-0" />
                               <span>{highlight}</span>
                             </div>
                           ))}
@@ -173,12 +174,12 @@ export default function ExperienceSection() {
                   </div>
 
                   {/* Footer with Technologies & Action */}
-                  <div className="pt-4 border-t border-gray-100 dark:border-neutral-900 flex flex-wrap items-center justify-between gap-4">
+                  <div className="pt-4 border-t border-white/[0.08] flex flex-wrap items-center justify-between gap-4">
                     <div className="flex flex-wrap gap-1.5">
                       {experience.technologies?.map((tech, tIdx) => (
                         <span
                           key={tIdx}
-                          className="px-2.5 py-1 text-xs font-mono bg-gray-100 dark:bg-neutral-900 text-gray-700 dark:text-neutral-300 rounded border border-gray-200/50 dark:border-neutral-800"
+                          className="px-2.5 py-1 text-xs font-mono bg-white/[0.04] text-[#dcd8d0] rounded border border-white/[0.06]"
                         >
                           {tech}
                         </span>
@@ -190,7 +191,7 @@ export default function ExperienceSection() {
                         href={experience.prLink}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="inline-flex items-center gap-1.5 text-xs font-mono uppercase tracking-wider text-gray-900 dark:text-white font-semibold hover:underline"
+                        className="inline-flex items-center gap-1.5 text-xs font-mono uppercase tracking-wider text-[#f1eee8] font-semibold hover:underline"
                         onClick={(e) => e.stopPropagation()}
                       >
                         <span>View Merged PR #5738</span>
